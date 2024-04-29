@@ -49,4 +49,4 @@ Contributions are welcome. Please open an issue or submit a pull request.
 
 ## License
 
-CloverRPG is licensed under the [MIT License](LICENSE).
+CloverRPG is licensed under the [GNU License](LICENSE).
