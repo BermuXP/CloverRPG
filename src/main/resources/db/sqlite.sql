@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS party (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS party_members (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    party_id INTEGER,
+    player_uuid TEXT NOT NULL,
+    is_leader INTEGER DEFAULT 0,
+    FOREIGN KEY (party_id) REFERENCES party(id)
+);
