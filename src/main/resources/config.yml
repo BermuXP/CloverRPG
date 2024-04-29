@@ -1,0 +1,7 @@
+database:
+  type: "sqlite" # "sqlite" or "mariadb"
+  host: "localhost"
+  port: 3306
+  database: "cloverrpg"
+  username: "root"
+  password: "defaultRootPassword"

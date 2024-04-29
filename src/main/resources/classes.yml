@@ -1,0 +1,101 @@
+classes:
+  Paladin:
+    gui:
+      item: 'DIAMOND_SWORD'
+      item_location: 0
+      description:
+        - '&fLore:'
+        - '&6Paladin lore'
+        - '&6Even more paladin lore'
+    strength: ''
+    dexterity: ''
+    constitution: ''
+    intelligence: ''
+    wisdom: ''
+    charisma: ''
+    luck: ''
+    specs:
+      wild:
+        strength: ''
+        dexterity: ''
+        constitution: ''
+        intelligence: ''
+        wisdom: ''
+        charisma: ''
+        luck: ''
+      soft:
+        strength: ''
+        dexterity: ''
+        constitution: ''
+        intelligence: ''
+        wisdom: ''
+        charisma: ''
+        luck: ''
+
+  Druid:
+    gui:
+      item: 'DIAMOND_SWORD'
+      item_location: 0
+      description:
+        - '&fLore:'
+        - '&6Paladin lore'
+        - '&6Even more paladin lore'
+    description: ''
+    strength: ''
+    dexterity: ''
+    constitution: ''
+    intelligence: ''
+    wisdom: ''
+    charisma: ''
+    luck: ''
+    specs:
+     wild:
+       strength: ''
+       dexterity: ''
+       constitution: ''
+       intelligence: ''
+       wisdom: ''
+       charisma: ''
+       luck: ''
+     soft:
+       strength: ''
+       dexterity: ''
+       constitution: ''
+       intelligence: ''
+       wisdom: ''
+       charisma: ''
+       luck: ''
+  Priest:
+    gui:
+      item: 'DIAMOND_SWORD'
+      item_location: 0
+      description:
+        - '&fLore:'
+        - '&6Paladin lore'
+        - '&6Even more paladin lore'
+    description: ''
+    strength: ''
+    dexterity: ''
+    constitution: ''
+    intelligence: ''
+    wisdom: ''
+    charisma: ''
+    luck: ''
+    specs:
+      wild:
+        strength: ''
+        dexterity: ''
+        constitution: ''
+        intelligence: ''
+        wisdom: ''
+        charisma: ''
+        luck: ''
+      soft:
+        strength: ''
+        dexterity: ''
+        constitution: ''
+        intelligence: ''
+        wisdom: ''
+        charisma: ''
+        luck: ''
+

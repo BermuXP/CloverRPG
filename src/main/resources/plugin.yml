@@ -1,0 +1,48 @@
+main: tv.bermu.cloverrpg.Main
+name: CloverRPG
+version: ${project.version}
+description: ${project.description}
+author: Bermu
+prefix: CloverRPG
+commands:
+  Crpg:
+    description: Crpg command
+    usage: /crpg
+    permission: cloverrpg.commands.crpg
+  Classes:
+    description: Classes command
+    usage: /classes
+    permission: cloverrpg.commands.classes
+  Party:
+    description: Party commands
+    usage: /party
+    permission: cloverrpg.commands.party
+
+permissions:
+  cloverrpg.*:
+    description: Access to all CloverRPG permissions
+    default: op
+    children:
+      cloverrpg.commands.*: true
+  cloverrpg.commands.*:
+    description: Access to all CloverRPG commands
+    default: op
+    children:
+      cloverrpg.commands.classes: true
+      cloverrpg.commands.crpg: true
+  cloverrpg.commands.classes:
+    description: Access to the classes command
+    default: true
+  cloverrpg.commands.crpg:
+    description: Access to the crpg command
+    default: true
+  cloverrpg.commands.party.*:
+    description: Access to all the party commands
+    default: true
+    children:
+      cloverrpg.commands.create: true
+      cloverrpg.commands.invite: true
+      cloverrpg.commands.accept: true
+      cloverrpg.commands.leave: true
+      cloverrpg.commands.kick: true
+      cloverrpg.commands.list: true

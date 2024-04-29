@@ -1,0 +1,85 @@
+#Races -> DO NOT CHANGE THIS NAME
+#races name (Human:) -> The name of your (new) race, remember this is also the displayed name!!
+#Strength ->
+#Dexterity ->
+#Constitution ->
+#Intelligence ->
+#Wisdom ->
+#Charisma ->
+#Luck -> Chances to get more: ExperienceEvent.
+AddPointsOnRaceSelect: 6
+
+Races:
+  Elf:
+    description: "Long point ear human like creatures that dont eat meat, AKA vegans"
+    strength: 1
+    dexterity: 2
+    constitution: 3
+    intelligence: 4
+    wisdom: 5
+    charisma: 6
+    luck: 7
+  Human:
+    description: "self centered douche snouzles"
+    strength: 7
+    dexterity: 6
+    constitution: 5
+    intelligence: 4
+    wisdom: 3
+    charisma: 2
+    luck: 1
+  Dwarf:
+    description: "tiny people"
+    strength: 99
+    dexterity: 56
+    constitution: 12
+    intelligence: 76
+    wisdom: 53
+    charisma: 23
+    luck: 12
+
+chat:
+
+#GUI
+# Title: the title of the gui
+# rows: the amount needs to always come of 9 (example: 9*3 = 27)
+# description: the description for all content
+# GUI - Content:
+# Rscename: the name of the race added in the UI (Race name can be anything from the list you made above.)
+# GUI - Content - Racename
+# spot: what spot you want the item to show (must be within the number of rows mentioned in GUI-rows)
+# item: the item shown in the ui for that race
+# description: the description for the specific tace (gui-description  will be added above this)
+gui:
+  title: "RaceMenu"
+  rows: 27
+  description:
+    - '&cStrength&f: %racestrength%'
+    - '&aDexterity&f: %racedexterity%'
+    - '&bConstitution&f: %raceconstitution%'
+    - '&7Intelligence&f: %raceintelligence%'
+    - '&6Wisdom&f: %racewisdom%'
+    - '&dCharisma&f: %racecharisma%'
+    - '&eLuck&f: %raceluck%'
+  content:
+    Elf:
+      spot: 0
+      item: 'ELYTRA'
+      description:
+        - '&fLore:'
+        - '&6Elf lore'
+        - '&6Even more elf lore'
+    Human:
+      spot: 1
+      item: 'DIRT'
+      description:
+        - '&fLore:'
+        - '&6Dir- Human lore'
+        - '&6Even more (disgusting) human lore'
+    Dwarf:
+      spot: 2
+      item: 'GOLD_NUGGET'
+      description:
+        - '&fLore:'
+        - '&6Dwarf lore'
+        - '&6Even more dwarf lore!'
