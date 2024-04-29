@@ -12,6 +12,5 @@ public class PartyHandler  {
     }
     
     public void createParty() {
-        this.database.insertData(tableName, null, null);
     }
 }
