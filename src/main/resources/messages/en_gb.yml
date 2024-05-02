@@ -1,0 +1,1 @@
+player_kills_mob: "{message_prefix} &fYou have gained &a&l{exp_gained}&e EXP &r&ffor killing &a{killed_monster}&r." # This is a message that will be sent to the player when they kill a mob.

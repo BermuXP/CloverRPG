@@ -22,6 +22,8 @@ public class ConfigManager {
      */
     public ConfigManager(JavaPlugin plugin) {
         this.plugin = plugin;
+        // create locale (messages) folder.
+        createFolder("messages");
     }
 
     /**
@@ -43,6 +45,17 @@ public class ConfigManager {
     }
 
     /**
+     * Create a folder
+     * @param folderName    The name of the folder
+     */
+    public void createFolder(String folderName) {
+        File newFolder = new File(plugin.getDataFolder() + folderName);
+        if (newFolder.exists()) {
+            newFolder.mkdirs(); 
+        }
+    }
+
+    /**
      * Save a config file changes
      * 
      * @param config   The config file
@@ -55,6 +68,11 @@ public class ConfigManager {
         } catch (IOException ex) {
             plugin.getLogger().severe("Could not save config to " + configFile.getName());
         }
+    }
+
+    public boolean configExists(String fileName) {
+        File configFile = new File(plugin.getDataFolder(), fileName + ".yml");
+        return configFile.exists();
     }
 
     /**

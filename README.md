@@ -43,6 +43,13 @@ After installing the plugin, you can use the following commands in your Minecraf
 - `cloverrpg.commands.crpg`: Access to the crpg command.
 - `cloverrpg.commands.party.*`: Access to all the party commands.
 
+# Localization Support
+This plugin supports localization, allowing messages to be translated based on each player's game language. 
+
+Translation files are located in the `plugins/CloverRPG/messages` directory on the server. You can add new translation files for different locales. The list of available Minecraft locales can be found on the [Minecraft Fandom Wiki](https://minecraft.fandom.com/wiki/Language).
+
+If a translation file for a player's locale is not available, the plugin will default to English.
+
 ## Contributing
 
 Contributions are welcome. Please open an issue or submit a pull request.

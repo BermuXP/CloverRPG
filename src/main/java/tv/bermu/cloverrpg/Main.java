@@ -28,6 +28,7 @@ public class Main extends JavaPlugin {
     private Database database;
     private HashMap<UUID, PlayerModel> playerData = new HashMap<>();
     private FileConfiguration defaultConfig;
+    private MessageFormatter messageFormatter;
 
     @Override
     public void onEnable() {
@@ -38,8 +39,9 @@ public class Main extends JavaPlugin {
         configManager.loadConfig("races");
         defaultConfig = configManager.loadConfig("config");
         FileConfiguration classesConfig = configManager.loadConfig("classes");
+        
         getLogger().info("Configs loaded.");
-
+        messageFormatter = new MessageFormatter(getLogger(), configManager);
         Database database = new Database(this, defaultConfig.getConfigurationSection("database"));
         PartyHandler partyHandler = new PartyHandler(database);
 
@@ -76,9 +78,15 @@ public class Main extends JavaPlugin {
             playerData.put(playerUUID, playerModel);
         }
         playerModel.addUnsavedExp(exp);
-        player.sendMessage(defaultConfig.getString("messageprefix") + ChatColor.WHITE + "You have gained "
-                + ChatColor.BOLD + ChatColor.GREEN + exp + ChatColor.YELLOW + " EXP " + ChatColor.RESET
-                + ChatColor.WHITE + "for killing " + ChatColor.GREEN + monster.getName() + '.');
+
+        HashMap<String, Object> slugs = new HashMap<>();
+        slugs.put("message_prefix", defaultConfig.getString("messageprefix"));
+        slugs.put("killed_monster", monster.getName());
+        slugs.put("exp_gained", exp);
+        String formattedMessage = messageFormatter.formatMessage("player_kills_mob", player, slugs);
+        if (formattedMessage != null) {
+            player.sendMessage(formattedMessage);
+        }
     }
 
     @Override

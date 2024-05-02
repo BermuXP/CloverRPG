@@ -1,4 +1,4 @@
-messageprefix: "§6CloverRPG §l§7>>§r "
+messageprefix: "§6CloverRPG §l§7>>§r"
 database:
   type: "sqlite" # "sqlite" or "mariadb"
   host: "localhost"

@@ -11,7 +11,7 @@ AddPointsOnRaceSelect: 6
 
 Races:
   Elf:
-    description: "Long point ear human like creatures that dont eat meat, AKA vegans"
+    description: ""
     strength: 1
     dexterity: 2
     constitution: 3
@@ -20,7 +20,7 @@ Races:
     charisma: 6
     luck: 7
   Human:
-    description: "self centered douche snouzles"
+    description: ""
     strength: 7
     dexterity: 6
     constitution: 5
@@ -29,7 +29,7 @@ Races:
     charisma: 2
     luck: 1
   Dwarf:
-    description: "tiny people"
+    description: ""
     strength: 99
     dexterity: 56
     constitution: 12
