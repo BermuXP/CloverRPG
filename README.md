@@ -57,7 +57,3 @@ Contributions are welcome. Please open an issue or submit a pull request.
 ## License
 
 CloverRPG is licensed under the [GNU License](LICENSE).
-
-## Authors
-
-- ![[profile picture of Bermu]](https://avatars.githubusercontent.com/u/14232112?v=4&size=40) [**Bermu**](https://github.com/bermuxp)

@@ -11,14 +11,28 @@ import org.bukkit.inventory.Inventory;
 public class InventoryClickListener implements Listener {
     private List<Inventory> fakeInventories;
 
+    /**
+     * Constructor
+     */
     public InventoryClickListener() {
         this.fakeInventories = new ArrayList<>();
     }
 
+    /**
+     * Add a fake inventory to the list of fake inventories
+     * (these are NOT clickable)
+     * 
+     * @param inventory The inventory to add
+     */
     public void addFakeInventoryNoClick(Inventory inventory) {
         this.fakeInventories.add(inventory);
     }
 
+    /**
+     * Event handler for inventory click
+     * 
+     * @param event The event
+     */
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory clickedInventory = event.getClickedInventory();
