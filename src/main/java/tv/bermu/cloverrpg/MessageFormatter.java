@@ -39,8 +39,8 @@ public class MessageFormatter {
             if (!configManager.configExists("messages/" + language)) {
                 language = "en_gb"; // Fallback to English if the language file doesn't exist
             }
-            logger.info("Loading " + language + " language file.");
             langConfig = configManager.loadConfig("messages/" + language);
+            logger.info("Loading new " + language + " language file.");
             languageConfigs.put(language, langConfig);
         }
     
