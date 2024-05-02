@@ -39,9 +39,8 @@ public class EntityDeath implements Listener {
         if (event.getEntityType() == EntityType.SKELETON) {
             List<ItemStack> drops = event.getDrops();
             for (ItemStack drop : drops) {
-                // For some reason mobs still drop legacy (v20.4)... so we need to check for
-                // both
-                if ((drop.getType() == Material.BOW || drop.getType() == Material.LEGACY_BOW)) {
+                // Drops are sometimes legacy... I dont know how to solve this since legacy items dont exist in 1.13 and up...
+                if ((drop.getType() == Material.BOW)) {
                     ItemMeta meta = drop.getItemMeta();
                     meta.setDisplayName("Bow of the Skeleton Soldier");
                     drop.setItemMeta(meta);
@@ -50,7 +49,7 @@ public class EntityDeath implements Listener {
         } else if (event.getEntityType() == EntityType.ZOMBIE) {
             List<ItemStack> drops = event.getDrops();
             for (ItemStack drop : drops) {
-                if ((drop.getType() == Material.IRON_SWORD || drop.getType() == Material.LEGACY_IRON_SWORD)) {
+                if ((drop.getType() == Material.IRON_SWORD)) {
                     ItemMeta meta = drop.getItemMeta();
                     meta.setDisplayName("Sword of the Zombie Soldier");
                     drop.setItemMeta(meta);

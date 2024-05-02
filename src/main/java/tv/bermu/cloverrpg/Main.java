@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.md_5.bungee.api.ChatColor;
 import tv.bermu.cloverrpg.commands.CRPGCommand;
 import tv.bermu.cloverrpg.commands.ClassesCommand;
 import tv.bermu.cloverrpg.commands.PartyCommand;
@@ -42,7 +41,7 @@ public class Main extends JavaPlugin {
         
         getLogger().info("Configs loaded.");
         messageFormatter = new MessageFormatter(getLogger(), configManager);
-        Database database = new Database(this, defaultConfig.getConfigurationSection("database"));
+        database = new Database(this, defaultConfig.getConfigurationSection("database"));
         PartyHandler partyHandler = new PartyHandler(database);
 
         getLogger().info("Registering events.");

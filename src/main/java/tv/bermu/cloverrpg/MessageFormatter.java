@@ -35,12 +35,15 @@ public class MessageFormatter {
     public String formatMessage(String configTag, Player player, HashMap<String, Object> slugs) {
         String language = player.getLocale().toLowerCase();
         FileConfiguration langConfig = languageConfigs.get(language);
+
         if (langConfig == null) {
             if (!configManager.configExists("messages/" + language)) {
                 language = "en_gb"; // Fallback to English if the language file doesn't exist
+                langConfig = languageConfigs.get(language);
+                if (langConfig == null) {
+                    langConfig = configManager.loadConfig("messages/" + language);
+                }
             }
-            langConfig = configManager.loadConfig("messages/" + language);
-            logger.info("Loading new " + language + " language file.");
             languageConfigs.put(language, langConfig);
         }
     
