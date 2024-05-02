@@ -56,8 +56,15 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                 // Execute logic for the subcommand
                 switch (subCommand) {
                     case "create":
-                        // Logic for creating a party
-                        partyHandler.createParty();
+                        Boolean partyCreated = partyHandler.createParty(args[1], player.getUniqueId());
+                        if (partyCreated) {
+                            player.sendMessage("Party created successfully.");
+                        } else {
+                            player.sendMessage("You are already in a party.");
+                        }
+                        break;
+                    case "disband":
+                        // Logic for disbanding a party
                         break;
                     case "invite":
                         // Logic for inviting a player to the party

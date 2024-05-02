@@ -1,0 +1,3 @@
+# Dit is het bestand dat alle berichten bevat die naar de speler worden gestuurd wanneer ze iets doen in het spel.
+# het instellen van een van deze berichten op `false` (zonder backticks) zal voorkomen dat het bericht wordt verzonden.
+player_kills_mob: "{message_prefix} &fJe hebt &a&l{exp_gained}&e EXP &r&fverdiend voor het doden van &a{killed_monster}&r." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een monster doden.

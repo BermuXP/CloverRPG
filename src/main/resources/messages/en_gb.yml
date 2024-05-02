@@ -1,1 +1,3 @@
-player_kills_mob: "{message_prefix} &fYou have gained &a&l{exp_gained}&e EXP &r&ffor killing &a{killed_monster}&r." # This is a message that will be sent to the player when they kill a mob.
+# This is the file that contains all the messages that are sent to the player when they do something in the game.
+# setting any of these messages to `false` (without backticks) will disable the message from being sent.
+player_kills_mob: "{message_prefix} &fYou have gained &a&l{exp_gained}&e EXP &r&ffor killing &a{killed_monster}&r." # This is a message that will be sent to the player when they kill a monster.

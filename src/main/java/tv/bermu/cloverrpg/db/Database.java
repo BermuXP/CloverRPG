@@ -129,7 +129,7 @@ public class Database {
      * @param values    Values to insert into the columns.
      * @throws SQLException If an error occurs during the insert operation.
      */
-    public void insertData(String tableName, String[] columns, Object[] values) throws SQLException {
+    public int insertData(String tableName, String[] columns, Object[] values) throws SQLException {
         StringBuilder insertSQL = new StringBuilder("INSERT INTO " + tableName + " (");
         for (int i = 0; i < columns.length; i++) {
             insertSQL.append(columns[i]);
@@ -146,14 +146,18 @@ public class Database {
             }
         }
         insertSQL.append(")");
-
+        int insertedId = 0;
         try (PreparedStatement pstmt = connection.prepareStatement(insertSQL.toString())) {
             for (int i = 0; i < values.length; i++) {
                 pstmt.setObject(i + 1, values[i]);
             }
             pstmt.executeUpdate();
-            System.out.println("Record inserted successfully.");
+            ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()) {
+                insertedId = rs.getInt(1);
+            }
         }
+        return insertedId;
     }
 
     /**
@@ -183,7 +187,6 @@ public class Database {
                 pstmt.setObject(i + 1, newValues[i]);
             }
             pstmt.executeUpdate();
-            System.out.println("Record updated successfully.");
         }
     }
 
@@ -191,11 +194,16 @@ public class Database {
      * Select data from a table
      * 
      * @param selectSQL SQL query to select data.
+     * @param params    Parameters to replace placeholders in the SQL query.
      * @return ResultSet with the selected data.
      * @throws SQLException
      */
-    public ResultSet selectData(String selectSQL) throws SQLException {
-        return connection.createStatement().executeQuery(selectSQL);
+    public ResultSet selectData(String selectSQL, Object[] params) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement(selectSQL);
+        for (int i = 0; i < params.length; i++) {
+            pstmt.setObject(i + 1, params[i]);
+        }
+        return pstmt.executeQuery();
     }
 
     /**
