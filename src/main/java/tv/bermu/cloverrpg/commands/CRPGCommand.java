@@ -18,5 +18,4 @@ public class CRPGCommand implements CommandExecutor {
         player.sendMessage("Hello, " + player.getName() + "!");
         return true;
     }
-
 }

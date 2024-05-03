@@ -1,3 +1,11 @@
 # Dit is het bestand dat alle berichten bevat die naar de speler worden gestuurd wanneer ze iets doen in het spel.
 # het instellen van een van deze berichten op `false` (zonder backticks) zal voorkomen dat het bericht wordt verzonden.
 player_kills_mob: "{message_prefix} &fJe hebt &a&l{exp_gained}&e EXP &r&fverdiend voor het doden van &a{killed_monster}&r." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een monster doden.
+not_in_party: "{message_prefix} &cJe bent niet in een party!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een partycommando uit te voeren zonder in een party te zitten.
+not_the_party_leader: "{message_prefix} &cJe bent niet de party leider!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een partycommando uit te voeren dat alleen de party leider kan uitvoeren.
+party_disbanded_successfully: "{message_prefix} &aDe party is succesvol ontbonden." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de party succesvol is ontbonden.
+error_disbanding_party: "{message_prefix} &cEr is een fout opgetreden bij het ontbinden van de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het ontbinden van de party.
+error_creating_party: "{message_prefix} &cEr is een fout opgetreden bij het maken van de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het maken van de party.
+already_in_party: "{message_prefix} &cJe zit al in een party!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een party te maken terwijl ze al in een party zitten.
+party_created_successfully: "{message_prefix} &aDe party is succesvol aangemaakt." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de party succesvol is aangemaakt.
+party_invite_sent: "{message_prefix} &aDe party uitnodiging is verzonden naar &e{player}&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer een party uitnodiging wordt verzonden naar een andere speler.

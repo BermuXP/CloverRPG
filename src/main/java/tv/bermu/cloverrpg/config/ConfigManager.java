@@ -2,10 +2,12 @@ package tv.bermu.cloverrpg.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Config manager class
@@ -13,14 +15,16 @@ import java.io.IOException;
  * Manages the config files
  */
 public class ConfigManager {
-    private final JavaPlugin plugin;
 
+    private final Plugin plugin;
+    private final Map<String, FileConfiguration> configs = new HashMap<>();
+    
     /**
      * Constructor
      * 
      * @param plugin
      */
-    public ConfigManager(JavaPlugin plugin) {
+    public ConfigManager(Plugin plugin) {
         this.plugin = plugin;
         // create locale (messages) folder.
         createFolder("messages");
@@ -30,7 +34,7 @@ public class ConfigManager {
      * Load a config file
      * 
      * @param fileName The name of the file
-     * @return
+     * @return The loaded config
      */
     public FileConfiguration loadConfig(String fileName) {
         File configFile = new File(plugin.getDataFolder(), fileName + ".yml");
@@ -46,12 +50,13 @@ public class ConfigManager {
 
     /**
      * Create a folder
-     * @param folderName    The name of the folder
+     * 
+     * @param folderName The name of the folder
      */
     public void createFolder(String folderName) {
         File newFolder = new File(plugin.getDataFolder() + folderName);
         if (newFolder.exists()) {
-            newFolder.mkdirs(); 
+            newFolder.mkdirs();
         }
     }
 
@@ -70,6 +75,12 @@ public class ConfigManager {
         }
     }
 
+    /**
+     * Check if a config file exists
+     * 
+     * @param fileName The name of the file
+     * @return True if the file exists, false otherwise
+     */
     public boolean configExists(String fileName) {
         File configFile = new File(plugin.getDataFolder(), fileName + ".yml");
         return configFile.exists();
@@ -79,7 +90,7 @@ public class ConfigManager {
      * Reload a config file
      * 
      * @param fileName The name of the file
-     * @return
+     * @return The reloaded config
      */
     public FileConfiguration reloadConfig(String fileName) {
         File configFile = new File(plugin.getDataFolder(), fileName + ".yml");

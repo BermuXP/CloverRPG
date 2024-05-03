@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import tv.bermu.cloverrpg.db.handlers.PartyHandler;
 
@@ -17,12 +18,17 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
 
     private final Map<String, String> subcommands = new HashMap<>();
     private final PartyHandler partyHandler;
+    private final Plugin plugin;
+    private final MessageFormatter messageFormatter;
 
     /**
      * Constructor for the PartyCommand class
      */
-    public PartyCommand(PartyHandler partyHandler) {
+    public PartyCommand(Plugin plugin, PartyHandler partyHandler, MessageFormatter messageFormatter) {
+        this.plugin = plugin;
         this.partyHandler = partyHandler;
+        this.messageFormatter = messageFormatter;
+        
         // Initialize subcommands with their corresponding permissions
         subcommands.put("create", "cloverrpg.commands.party.create");
         subcommands.put("invite", "cloverrpg.commands.party.invite");
@@ -56,33 +62,54 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                 // Execute logic for the subcommand
                 switch (subCommand) {
                     case "create":
-                        Boolean partyCreated = partyHandler.createParty(args[1], player.getUniqueId());
-                        if (partyCreated) {
-                            player.sendMessage("Party created successfully.");
-                        } else {
-                            player.sendMessage("You are already in a party.");
+                        if (args[1] == null) {
+                            player.sendMessage("Usage: /party create <party_name>");
+                            return true;
                         }
+                        player.sendMessage(partyHandler.createParty(args[1], player.getUniqueId(),
+                                player.getLocale().toLowerCase()));
                         break;
                     case "disband":
-                        // Logic for disbanding a party
+                        player.sendMessage(
+                                partyHandler.deleteParty(player.getUniqueId(), player.getLocale().toLowerCase()));
                         break;
                     case "invite":
-                        // Logic for inviting a player to the party
+                        if (args.length < 2) {
+                            player.sendMessage("Usage: /party invite <player_name>");
+                            return true;
+                        }
+                        String invitedPlayerName = args[1];
+                        Player invitedPlayer = plugin.getServer().getPlayer(invitedPlayerName);
+                        if (invitedPlayer == null) {
+                            player.sendMessage("Player not found: " + invitedPlayerName);
+                            return true;
+                        }
+                        if (!invitedPlayer.isOnline()) {
+                            player.sendMessage("Player is not online: " + invitedPlayerName);
+                            return true;
+                        }
+                        player.getDisplayName();
+
+
+                        HashMap<String, Object> slugs = new HashMap<>();
+                        slugs.put("invited_player", monster.getName());
+                        messageFormatter.formatMessage("party_invite", player.getLocale().toLowerCase(), slugs);
+                        invitedPlayer.sendMessage();
                         break;
                     case "accept":
                         // Logic for accepting a party invitation
                         break;
                     case "kick":
-                        // Logic for listing members of the party
+                        // Logic for kicking a player from the party
                         break;
                     case "leave":
-                        // Logic for listing members of the party
+                        // Logic for leaving the party
                         break;
                     case "list":
                         // Logic for listing members of the party
                         break;
                     case "help":
-                        // Logic for listing members of the party
+                        // Display help or usage guide for the party command
                         break;
                 }
             } else {

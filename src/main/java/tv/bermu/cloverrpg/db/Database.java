@@ -9,6 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Collections;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.Plugin;
@@ -130,34 +133,19 @@ public class Database {
      * @throws SQLException If an error occurs during the insert operation.
      */
     public int insertData(String tableName, String[] columns, Object[] values) throws SQLException {
-        StringBuilder insertSQL = new StringBuilder("INSERT INTO " + tableName + " (");
-        for (int i = 0; i < columns.length; i++) {
-            insertSQL.append(columns[i]);
-            if (i < columns.length - 1) {
-                insertSQL.append(", ");
-            }
-        }
+        String insertSQL = String.format("INSERT INTO %s (%s) VALUES (%s)",
+                tableName,
+                String.join(", ", columns),
+                String.join(", ", Collections.nCopies(columns.length, "?")));
 
-        insertSQL.append(") VALUES (");
-        for (int i = 0; i < columns.length; i++) {
-            insertSQL.append("?");
-            if (i < columns.length - 1) {
-                insertSQL.append(", ");
-            }
-        }
-        insertSQL.append(")");
-        int insertedId = 0;
-        try (PreparedStatement pstmt = connection.prepareStatement(insertSQL.toString())) {
+        try (PreparedStatement pstmt = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS)) {
             for (int i = 0; i < values.length; i++) {
                 pstmt.setObject(i + 1, values[i]);
             }
             pstmt.executeUpdate();
             ResultSet rs = pstmt.getGeneratedKeys();
-            if (rs.next()) {
-                insertedId = rs.getInt(1);
-            }
+            return rs.next() ? rs.getInt(1) : 0;
         }
-        return insertedId;
     }
 
     /**
@@ -171,18 +159,14 @@ public class Database {
      */
     public void updateData(String tableName, String[] columnsToUpdate, Object[] newValues, String condition)
             throws SQLException {
-        StringBuilder updateSQL = new StringBuilder("UPDATE " + tableName + " SET ");
-        for (int i = 0; i < columnsToUpdate.length; i++) {
-            updateSQL.append(columnsToUpdate[i]).append(" = ?");
-            if (i < columnsToUpdate.length - 1)
-                updateSQL.append(", ");
-        }
+        String updateSQL = String.format("UPDATE %s SET %s %s",
+                tableName,
+                IntStream.range(0, columnsToUpdate.length)
+                        .mapToObj(i -> columnsToUpdate[i] + " = ?")
+                        .collect(Collectors.joining(", ")),
+                condition != null && !condition.isEmpty() ? "WHERE " + condition : "");
 
-        if (condition != null && !condition.isEmpty()) {
-            updateSQL.append(" WHERE ").append(condition);
-        }
-
-        try (PreparedStatement pstmt = connection.prepareStatement(updateSQL.toString())) {
+        try (PreparedStatement pstmt = connection.prepareStatement(updateSQL)) {
             for (int i = 0; i < newValues.length; i++) {
                 pstmt.setObject(i + 1, newValues[i]);
             }
@@ -190,6 +174,26 @@ public class Database {
         }
     }
 
+    /**
+     * Delete data from a table
+     * 
+     * @param tableName  Table name.
+     * @param conditions Conditions to delete the data.
+     * @param values     Values to replace placeholders in the conditions.
+     * @throws SQLException If an error occurs during the delete operation.
+     */
+    public void deleteData(String tableName, String[] conditions, Object[] values) throws SQLException {
+        String deleteSQL = String.format("DELETE FROM %s %s",
+                tableName,
+                conditions != null && conditions.length > 0 ? "WHERE " + String.join(" AND ", conditions) : "");
+
+        try (PreparedStatement pstmt = connection.prepareStatement(deleteSQL)) {
+            for (int i = 0; i < values.length; i++) {
+                pstmt.setObject(i + 1, values[i]);
+            }
+            pstmt.executeUpdate();
+        }
+    }
     /**
      * Select data from a table
      * 

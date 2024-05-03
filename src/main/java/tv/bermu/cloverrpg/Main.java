@@ -33,28 +33,31 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Enabling.");
 
+        // Load configurations
         getLogger().info("Loading configs.");
         ConfigManager configManager = new ConfigManager(this);
         configManager.loadConfig("races");
         defaultConfig = configManager.loadConfig("config");
         FileConfiguration classesConfig = configManager.loadConfig("classes");
-        
         getLogger().info("Configs loaded.");
-        messageFormatter = new MessageFormatter(getLogger(), configManager);
-        database = new Database(this, defaultConfig.getConfigurationSection("database"));
-        PartyHandler partyHandler = new PartyHandler(database);
 
+        // Initialize services
+        database = new Database(this, defaultConfig.getConfigurationSection("database"));
+        messageFormatter = new MessageFormatter(configManager, defaultConfig);
+        PartyHandler partyHandler = new PartyHandler(database, messageFormatter);
+
+        // Register events
         getLogger().info("Registering events.");
-        InventoryClickListener inventoryClickListener = new InventoryClickListener();
         PluginManager pluginManager = getServer().getPluginManager();
-        pluginManager.registerEvents(inventoryClickListener, this);
+        pluginManager.registerEvents(new InventoryClickListener(), this);
         pluginManager.registerEvents(new EntityDeath(this), this);
         getLogger().info("Events registered.");
 
+        // Register commands
         getLogger().info("Registering commands.");
-        getCommand("party").setExecutor(new PartyCommand(partyHandler));
+        getCommand("party").setExecutor(new PartyCommand(this, partyHandler, messageFormatter));
         getCommand("classes").setExecutor(
-                new ClassesCommand(this, classesConfig.getConfigurationSection("classes"), inventoryClickListener));
+                new ClassesCommand(this, classesConfig.getConfigurationSection("classes"), new InventoryClickListener()));
         getCommand("crpg").setExecutor(new CRPGCommand());
         getLogger().info("Commands registered.");
 
@@ -82,7 +85,7 @@ public class Main extends JavaPlugin {
         slugs.put("message_prefix", defaultConfig.getString("messageprefix"));
         slugs.put("killed_monster", monster.getName());
         slugs.put("exp_gained", exp);
-        String formattedMessage = messageFormatter.formatMessage("player_kills_mob", player, slugs);
+        String formattedMessage = messageFormatter.formatMessage("player_kills_mob", player.getLocale().toLowerCase(), slugs);
         if (formattedMessage != null) {
             player.sendMessage(formattedMessage);
         }
