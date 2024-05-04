@@ -23,7 +23,7 @@ public class EntityDeath implements Listener {
      * @param plugin    Main class of the plugin
      */
     public EntityDeath(Main main) {
-        this.main = plugin;
+        this.main = main;
     }
 
     @EventHandler

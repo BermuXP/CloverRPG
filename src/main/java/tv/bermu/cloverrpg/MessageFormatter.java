@@ -2,10 +2,16 @@ package tv.bermu.cloverrpg;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import tv.bermu.cloverrpg.config.ConfigManager;
 
 public class MessageFormatter {
@@ -25,6 +31,26 @@ public class MessageFormatter {
     }
 
     /**
+     * Format a message with click events
+     * 
+     * @param configTag     The tag of the message in the language file
+     * @param language      The language to use
+     * @param commandString The command to run when the message is clicked
+     * @return The formatted message
+     */
+    public TextComponent formatClickEventCommand(String configTag, String language, String commandString) {
+        FileConfiguration langConfig = getLanguagFileConfiguration(language); // Load the language file to get the
+        String clickText = langConfig.getString(configTag + "_text");
+        clickText = ChatColor.translateAlternateColorCodes('&', clickText);
+        TextComponent message = new TextComponent(clickText);
+        String hoverText = langConfig.getString(configTag + "_hover");
+        hoverText = ChatColor.translateAlternateColorCodes('&', hoverText);
+        message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, commandString));
+        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(hoverText)));
+        return message;
+    }
+
+    /**
      * Format a message with default slugs
      * 
      * @param configTag The tag of the message in the language file
@@ -32,19 +58,20 @@ public class MessageFormatter {
      * @return The formatted message
      */
     public String formatMessageDefaultSlugs(String configTag, String language) {
-        return formatMessage(configTag, language, new HashMap<String, Object>() {{
-        }});
+        return formatMessage(configTag, language, new HashMap<String, Object>() {
+            {
+            }
+        });
     }
 
     /**
-     * Format a message with slugs
+     * Get the language file configuration
+     * TODO move this to config manager
      * 
-     * @param configTag The tag of the message in the language file
-     * @param language  The language to use
-     * @param slugs     The slugs to replace in the message
-     * @return The formatted message
+     * @param language The language to get the configuration for
+     * @return The language file configuration
      */
-    public String formatMessage(String configTag, String language, HashMap<String, Object> slugs) {
+    public FileConfiguration getLanguagFileConfiguration(String language) {
         FileConfiguration langConfig = languageConfigs.get(language);
 
         if (langConfig == null) {
@@ -57,6 +84,19 @@ public class MessageFormatter {
             }
             languageConfigs.put(language, langConfig);
         }
+        return langConfig;
+    }
+
+    /**
+     * Format a message with slugs
+     * 
+     * @param configTag The tag of the message in the language file
+     * @param language  The language to use
+     * @param slugs     The slugs to replace in the message
+     * @return The formatted message
+     */
+    public String formatMessage(String configTag, String language, HashMap<String, Object> slugs) {
+        FileConfiguration langConfig = getLanguagFileConfiguration(language);
 
         String rawMessage = langConfig.getString(configTag);
         if (slugs != null) {
@@ -70,4 +110,43 @@ public class MessageFormatter {
         return ChatColor.translateAlternateColorCodes('&', rawMessage);
     }
 
+    /**
+     * Format a message with slugs and return a TextComponent
+     * 
+     * @param configTag The tag of the message in the language file
+     * @param language  The language to use
+     * @param slugs     The slugs to replace in the message
+     * @return The formatted message
+     */
+    public TextComponent formatMessageTextComponent(String configTag, String language, HashMap<String, Object> slugs) {
+        FileConfiguration langConfig = getLanguagFileConfiguration(language);
+
+        String rawMessage = langConfig.getString(configTag);
+        TextComponent message = new TextComponent();
+
+        if (slugs != null) {
+            slugs.put("message_prefix", defaultConfig.getString("messageprefix"));
+            for (Map.Entry<String, Object> entry : slugs.entrySet()) {
+                String slug = entry.getKey();
+                Object replacement = entry.getValue();
+
+                if (replacement instanceof String) {
+                    rawMessage = rawMessage.replace("{" + slug + "}", replacement.toString());
+                } else if (replacement instanceof TextComponent) {
+                    TextComponent slugComponent = (TextComponent) replacement;
+
+                    String[] parts = rawMessage.split("\\{" + slug + "\\}", 2);
+                    message.addExtra(ChatColor.translateAlternateColorCodes('&', parts[0]));
+                    message.addExtra(slugComponent);
+
+                    if (parts.length > 1) {
+                        rawMessage = parts[1];
+                    } else {
+                        rawMessage = "";
+                    }
+                }
+            }
+        }
+        return message;
+    }
 }

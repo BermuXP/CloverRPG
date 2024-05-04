@@ -8,4 +8,9 @@ error_disbanding_party: "{message_prefix} &cEr is een fout opgetreden bij het on
 error_creating_party: "{message_prefix} &cEr is een fout opgetreden bij het maken van de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het maken van de party.
 already_in_party: "{message_prefix} &cJe zit al in een party!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een party te maken terwijl ze al in een party zitten.
 party_created_successfully: "{message_prefix} &aDe party is succesvol aangemaakt." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de party succesvol is aangemaakt.
-party_invite_sent: "{message_prefix} &aDe party uitnodiging is verzonden naar &e{player}&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer een party uitnodiging wordt verzonden naar een andere speler.
+party_invite_sent: "{message_prefix} &aDe party uitnodiging is verzonden naar &e{inviting_player}&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer een party uitnodiging wordt verzonden naar een andere speler.
+party_invite_received: "{message_prefix} &aJe hebt een party uitnodiging ontvangen van &e{inviting_player}&a. {click_here_party_accept} &r&aof {click_here_party_decline}&r&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een party uitnodiging ontvangen.
+click_accept_text: "&6&lAccepteren"
+click_accept_hover: "&aKlik hier om de party uitnodiging te accepteren."
+click_decline_text: "&c&lWeigeren"
+click_decline_hover: "&cKlik hier om de party uitnodiging te weigeren."

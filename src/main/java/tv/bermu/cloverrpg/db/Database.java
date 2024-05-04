@@ -15,6 +15,7 @@ import java.util.stream.IntStream;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Interface for database operations
@@ -22,9 +23,9 @@ import org.bukkit.plugin.Plugin;
 public class Database {
 
     private Connection connection;
-    private Plugin plugin;
+    private JavaPlugin plugin;
 
-    public Database(Plugin plugin, ConfigurationSection dbConfigSection) {
+    public Database(JavaPlugin plugin, ConfigurationSection dbConfigSection) {
         // Initialize database based on configuration
         this.plugin = plugin;
         String dbType = dbConfigSection.getString("type", "sqlite").toLowerCase();

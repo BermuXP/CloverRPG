@@ -9,3 +9,8 @@ error_creating_party: "{message_prefix} &cパーティーを作成しようと�
 already_in_party: "{message_prefix} &cあなたはすでにパーティーに参加しています！" # これは、プレイヤーがすでにパーティーに参加している状態でパーティーを作成しようとしたときに送信されるメッセージです。
 party_created_successfully: "{message_prefix} &aパーティーが正常に作成されました。" # これは、パーティーが正常に作成されたときにプレイヤーに送信されるメッセージです。
 party_invite_sent: "{message_prefix} &aパーティー招待状が &e{player}&a に送信されました。" # これは、他のプレイヤーにパーティー招待状が送信されたときにプレイヤーに送信されるメッセージです。
+party_invite_received: "{message_prefix} &a{player}&a からパーティー招待状を受け取りました。 {click_here_party_accept} &r&aまたは {click_here_party_decline}&r&a。" # これは、プレイヤーがパーティー招待状を受け取ったときに送信されるメッセージです。
+click_accept_text: "&6&l受け入れる"
+click_accept_hover: "&aパーティー招待状を受け入れるにはここをクリックしてください。"
+click_decline_text: "&c&l辞退する"
+click_decline_hover: "&cパーティー招待状を辞退するにはここをクリックしてください。"

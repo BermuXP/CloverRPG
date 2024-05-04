@@ -9,3 +9,8 @@ error_creating_party: "{message_prefix} &cAn error occurred while trying to crea
 already_in_party: "{message_prefix} &cYou are already in a party!" # This is a message that will be sent to the player when they try to create a party while already being in a party.
 party_created_successfully: "{message_prefix} &aThe party has been created successfully." # This is a message that will be sent to the player when the party is created successfully.
 party_invite_sent: "{message_prefix} &aThe party invite has been sent to &e{invited_player}&a." # This is a message that will be sent to the player when a party invite is sent to another player.
+party_invite_received: "{message_prefix} &aYou have received a party invite from &e{inviting_player}&a. {click_here_party_accept} &r&aor {click_here_party_decline}&r&a." # This is a message that will be sent to the player when they receive a party invite.
+click_accept_text: "&6&lAccept" 
+click_accept_hover: "&aClick here to accept the party invite." 
+click_decline_text: "&c&lDecline"
+click_decline_hover: "&cClick here to decline the party invite."

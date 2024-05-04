@@ -2,7 +2,7 @@ package tv.bermu.cloverrpg.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,8 @@ import java.util.Map;
  */
 public class ConfigManager {
 
-    private final Plugin plugin;
+    private final JavaPlugin plugin;
+    //TODO move configs to a map, so we can access them by name. this might be lighter.
     private final Map<String, FileConfiguration> configs = new HashMap<>();
     
     /**
@@ -24,7 +25,7 @@ public class ConfigManager {
      * 
      * @param plugin
      */
-    public ConfigManager(Plugin plugin) {
+    public ConfigManager(JavaPlugin plugin) {
         this.plugin = plugin;
         // create locale (messages) folder.
         createFolder("messages");
@@ -58,6 +59,29 @@ public class ConfigManager {
         if (newFolder.exists()) {
             newFolder.mkdirs();
         }
+    }
+
+    /**
+     * Get the language file configuration
+     * TODO move this to config manager
+     * 
+     * @param language The language to get the configuration for
+     * @return The language file configuration
+     */
+    public FileConfiguration getLanguagFileConfiguration(String language) {
+        FileConfiguration langConfig = languageConfigs.get(language);
+
+        if (langConfig == null) {
+            if (!configManager.configExists("messages/" + language)) {
+                language = "en_gb"; // Fallback to English if the language file doesn't exist
+                langConfig = languageConfigs.get(language);
+                if (langConfig == null) {
+                    langConfig = configManager.loadConfig("messages/" + language);
+                }
+            }
+            languageConfigs.put(language, langConfig);
+        }
+        return langConfig;
     }
 
     /**
@@ -96,4 +120,5 @@ public class ConfigManager {
         File configFile = new File(plugin.getDataFolder(), fileName + ".yml");
         return YamlConfiguration.loadConfiguration(configFile);
     }
+    
 }

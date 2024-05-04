@@ -4,8 +4,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.db.handlers.PartyHandler;
 
 import java.util.ArrayList;
@@ -18,21 +22,23 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
 
     private final Map<String, String> subcommands = new HashMap<>();
     private final PartyHandler partyHandler;
-    private final Plugin plugin;
+    private final JavaPlugin plugin;
     private final MessageFormatter messageFormatter;
 
     /**
      * Constructor for the PartyCommand class
      */
-    public PartyCommand(Plugin plugin, PartyHandler partyHandler, MessageFormatter messageFormatter) {
+    public PartyCommand(JavaPlugin plugin, PartyHandler partyHandler, MessageFormatter messageFormatter) {
         this.plugin = plugin;
         this.partyHandler = partyHandler;
         this.messageFormatter = messageFormatter;
-        
+
+        // TODO Initialize subcommands with their corresponding permissions from another file/location?
         // Initialize subcommands with their corresponding permissions
         subcommands.put("create", "cloverrpg.commands.party.create");
         subcommands.put("invite", "cloverrpg.commands.party.invite");
         subcommands.put("accept", "cloverrpg.commands.party.accept");
+        subcommands.put("decline", "cloverrpg.commands.party.decline");
         subcommands.put("kick", "cloverrpg.commands.party.kick");
         subcommands.put("leave", "cloverrpg.commands.party.leave");
         subcommands.put("list", "cloverrpg.commands.party.list");
@@ -88,16 +94,30 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                             player.sendMessage("Player is not online: " + invitedPlayerName);
                             return true;
                         }
-                        player.getDisplayName();
 
-
+                        String playerLanguage = player.getLocale().toLowerCase();
+                        String invitedPlayerLang = invitedPlayer.getLocale().toLowerCase();
                         HashMap<String, Object> slugs = new HashMap<>();
-                        slugs.put("invited_player", monster.getName());
-                        messageFormatter.formatMessage("party_invite", player.getLocale().toLowerCase(), slugs);
-                        invitedPlayer.sendMessage();
+                        slugs.put("invited_player", invitedPlayer.getDisplayName());
+                        slugs.put("inviting_player", player.getDisplayName());
+
+                        player.sendMessage(messageFormatter.formatMessage("party_invite_sent", playerLanguage, slugs));
+
+                        slugs.put("click_here_party_accept", messageFormatter.formatClickEventCommand("click_accept",
+                                invitedPlayerLang, "/party accept"));
+                        slugs.put("click_here_party_decline", messageFormatter.formatClickEventCommand("click_decline",
+                                invitedPlayerLang, "/party decline"));
+    
+                        TextComponent invitedMessage = messageFormatter.formatMessageTextComponent("party_invite_received",
+                                invitedPlayer.getLocale().toLowerCase(), slugs);
+
+                        invitedPlayer.spigot().sendMessage(invitedMessage);
                         break;
                     case "accept":
-                        // Logic for accepting a party invitation
+                        player.sendMessage("Player accepted your invite and has joined the party.");
+                        break;
+                    case "decline":
+                        player.sendMessage("Declined.");
                         break;
                     case "kick":
                         // Logic for kicking a player from the party
