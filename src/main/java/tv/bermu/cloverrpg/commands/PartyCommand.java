@@ -11,6 +11,8 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.db.handlers.PartyHandler;
+import tv.bermu.cloverrpg.managers.PartyManager;
+import tv.bermu.cloverrpg.models.PartyModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +35,8 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
         this.partyHandler = partyHandler;
         this.messageFormatter = messageFormatter;
 
-        // TODO Initialize subcommands with their corresponding permissions from another file/location?
+        // TODO Initialize subcommands with their corresponding permissions from another
+        // file/location?
         // Initialize subcommands with their corresponding permissions
         subcommands.put("create", "cloverrpg.commands.party.create");
         subcommands.put("invite", "cloverrpg.commands.party.invite");
@@ -48,14 +51,18 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Only players can use this command!");
+            // No so we default to english, possible change this to server language if that is a thing?
+            sender.sendMessage(messageFormatter.formatMessageDefaultSlugs("only_players_can_execute_command", "en_GB"));
             return true;
         }
 
         Player player = (Player) sender;
+        String playerLanguage = player.getLocale().toLowerCase();
         if (args.length == 0) {
-            // Display help or usage guide for the party command
-            player.sendMessage("Usage: /party <subcommand>");
+            HashMap<String, Object> slugs = new HashMap<>();
+            slugs.put("command_name", "party");
+            slugs.put("subcommand", "<subcommand>");
+            player.sendMessage(messageFormatter.formatMessage("subcommand_usage", playerLanguage, slugs));
             return true;
         }
 
@@ -84,20 +91,35 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                             player.sendMessage("Usage: /party invite <player_name>");
                             return true;
                         }
-                        String invitedPlayerName = args[1];
-                        Player invitedPlayer = plugin.getServer().getPlayer(invitedPlayerName);
-                        if (invitedPlayer == null) {
-                            player.sendMessage("Player not found: " + invitedPlayerName);
-                            return true;
-                        }
-                        if (!invitedPlayer.isOnline()) {
-                            player.sendMessage("Player is not online: " + invitedPlayerName);
+
+                        PartyManager partyManager = PartyManager.getInstance();
+                        PartyModel party = partyManager.getPartyOfPlayer(player.getUniqueId());
+                        if (party == null) {
+                            player.sendMessage(
+                                    messageFormatter.formatMessageDefaultSlugs("not_in_party", playerLanguage));
                             return true;
                         }
 
-                        String playerLanguage = player.getLocale().toLowerCase();
-                        String invitedPlayerLang = invitedPlayer.getLocale().toLowerCase();
+                        String invitedPlayerName = args[1];
+                        Player invitedPlayer = plugin.getServer().getPlayer(invitedPlayerName);
                         HashMap<String, Object> slugs = new HashMap<>();
+                        if (invitedPlayer == null) {
+                            slugs.put("player_name", invitedPlayerName);
+                            player.sendMessage(
+                                    messageFormatter.formatMessage("player_not_found", playerLanguage, slugs));
+                            return true;
+                        }
+                        if (!invitedPlayer.isOnline()) {
+                            slugs.put("player_name", invitedPlayer.getDisplayName());
+                            player.sendMessage(
+                                    messageFormatter.formatMessage("player_not_online", playerLanguage, slugs));
+                            return true;
+                        }
+
+                        partyManager.addPartyInvite(invitedPlayer.getUniqueId(), partyId);
+
+                        String invitedPlayerLang = invitedPlayer.getLocale().toLowerCase();
+
                         slugs.put("invited_player", invitedPlayer.getDisplayName());
                         slugs.put("inviting_player", player.getDisplayName());
 
@@ -107,14 +129,16 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                                 invitedPlayerLang, "/party accept"));
                         slugs.put("click_here_party_decline", messageFormatter.formatClickEventCommand("click_decline",
                                 invitedPlayerLang, "/party decline"));
-    
-                        TextComponent invitedMessage = messageFormatter.formatMessageTextComponent("party_invite_received",
+
+                        TextComponent invitedMessage = messageFormatter.formatMessageTextComponent(
+                                "party_invite_received",
                                 invitedPlayer.getLocale().toLowerCase(), slugs);
 
+                        // figure out how this influences possible paper api support
                         invitedPlayer.spigot().sendMessage(invitedMessage);
                         break;
                     case "accept":
-                        player.sendMessage("Player accepted your invite and has joined the party.");
+                        player.sendMessage("You've joined");
                         break;
                     case "decline":
                         player.sendMessage("Declined.");
@@ -133,10 +157,13 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                         break;
                 }
             } else {
-                player.sendMessage("You don't have permission to use this command.");
+                player.sendMessage(
+                        messageFormatter.formatMessageDefaultSlugs("no_permissions_command", playerLanguage));
             }
         } else {
-            player.sendMessage("Unknown subcommand. Use /party help for a list of commands.");
+            HashMap<String, Object> slugs = new HashMap<>();
+            slugs.put("command_name", "party");
+            player.sendMessage(messageFormatter.formatMessage("unknown_command", playerLanguage, slugs));
         }
 
         return true;

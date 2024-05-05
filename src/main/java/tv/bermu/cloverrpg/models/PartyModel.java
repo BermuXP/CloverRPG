@@ -5,12 +5,12 @@ import java.util.Set;
 
 import org.bukkit.entity.Player;
 
-public class Party {
+public class PartyModel {
     
     private Player leader;
     private final Set<Player> members;
 
-    public Party(Player leader, HashSet<Player> members) {
+    public PartyModel(Player leader, HashSet<Player> members) {
         this.leader = leader;
         this.members = members;
     }

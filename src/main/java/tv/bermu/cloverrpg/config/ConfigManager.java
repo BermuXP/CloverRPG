@@ -62,29 +62,6 @@ public class ConfigManager {
     }
 
     /**
-     * Get the language file configuration
-     * TODO move this to config manager
-     * 
-     * @param language The language to get the configuration for
-     * @return The language file configuration
-     */
-    public FileConfiguration getLanguagFileConfiguration(String language) {
-        FileConfiguration langConfig = languageConfigs.get(language);
-
-        if (langConfig == null) {
-            if (!configManager.configExists("messages/" + language)) {
-                language = "en_gb"; // Fallback to English if the language file doesn't exist
-                langConfig = languageConfigs.get(language);
-                if (langConfig == null) {
-                    langConfig = configManager.loadConfig("messages/" + language);
-                }
-            }
-            languageConfigs.put(language, langConfig);
-        }
-        return langConfig;
-    }
-
-    /**
      * Save a config file changes
      * 
      * @param config   The config file

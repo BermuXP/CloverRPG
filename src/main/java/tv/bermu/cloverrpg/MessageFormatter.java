@@ -2,12 +2,10 @@ package tv.bermu.cloverrpg;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -66,7 +64,7 @@ public class MessageFormatter {
 
     /**
      * Get the language file configuration
-     * TODO move this to config manager
+     * TODO move this to config manager (?)
      * 
      * @param language The language to get the configuration for
      * @return The language file configuration

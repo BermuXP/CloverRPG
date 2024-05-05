@@ -1,0 +1,11 @@
+incremental: true
+# Put incremental to false if you want to use the per level-exp system.
+# levels:
+#   1: 100
+#   2: 200
+#   3: 300
+#   4: 400
+#   5: 500
+#   etc
+increment_amount: 2 # every level the previous goes up by 2 times the amount
+increment_exp: 100 # every level the previous goes up by 100 (1st level 100, second level 200 (* increment_amount))

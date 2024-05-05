@@ -14,3 +14,9 @@ click_accept_text: "&6&lAccept"
 click_accept_hover: "&aClick here to accept the party invite." 
 click_decline_text: "&c&lDecline"
 click_decline_hover: "&cClick here to decline the party invite."
+player_not_found: "{message_prefix} &cThe player &e{player_name}&c was not found." # This is a message that will be sent to the player when the player they are trying to invite to the party is not found.
+player_not_online: "{message_prefix} &cThe player &e{player_name}&c is not online." # This is a message that will be sent to the player when the player they are trying to invite to the party is not online.
+no_permissions_command: "{message_prefix} &cYou do not have permission to execute this command." # This is a message that will be sent to the player when they do not have permission to execute a command.
+unknown_command: "{message_prefix} &cUnknown command. Use &e/{command_name} help &cfor a list of commands." # This is a message that will be sent to the player when they try to execute an unknown command.
+only_players_can_execute_command: "{message_prefix} &cOnly players can execute this command." # This is a message that will be sent to the player when they try to execute a command that only players can execute.
+subcommand_usage: "{message_prefix} &cUsage: &e/{command_name} {subcommand} {usage}" # This is a message that will be sent to the player when they use a subcommand incorrectly.

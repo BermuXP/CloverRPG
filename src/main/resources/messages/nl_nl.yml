@@ -14,3 +14,9 @@ click_accept_text: "&6&lAccepteren"
 click_accept_hover: "&aKlik hier om de party uitnodiging te accepteren."
 click_decline_text: "&c&lWeigeren"
 click_decline_hover: "&cKlik hier om de party uitnodiging te weigeren."
+player_not_found: "{message_prefix} &cDe speler &e{player_name}&c is niet gevonden." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de speler die ze proberen uit te nodigen voor de party niet is gevonden.
+player_not_online: "{message_prefix} &cDe speler &e{player_name}&c is niet online." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de speler die ze proberen uit te nodigen voor de party niet online is.
+no_permissions_command: "{message_prefix} &cJe hebt geen toestemming om dit commando uit te voeren." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze geen toestemming hebben om een commando uit te voeren.
+unknown_command: "{message_prefix} &cOnbekend commando. Gebruik &e/{command_name} help &cvoor een lijst met commando's." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een onbekend commando uit te voeren.
+only_players_can_execute_command: "{message_prefix} &cAlleen spelers kunnen dit commando uitvoeren." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een commando uit te voeren dat alleen spelers kunnen uitvoeren.
+subcommand_usage: "{message_prefix} &cGebruik: &e/{command_name} {subcommand} {usage}" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een subcommando verkeerd gebruiken.
