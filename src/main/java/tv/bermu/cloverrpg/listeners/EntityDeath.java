@@ -32,7 +32,7 @@ public class EntityDeath implements Listener {
         entity.getType();
         if (entity instanceof Monster && entity.getKiller() != null) {
             // The entity was killed by a player
-            this.main.addExp(entity.getKiller(), entity, 10);
+            this.main.addExp(entity, 10);
         }
         // The entity is a mob
 

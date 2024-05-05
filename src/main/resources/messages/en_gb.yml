@@ -23,3 +23,4 @@ subcommand_usage: "{message_prefix} &cUsage: &e/{command_name} {subcommand} {usa
 party_invite_self: "{message_prefix} &cYou cannot invite yourself to a party." # This is a message that will be sent to the player when they try to invite themselves to a party.
 player_already_in_the_party: "{message_prefix} &cThe player &e{player_name}&c is already in the party." # This is a message that will be sent to the player when they try to invite a player who is already in the party.
 player_already_in_another_the_party: "{message_prefix} &cThe player &e{player_name}&c is already in another party." # This is a message that will be sent to the player when they try to invite a player who is already in another party.
+player_already_invited: "{message_prefix} &cThe player &e{player_name}&c has already been invited to the party." # This is a message that will be sent to the player when they try to invite a player who has already been invited to the party.

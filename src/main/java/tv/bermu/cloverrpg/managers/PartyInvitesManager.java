@@ -8,7 +8,7 @@ import java.util.UUID;
 public class PartyInvitesManager {
 
     private HashMap<UUID, List<Integer>> partyInvites = new HashMap<>();
-    private static PartyManager instance = null;
+    private static PartyInvitesManager instance = null;
 
     /**
      * Private constructor
@@ -21,7 +21,7 @@ public class PartyInvitesManager {
      * 
      * @return The instance of the PartyManager
      */
-    public static PartyManager getInstance() {
+    public static PartyInvitesManager getInstance() {
         if (instance == null) {
             instance = new PartyInvitesManager();
         }
@@ -48,5 +48,10 @@ public class PartyInvitesManager {
 
     public List<Integer> getPartyInvites(UUID playerId) {
         return partyInvites.get(playerId);
+    }
+
+    public boolean hasPartyInvite(UUID playerId, Integer partyId) {
+        List<Integer> playerInvites = partyInvites.get(playerId);
+        return playerInvites != null && playerInvites.contains(partyId);
     }
 }

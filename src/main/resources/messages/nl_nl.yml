@@ -21,3 +21,4 @@ unknown_command: "{message_prefix} &cOnbekend commando. Gebruik &e/{command_name
 only_players_can_execute_command: "{message_prefix} &cAlleen spelers kunnen dit commando uitvoeren." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een commando uit te voeren dat alleen spelers kunnen uitvoeren.
 subcommand_usage: "{message_prefix} &cGebruik: &e/{command_name} {subcommand} {usage}" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een subcommando verkeerd gebruiken.
 party_invite_self: "{message_prefix} &cJe kunt jezelf niet uitnodigen voor een party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen zichzelf uit te nodigen voor een party.
+player_already_in_the_party: "{message_prefix} &cDe speler &e{player_name}&c zit al in de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een speler uit te nodigen die al in de party zit.

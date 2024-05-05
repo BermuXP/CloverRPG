@@ -9,6 +9,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.db.handlers.PartyHandler;
+import tv.bermu.cloverrpg.managers.PartyInvitesManager;
 import tv.bermu.cloverrpg.managers.PartyManager;
 import tv.bermu.cloverrpg.models.PartyModel;
 
@@ -35,8 +36,13 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
 
         // TODO Initialize subcommands with their corresponding permissions from another
         // file/location?
+        initializeSubcommands();
+    }
 
-        // Initialize subcommands with their corresponding permissions
+    /**
+     * Initialize subcommands with their corresponding permissions
+     */
+    private void initializeSubcommands() {
         subcommands.put("create", "cloverrpg.commands.party.create");
         subcommands.put("invite", "cloverrpg.commands.party.invite");
         subcommands.put("accept", "cloverrpg.commands.party.accept");
@@ -112,16 +118,12 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                             return true;
                         }
 
-                        // TODO  cant invite anymore players
-                        
-                        
-
-
+                        // TODO cant invite anymore players
 
                         String invitedPlayerName = args[1];
                         Player invitedPlayer = plugin.getServer().getPlayer(invitedPlayerName);
                         HashMap<String, Object> slugs = new HashMap<>();
-                        
+
                         // player not found
                         if (invitedPlayer == null) {
                             slugs.put("player_name", invitedPlayerName);
@@ -147,23 +149,29 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                         // cant invite players that are already in the party
                         if (party.getMembers().contains(player.getUniqueId())) {
                             player.sendMessage(
-                                    messageFormatter.formatMessageDefaultSlugs("player_already_in_the_party", playerLanguage));
+                                    messageFormatter.formatMessageDefaultSlugs("player_already_in_the_party",
+                                            playerLanguage));
                             return true;
                         }
 
                         // cant invite players that are already in ANOTHER the party
                         if (partyManager.getPartyOfPlayer(invitedPlayer.getUniqueId()) != null) {
                             player.sendMessage(
-                                    messageFormatter.formatMessageDefaultSlugs("player_already_in_another_the_party", playerLanguage));
+                                    messageFormatter.formatMessageDefaultSlugs("player_already_in_another_the_party",
+                                            playerLanguage));
                             return true;
                         }
 
                         // cant invite players that are already invited
-                        if () {
-
+                        PartyInvitesManager partyInvitesManager = PartyInvitesManager.getInstance();
+                        if (partyInvitesManager.hasPartyInvite(invitedPlayer.getUniqueId(), party.getPartyId())) {
+                            player.sendMessage(
+                                    messageFormatter.formatMessageDefaultSlugs("player_already_invited",
+                                            playerLanguage));
+                            return true;
                         }
 
-                        partyManager.addPartyInvite(invitedPlayer.getUniqueId(), party.getPartyId());
+                        partyInvitesManager.addPartyInvite(invitedPlayer.getUniqueId(), party.getPartyId());
 
                         String invitedPlayerLang = invitedPlayer.getLocale().toLowerCase();
 

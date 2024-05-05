@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -34,6 +36,7 @@ public class Main extends JavaPlugin {
         getLogger().info("Enabling.");
 
         ConfigManager configManager = new ConfigManager(this);
+        configManager.loadAllMessages();
         configManager.loadConfig("races");
         defaultConfig = configManager.loadConfig("config");
         FileConfiguration classesConfig = configManager.loadConfig("classes");
@@ -62,13 +65,14 @@ public class Main extends JavaPlugin {
     /**
      * Add (temporary) exp to the player
      * 
-     * @param playerUUID UUID of the player
-     * @param monster    Entity of the monster
+     * @param killedEntity  The entity that was killed
      * @param exp        Amount of exp to add
      */
-    public void addExp(Player player, Entity monster, int exp) {
+    public void addExp(LivingEntity killedEntity, int exp) {
         getLogger().info("Adding exp to user.");
+        Player player = killedEntity.getKiller();
         UUID playerUUID = player.getUniqueId();
+
         PlayerModel playerModel = playerData.get(playerUUID);
         if (playerModel == null) {
             playerModel = new PlayerModel(playerUUID);
@@ -79,7 +83,7 @@ public class Main extends JavaPlugin {
         HashMap<String, Object> slugs = new HashMap<>();
         slugs.put("message_prefix", defaultConfig.getString("messageprefix"));
         // TODO check if we can do something here, since the name can be changed with a name tag...
-        slugs.put("killed_monster", monster.getName());
+        slugs.put("killed_monster", killedEntity.getName());
         slugs.put("exp_gained", exp);
         String formattedMessage = messageFormatter.formatMessage("player_kills_mob", player.getLocale().toLowerCase(),
                 slugs);
