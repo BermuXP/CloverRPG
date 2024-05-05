@@ -7,7 +7,6 @@ import tv.bermu.cloverrpg.models.PartyModel;
 public class PartyManager {
 
     private static PartyManager instance = null;
-    private HashMap<UUID, Integer> partyInvites = new HashMap<>();
     private HashMap<UUID, PartyModel> playerParties = new HashMap<>();
 
     /**
@@ -40,15 +39,4 @@ public class PartyManager {
         return playerParties.get(playerId);
     }
 
-    public void addPartyInvite(UUID playerId, Integer partyId) {
-        partyInvites.put(playerId, partyId);
-    }
-
-    public void removePartyInvite(UUID playerId) {
-        partyInvites.remove(playerId);
-    }
-
-    public Integer getPartyInvitePartyId(UUID playerId) {
-        return partyInvites.get(playerId);
-    }
 }

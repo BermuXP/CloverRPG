@@ -33,33 +33,28 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Enabling.");
 
-        // Load configurations
-        getLogger().info("Loading configs.");
         ConfigManager configManager = new ConfigManager(this);
         configManager.loadConfig("races");
         defaultConfig = configManager.loadConfig("config");
         FileConfiguration classesConfig = configManager.loadConfig("classes");
-        getLogger().info("Configs loaded.");
 
-        // Initialize services
         database = new Database(this, defaultConfig.getConfigurationSection("database"));
         messageFormatter = new MessageFormatter(configManager, defaultConfig);
         PartyHandler partyHandler = new PartyHandler(database, messageFormatter);
 
-        // Register events
-        getLogger().info("Registering events.");
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new InventoryClickListener(), this);
         pluginManager.registerEvents(new EntityDeath(this), this);
-        getLogger().info("Events registered.");
 
-        // Register commands
-        getLogger().info("Registering commands.");
-        getCommand("party").setExecutor(new PartyCommand(this, partyHandler, messageFormatter));
+        FileConfiguration partyConfig = configManager.loadConfig("party");
+        if (partyConfig.getBoolean("enable")) {
+            getCommand("party").setExecutor(new PartyCommand(this, partyHandler, messageFormatter));
+        }
+
         getCommand("classes").setExecutor(
-                new ClassesCommand(this, classesConfig.getConfigurationSection("classes"), new InventoryClickListener()));
+                new ClassesCommand(this, classesConfig.getConfigurationSection("classes"),
+                        new InventoryClickListener()));
         getCommand("crpg").setExecutor(new CRPGCommand());
-        getLogger().info("Commands registered.");
 
         getLogger().info("Enabled.");
     }
@@ -83,12 +78,21 @@ public class Main extends JavaPlugin {
 
         HashMap<String, Object> slugs = new HashMap<>();
         slugs.put("message_prefix", defaultConfig.getString("messageprefix"));
+        // TODO check if we can do something here, since the name can be changed with a name tag...
         slugs.put("killed_monster", monster.getName());
         slugs.put("exp_gained", exp);
-        String formattedMessage = messageFormatter.formatMessage("player_kills_mob", player.getLocale().toLowerCase(), slugs);
+        String formattedMessage = messageFormatter.formatMessage("player_kills_mob", player.getLocale().toLowerCase(),
+                slugs);
         if (formattedMessage != null) {
             player.sendMessage(formattedMessage);
         }
+    }
+
+    @Override
+    public void onReload() {
+        getLogger().info("Reloading.");
+        database.closeConnection();
+        onEnable();
     }
 
     @Override

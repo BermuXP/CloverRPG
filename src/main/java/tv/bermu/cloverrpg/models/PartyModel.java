@@ -6,13 +6,25 @@ import java.util.Set;
 import org.bukkit.entity.Player;
 
 public class PartyModel {
-    
+
     private Player leader;
+    private Integer partyId;
+    private String name;
     private final Set<Player> members;
 
-    public PartyModel(Player leader, HashSet<Player> members) {
+    public PartyModel(Integer partyId, String name, Player leader, HashSet<Player> members) {
+        this.partyId = partyId;
+        this.name = name;
         this.leader = leader;
         this.members = members;
+    }
+
+    public Integer getPartyId() {
+        return partyId;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Player getLeader() {

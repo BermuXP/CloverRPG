@@ -1,0 +1,4 @@
+enable: true  # Enable the party system.
+max_party_size: 5 # The maximum amount of players that can be in a party.
+exp_sharing: true # Enable experience sharing between party members.
+exp_share: 1 # The amount of experience that is shared between party members.

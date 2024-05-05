@@ -20,3 +20,4 @@ no_permissions_command: "{message_prefix} &cこのコマンドを実行する権
 unknown_command: "{message_prefix} &c不明なコマンドです。コマンドのリストを表示するには &e/{command_name} help &cを使用してください。" # これは、プレイヤーが不明なコマンドを実行しようとしたときに送信されるメッセージです。
 only_players_can_execute_command: "{message_prefix} &cこのコマンドはプレイヤーのみが実行できます。" # これは、プレイヤーがプレイヤーのみが実行できるコマンドを実行しようとしたときに送信されるメッセージです。
 subcommand_usage: "{message_prefix} &c使用法: &e/{command_name} {subcommand} {usage}" # これは、サブコマンドを誤って使用したときに送信されるメッセージです。
+party_invite_self: "{message_prefix} &c自分自身をパーティーに招待することはできません。" # これは、プレイヤーが自分自身をパーティーに招待しようとしたときに送信されるメッセージです。

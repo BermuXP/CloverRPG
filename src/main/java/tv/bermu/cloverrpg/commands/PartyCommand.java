@@ -5,10 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+
 import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.db.handlers.PartyHandler;
 import tv.bermu.cloverrpg.managers.PartyManager;
@@ -37,6 +35,7 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
 
         // TODO Initialize subcommands with their corresponding permissions from another
         // file/location?
+
         // Initialize subcommands with their corresponding permissions
         subcommands.put("create", "cloverrpg.commands.party.create");
         subcommands.put("invite", "cloverrpg.commands.party.invite");
@@ -51,7 +50,8 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            // No so we default to english, possible change this to server language if that is a thing?
+            // No so we default to english, possible change this to server language if that
+            // is a thing?
             sender.sendMessage(messageFormatter.formatMessageDefaultSlugs("only_players_can_execute_command", "en_GB"));
             return true;
         }
@@ -62,6 +62,7 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
             HashMap<String, Object> slugs = new HashMap<>();
             slugs.put("command_name", "party");
             slugs.put("subcommand", "<subcommand>");
+            slugs.put("usage", "");
             player.sendMessage(messageFormatter.formatMessage("subcommand_usage", playerLanguage, slugs));
             return true;
         }
@@ -76,10 +77,16 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                 switch (subCommand) {
                     case "create":
                         if (args[1] == null) {
-                            player.sendMessage("Usage: /party create <party_name>");
+                            HashMap<String, Object> slugs = new HashMap<>();
+                            slugs.put("command_name", "party");
+                            slugs.put("subcommand", "create");
+                            slugs.put("usage", "<party_name>");
+                            player.sendMessage(
+                                    messageFormatter.formatMessage("subcommand_usage", playerLanguage, slugs));
                             return true;
                         }
-                        player.sendMessage(partyHandler.createParty(args[1], player.getUniqueId(),
+
+                        player.sendMessage(partyHandler.createParty(args[1], player,
                                 player.getLocale().toLowerCase()));
                         break;
                     case "disband":
@@ -88,7 +95,12 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                         break;
                     case "invite":
                         if (args.length < 2) {
-                            player.sendMessage("Usage: /party invite <player_name>");
+                            HashMap<String, Object> slugs = new HashMap<>();
+                            slugs.put("command_name", "party");
+                            slugs.put("subcommand", "invite");
+                            slugs.put("usage", "<player_name>");
+                            player.sendMessage(
+                                    messageFormatter.formatMessage("subcommand_usage", playerLanguage, slugs));
                             return true;
                         }
 
@@ -100,15 +112,24 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                             return true;
                         }
 
+                        // TODO  cant invite anymore players
+                        
+                        
+
+
+
                         String invitedPlayerName = args[1];
                         Player invitedPlayer = plugin.getServer().getPlayer(invitedPlayerName);
                         HashMap<String, Object> slugs = new HashMap<>();
+                        
+                        // player not found
                         if (invitedPlayer == null) {
                             slugs.put("player_name", invitedPlayerName);
                             player.sendMessage(
                                     messageFormatter.formatMessage("player_not_found", playerLanguage, slugs));
                             return true;
                         }
+                        // player is not online
                         if (!invitedPlayer.isOnline()) {
                             slugs.put("player_name", invitedPlayer.getDisplayName());
                             player.sendMessage(
@@ -116,7 +137,33 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                             return true;
                         }
 
-                        partyManager.addPartyInvite(invitedPlayer.getUniqueId(), partyId);
+                        // cant invite yourself
+                        if (player.getUniqueId() == invitedPlayer.getUniqueId()) {
+                            player.sendMessage(
+                                    messageFormatter.formatMessageDefaultSlugs("party_invite_self", playerLanguage));
+                            return true;
+                        }
+
+                        // cant invite players that are already in the party
+                        if (party.getMembers().contains(player.getUniqueId())) {
+                            player.sendMessage(
+                                    messageFormatter.formatMessageDefaultSlugs("player_already_in_the_party", playerLanguage));
+                            return true;
+                        }
+
+                        // cant invite players that are already in ANOTHER the party
+                        if (partyManager.getPartyOfPlayer(invitedPlayer.getUniqueId()) != null) {
+                            player.sendMessage(
+                                    messageFormatter.formatMessageDefaultSlugs("player_already_in_another_the_party", playerLanguage));
+                            return true;
+                        }
+
+                        // cant invite players that are already invited
+                        if () {
+
+                        }
+
+                        partyManager.addPartyInvite(invitedPlayer.getUniqueId(), party.getPartyId());
 
                         String invitedPlayerLang = invitedPlayer.getLocale().toLowerCase();
 
@@ -160,7 +207,9 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                 player.sendMessage(
                         messageFormatter.formatMessageDefaultSlugs("no_permissions_command", playerLanguage));
             }
-        } else {
+        } else
+
+        {
             HashMap<String, Object> slugs = new HashMap<>();
             slugs.put("command_name", "party");
             player.sendMessage(messageFormatter.formatMessage("unknown_command", playerLanguage, slugs));

@@ -17,9 +17,10 @@ import java.util.Map;
 public class ConfigManager {
 
     private final JavaPlugin plugin;
-    //TODO move configs to a map, so we can access them by name. this might be lighter.
+    // TODO move configs to a map, so we can access them by name. this might be
+    // lighter.
     private final Map<String, FileConfiguration> configs = new HashMap<>();
-    
+
     /**
      * Constructor
      * 
@@ -32,6 +33,35 @@ public class ConfigManager {
     }
 
     /**
+     * Load all messages
+     */
+    public void loadAllMessages() {
+        File messagesFolder = new File(plugin.getDataFolder(), "messages");
+        if (messagesFolder.exists()) {
+            for (File file : messagesFolder.listFiles()) {
+                if (file.getName().endsWith(".yml")) {
+                    createConfig(file);
+                }
+            }
+        }
+    }
+
+    /**
+     * Create a config file
+     * 
+     * @param configFile The file to create
+     */
+    public void createConfig(File configFile) {
+        if (!configFile.exists()) {
+            plugin.getLogger().info("Creating " + configFile.getName());
+            configFile.getParentFile().mkdirs();
+            plugin.saveResource(configFile.getName(), false);
+        } else {
+            plugin.getLogger().info("Loading " + configFile.getName());
+        }
+    }
+
+    /**
      * Load a config file
      * 
      * @param fileName The name of the file
@@ -39,13 +69,7 @@ public class ConfigManager {
      */
     public FileConfiguration loadConfig(String fileName) {
         File configFile = new File(plugin.getDataFolder(), fileName + ".yml");
-        if (!configFile.exists()) {
-            plugin.getLogger().info("Creating " + fileName + ".yml");
-            configFile.getParentFile().mkdirs();
-            plugin.saveResource(fileName + ".yml", false);
-        } else {
-            plugin.getLogger().info("Loading " + fileName + ".yml");
-        }
+        createConfig(configFile);
         return YamlConfiguration.loadConfiguration(configFile);
     }
 
@@ -97,5 +121,5 @@ public class ConfigManager {
         File configFile = new File(plugin.getDataFolder(), fileName + ".yml");
         return YamlConfiguration.loadConfiguration(configFile);
     }
-    
+
 }
