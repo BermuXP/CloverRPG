@@ -36,7 +36,6 @@ public class Main extends JavaPlugin {
         getLogger().info("Enabling.");
 
         ConfigManager configManager = new ConfigManager(this);
-        configManager.loadAllMessages();
         configManager.loadConfig("races");
         defaultConfig = configManager.loadConfig("config");
         FileConfiguration classesConfig = configManager.loadConfig("classes");
@@ -90,13 +89,6 @@ public class Main extends JavaPlugin {
         if (formattedMessage != null) {
             player.sendMessage(formattedMessage);
         }
-    }
-
-    @Override
-    public void onReload() {
-        getLogger().info("Reloading.");
-        database.closeConnection();
-        onEnable();
     }
 
     @Override
