@@ -10,3 +10,11 @@ CREATE TABLE IF NOT EXISTS party_members (
     is_leader TINYINT DEFAULT 0,
     FOREIGN KEY (party_id) REFERENCES party(id)
 );
+
+CREATE TABLE IF NOT EXISTS `character` (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player_uuid VARCHAR(255) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    level INT DEFAULT 0,
+    exp INT DEFAULT 0,
+    class_id INT DEFAULT 0,

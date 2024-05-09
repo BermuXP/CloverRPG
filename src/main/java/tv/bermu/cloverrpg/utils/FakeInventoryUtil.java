@@ -11,6 +11,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class FakeInventoryUtil {
 
+    /**
+     * Create a fake inventory
+     * 
+     * @param plugin        The plugin
+     * @param inventoryName The name of the inventory
+     * @param slots         The number of slots
+     * @param section       The configuration section
+     * @return              The fake inventory
+     */
     public static Inventory createFakeInventory(JavaPlugin plugin, String inventoryName, int slots,
             ConfigurationSection section) {
         // Create fake inventory
@@ -20,7 +29,7 @@ public class FakeInventoryUtil {
             if (ItemContentSection != null) {
                 List<String> desc = ItemContentSection.getStringList("description");
                 ItemStack itemStack = writeItem(
-                        itemName, 
+                        itemName,
                         desc,
                         Material.getMaterial(ItemContentSection.getString("item")));
                 inventory.setItem(ItemContentSection.getInt("item_location"), itemStack);
@@ -30,6 +39,14 @@ public class FakeInventoryUtil {
         return inventory;
     }
 
+    /**
+     * Write an item to the inventory
+     * 
+     * @param itemName      The name of the item
+     * @param itemLore      The lore of the item
+     * @param itemMaterial  The material of the item
+     * @return              The item stack
+     */
     private static ItemStack writeItem(String itemName, List<String> itemLore, Material itemMaterial) {
         ItemStack itemStack = new ItemStack(itemMaterial, 1);
         ItemMeta meta = itemStack.getItemMeta();

@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**

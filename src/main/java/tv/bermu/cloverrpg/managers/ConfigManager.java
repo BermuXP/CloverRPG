@@ -1,17 +1,12 @@
-package tv.bermu.cloverrpg.config;
+package tv.bermu.cloverrpg.managers;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,7 +28,6 @@ public class ConfigManager {
      */
     public ConfigManager(JavaPlugin plugin) {
         this.plugin = plugin;
-        createFolder("messages");
     }
 
     /**
@@ -89,17 +83,5 @@ public class ConfigManager {
     public FileConfiguration reloadConfig(String fileName) {
         File configFile = new File(plugin.getDataFolder(), fileName + ".yml");
         return YamlConfiguration.loadConfiguration(configFile);
-    }
-
-    /**
-     * Create a folder
-     * 
-     * @param folderName The name of the folder
-     */
-    public void createFolder(String folderName) {
-        File newFolder = new File(plugin.getDataFolder() + folderName);
-        if (newFolder.exists()) {
-            newFolder.mkdirs();
-        }
     }
 }

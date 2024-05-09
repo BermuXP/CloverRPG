@@ -61,9 +61,10 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(messageFormatter.formatMessageDefaultSlugs("only_players_can_execute_command", "en_GB"));
             return true;
         }
-
+    
         Player player = (Player) sender;
         String playerLanguage = player.getLocale().toLowerCase();
+        
         if (args.length == 0) {
             HashMap<String, Object> slugs = new HashMap<>();
             slugs.put("command_name", "party");
@@ -189,7 +190,6 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                                 "party_invite_received",
                                 invitedPlayer.getLocale().toLowerCase(), slugs);
 
-                        // figure out how this influences possible paper api support
                         invitedPlayer.spigot().sendMessage(invitedMessage);
                         break;
                     case "accept":

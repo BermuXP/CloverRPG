@@ -10,3 +10,13 @@ CREATE TABLE IF NOT EXISTS party_members (
     is_leader INTEGER DEFAULT 0,
     FOREIGN KEY (party_id) REFERENCES party(id)
 );
+
+CREATE TABLE IF NOT EXISTS character (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    player_uuid TEXT NOT NULL,
+    name TEXT NOT NULL,
+    level INTEGER DEFAULT 0,
+    exp INTEGER DEFAULT 0,
+    class_id INTEGER DEFAULT 0,
+    race_id INTEGER DEFAULT 0
+);

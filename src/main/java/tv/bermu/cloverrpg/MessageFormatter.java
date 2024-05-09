@@ -10,7 +10,7 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
-import tv.bermu.cloverrpg.config.ConfigManager;
+import tv.bermu.cloverrpg.managers.ConfigManager;
 
 public class MessageFormatter {
 

@@ -16,6 +16,7 @@ import tv.bermu.cloverrpg.models.PartyModel;
  */
 public class PartyHandler {
 
+    private static PartyHandler instance = null;
     private final Database database;
     private final MessageFormatter messageFormatter;
     private final String tableName = "party";
@@ -31,6 +32,13 @@ public class PartyHandler {
         this.messageFormatter = messageFormatter;
     }
 
+    public static PartyHandler getInstance(Database database, MessageFormatter messageFormatter) {
+        if (instance == null) {
+            instance = new PartyHandler(database, messageFormatter);
+        }
+        return instance;
+    }
+
     /**
      * Create a party
      * 
@@ -43,7 +51,7 @@ public class PartyHandler {
             UUID playerUUID = player.getUniqueId();
             if (!this.userInParty(playerUUID)) {
                 Integer partyId = database.insertData(tableName, new String[] { "name" }, new Object[] { playerUUID });
-                
+
                 database.insertData("party_members", new String[] { "party_id", "player_uuid", "is_leader" },
                         new Object[] { partyId, playerUUID, 1 });
 
