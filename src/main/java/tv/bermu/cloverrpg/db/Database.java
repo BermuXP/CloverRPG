@@ -211,6 +211,23 @@ public class Database {
     }
 
     /**
+     * Check if data exists in a table
+     * 
+     * @param tableName Table name.
+     * @param column    Column to check for data.
+     * @param value     Value to check in the column.
+     * @return True if the data exists, false otherwise.
+     * @throws SQLException If an error occurs during the data check.
+     */
+    public boolean dataExists(String tableName, String column, Object value) throws SQLException {
+        String selectSQL = String.format("SELECT * FROM %s WHERE %s = ?", tableName, column);
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            pstmt.setObject(1, value);
+            return pstmt.executeQuery().next();
+        }
+    }
+
+    /**
      * Close the database connection
      */
     public void closeConnection() {

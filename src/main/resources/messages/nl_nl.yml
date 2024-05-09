@@ -22,3 +22,5 @@ only_players_can_execute_command: "{message_prefix} &cAlleen spelers kunnen dit 
 subcommand_usage: "{message_prefix} &cGebruik: &e/{command_name} {subcommand} {usage}" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een subcommando verkeerd gebruiken.
 party_invite_self: "{message_prefix} &cJe kunt jezelf niet uitnodigen voor een party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen zichzelf uit te nodigen voor een party.
 player_already_in_the_party: "{message_prefix} &cDe speler &e{player_name}&c zit al in de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een speler uit te nodigen die al in de party zit.
+player_already_in_another_the_party: "{message_prefix} &cDe speler &e{player_name}&c zit al in een andere party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een speler uit te nodigen die al in een andere party zit.
+error_creating_character: "{message_prefix} &cEr is een fout opgetreden bij het maken van het personage." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het maken van een personage.

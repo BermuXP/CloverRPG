@@ -16,7 +16,6 @@ import tv.bermu.cloverrpg.models.PartyModel;
  */
 public class PartyHandler {
 
-    private static PartyHandler instance = null;
     private final Database database;
     private final MessageFormatter messageFormatter;
     private final String tableName = "party";
@@ -30,13 +29,6 @@ public class PartyHandler {
     public PartyHandler(Database database, MessageFormatter messageFormatter) {
         this.database = database;
         this.messageFormatter = messageFormatter;
-    }
-
-    public static PartyHandler getInstance(Database database, MessageFormatter messageFormatter) {
-        if (instance == null) {
-            instance = new PartyHandler(database, messageFormatter);
-        }
-        return instance;
     }
 
     /**

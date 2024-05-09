@@ -22,3 +22,5 @@ only_players_can_execute_command: "{message_prefix} &cこのコマンドはプ�
 subcommand_usage: "{message_prefix} &c使用法: &e/{command_name} {subcommand} {usage}" # これは、サブコマンドを誤って使用したときに送信されるメッセージです。
 party_invite_self: "{message_prefix} &c自分自身をパーティーに招待することはできません。" # これは、プレイヤーが自分自身をパーティーに招待しようとしたときに送信されるメッセージです。
 player_already_in_the_party: "{message_prefix} &cプレイヤー &e{player}&c はすでにパーティーに参加しています。" # これは、プレイヤーがすでにパーティーに参加しているプレイヤーを招待しようとしたときに送信されるメッセージです。
+player_already_in_another_the_party: "{message_prefix} &cプレイヤー &e{player}&c はすでに他のパーティーに参加しています。" # これは、プレイヤーがすでに他のパーティーに参加しているプレイヤーを招待しようとしたときに送信されるメッセージです。
+player_already_invited: "{message_prefix} &cプレイヤー &e{player}&c はすでにパーティーに招待されています。" # これは、プレイヤーがすでにパーティーに招待されているプレイヤーを招待しようとしたときに送信されるメッセージです。
