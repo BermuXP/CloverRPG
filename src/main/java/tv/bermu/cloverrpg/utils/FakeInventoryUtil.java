@@ -25,14 +25,14 @@ public class FakeInventoryUtil {
         // Create fake inventory
         Inventory inventory = plugin.getServer().createInventory(null, slots, inventoryName);
         for (String itemName : section.getKeys(false)) {
-            ConfigurationSection ItemContentSection = section.getConfigurationSection(itemName + ".gui");
+            ConfigurationSection ItemContentSection = section.getConfigurationSection(itemName);
             if (ItemContentSection != null) {
-                List<String> desc = ItemContentSection.getStringList("description");
+                List<String> lore = ItemContentSection.getStringList("lore");
                 ItemStack itemStack = writeItem(
                         itemName,
-                        desc,
-                        Material.getMaterial(ItemContentSection.getString("item")));
-                inventory.setItem(ItemContentSection.getInt("item_location"), itemStack);
+                        lore,
+                        Material.getMaterial(ItemContentSection.getString("material")));
+                inventory.setItem(ItemContentSection.getInt("inventory_slot"), itemStack);
             }
         }
 
@@ -50,8 +50,9 @@ public class FakeInventoryUtil {
     private static ItemStack writeItem(String itemName, List<String> itemLore, Material itemMaterial) {
         ItemStack itemStack = new ItemStack(itemMaterial, 1);
         ItemMeta meta = itemStack.getItemMeta();
-        if (meta == null)
+        if (meta == null) {
             return null;
+        }
         meta.setDisplayName(itemName);
         meta.setLore(itemLore);
         itemStack.setItemMeta(meta);

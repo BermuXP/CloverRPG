@@ -1,101 +1,15 @@
+show_as_inventory: true # If true, the classes will be shown as an inventory, if false, it will be shown as text in the chat
+inventory_max_slots: 9 # this is the maximum amount of slots in a row, want to add more rows? increase by incrments of 9
 classes:
-  Paladin:
-    gui:
-      item: 'DIAMOND_SWORD'
-      item_location: 0
-      description:
-        - '&fLore:'
-        - '&6Paladin lore'
-        - '&6Even more paladin lore'
-    strength: ''
-    dexterity: ''
-    constitution: ''
-    intelligence: ''
-    wisdom: ''
-    charisma: ''
-    luck: ''
-    specs:
-      wild:
-        strength: ''
-        dexterity: ''
-        constitution: ''
-        intelligence: ''
-        wisdom: ''
-        charisma: ''
-        luck: ''
-      soft:
-        strength: ''
-        dexterity: ''
-        constitution: ''
-        intelligence: ''
-        wisdom: ''
-        charisma: ''
-        luck: ''
-
-  Druid:
-    gui:
-      item: 'DIAMOND_SWORD'
-      item_location: 0
-      description:
-        - '&fLore:'
-        - '&6Paladin lore'
-        - '&6Even more paladin lore'
-    description: ''
-    strength: ''
-    dexterity: ''
-    constitution: ''
-    intelligence: ''
-    wisdom: ''
-    charisma: ''
-    luck: ''
-    specs:
-     wild:
-       strength: ''
-       dexterity: ''
-       constitution: ''
-       intelligence: ''
-       wisdom: ''
-       charisma: ''
-       luck: ''
-     soft:
-       strength: ''
-       dexterity: ''
-       constitution: ''
-       intelligence: ''
-       wisdom: ''
-       charisma: ''
-       luck: ''
-  Priest:
-    gui:
-      item: 'DIAMOND_SWORD'
-      item_location: 0
-      description:
-        - '&fLore:'
-        - '&6Paladin lore'
-        - '&6Even more paladin lore'
-    description: ''
-    strength: ''
-    dexterity: ''
-    constitution: ''
-    intelligence: ''
-    wisdom: ''
-    charisma: ''
-    luck: ''
-    specs:
-      wild:
-        strength: ''
-        dexterity: ''
-        constitution: ''
-        intelligence: ''
-        wisdom: ''
-        charisma: ''
-        luck: ''
-      soft:
-        strength: ''
-        dexterity: ''
-        constitution: ''
-        intelligence: ''
-        wisdom: ''
-        charisma: ''
-        luck: ''
-
+  warrior:
+    inventory_slot: 0
+    material: IRON_SWORD
+    command: class select warrior # The command to run when item in inventory is clicked
+    lore: 
+      - A strong and brave warrior.
+  archer:
+    inventory_slot: 1
+    material: BOW
+    command: class select archer
+    lore:
+      - A skilled archer.

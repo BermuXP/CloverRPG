@@ -9,14 +9,18 @@ commands:
     description: Crpg command
     usage: /crpg
     permission: cloverrpg.commands.crpg
-  Classes:
-    description: Classes command
+  Class:
+    description: class command
     usage: /classes
-    permission: cloverrpg.commands.classes
+    permission: cloverrpg.commands.class
   Party:
     description: Party commands
     usage: /party
     permission: cloverrpg.commands.party
+  Character:
+    description: Character commands
+    usage: /Character
+    permission: cloverrpg.commands.character
 
 permissions:
   cloverrpg.*:
@@ -28,21 +32,26 @@ permissions:
     description: Access to all CloverRPG commands
     default: op
     children:
-      cloverrpg.commands.classes: true
+      cloverrpg.commands.class: true
       cloverrpg.commands.crpg: true
-  cloverrpg.commands.classes:
-    description: Access to the classes command
+  cloverrpg.commands.class:
+    description: Access to the class commands
     default: true
   cloverrpg.commands.crpg:
-    description: Access to the crpg command
+    description: Access to the crpg commands
     default: true
+  cloverrpg.commands.character:
+    description: Access to the character commands
+    default: true
+    children:
+      cloverrpg.commands.character.create: true
   cloverrpg.commands.party.*:
     description: Access to all the party commands
     default: true
     children:
-      cloverrpg.commands.create: true
-      cloverrpg.commands.invite: true
-      cloverrpg.commands.accept: true
-      cloverrpg.commands.leave: true
-      cloverrpg.commands.kick: true
-      cloverrpg.commands.list: true
+      cloverrpg.commands.party.create: true
+      cloverrpg.commands.party.invite: true
+      cloverrpg.commands.party.accept: true
+      cloverrpg.commands.party.leave: true
+      cloverrpg.commands.party.kick: true
+      cloverrpg.commands.party.list: true

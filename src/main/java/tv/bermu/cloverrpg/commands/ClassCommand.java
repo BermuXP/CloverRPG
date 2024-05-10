@@ -6,23 +6,30 @@ import java.util.Map;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import tv.bermu.cloverrpg.Main;
 import tv.bermu.cloverrpg.MessageFormatter;
-import tv.bermu.cloverrpg.utils.CustomInventory;
 
-public class CharacterCommand implements CommandExecutor {
+public class ClassCommand implements CommandExecutor {
 
-    private JavaPlugin plugin;
-    private MessageFormatter messageFormatter;
     private final Map<String, String> subcommands = new HashMap<>();
-    private CustomInventory customClassInventory;
+    private Inventory fakeInventory = null;
+    private MessageFormatter messageFormatter;
+    private JavaPlugin plugin;
 
-    public CharacterCommand(JavaPlugin plugin, MessageFormatter messageFormatter, CustomInventory classesInventory) {
-        this.plugin = plugin;
+    /**
+     * Constructor
+     * 
+     * @param plugin Plugin instance
+     * @param config Configuration section of the classes
+     */
+    public ClassCommand(JavaPlugin plugin, ConfigurationSection classesSection, MessageFormatter messageFormatter) {
         this.messageFormatter = messageFormatter;
-        this.customClassInventory = classesInventory;
+        this.plugin = plugin;
         initializeSubcommands();
     }
 
@@ -30,9 +37,8 @@ public class CharacterCommand implements CommandExecutor {
      * Initialize subcommands with their corresponding permissions
      */
     private void initializeSubcommands() {
-        subcommands.put("select", "cloverrpg.commands.character.select");
-        subcommands.put("create", "cloverrpg.commands.character.create");
-        subcommands.put("help", "cloverrpg.commands.character.help");
+        subcommands.put("select", "cloverrpg.commands.classes.select");
+        subcommands.put("help", "cloverrpg.commands.classes.help");
     }
 
     @Override
@@ -50,20 +56,21 @@ public class CharacterCommand implements CommandExecutor {
             if (player.hasPermission(permission)) {
                 // Execute logic for the subcommand
                 switch (subCommand) {
-                    case "create":
-                        player.openInventory(customClassInventory.getInventory());
-                        // Select a character
-                        // todo add interface
-                        break;
                     case "select":
-                        // Create a character
-                        // todo add interface
+                        if (args.length > 0 && args[args.length - 1].equals(Main.uniqueInventoryIdentifier)) {
+                            player.sendMessage("wow, it worked... thats actually crazy");
+                        } else {
+                            // The command did not come from the inventory click
+                            player.sendMessage("command executed without unque identifier");
+                        }
                         break;
                 }
             }
         }
 
-        player.sendMessage("Hello, " + player.getName() + "!");
+        if (fakeInventory != null) {
+            player.openInventory(fakeInventory);
+        }
         return true;
     }
 

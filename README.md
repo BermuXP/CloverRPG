@@ -13,9 +13,7 @@ CloverRPG is a Minecraft plugin that adds RPG elements to your game. It is built
 
 ## Features
 
-- RPG Classes: Use the `/classes` command to choose your RPG class.
-- Party System: Use the `/party` command to manage your party.
-- CRPG Command: Use the `/crpg` command for CRPG related operations.
+- TODO
 
 ## Installation
 
@@ -34,6 +32,7 @@ After installing the plugin, you can use the following commands in your Minecraf
 - `/classes`: Opens the classes menu.
 - `/crpg`: Executes CRPG related operations.
 - `/party`: Manages your party.
+- `/character`: Manager your character('s).
 
 ## Permissions
 
@@ -42,6 +41,7 @@ After installing the plugin, you can use the following commands in your Minecraf
 - `cloverrpg.commands.classes.*`: Access to the classes command.
 - `cloverrpg.commands.crpg.*`: Access to the crpg command.
 - `cloverrpg.commands.party.*`: Access to all the party commands.
+- `cloverrpg.commands.character.*`: Access to all character commands. 
 
 # Localization Support
 This plugin supports localization, allowing messages to be translated based on each player's game language. 
