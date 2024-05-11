@@ -2,6 +2,7 @@ package tv.bermu.cloverrpg.commands;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,11 +19,14 @@ public class CharacterCommand implements CommandExecutor {
     private MessageFormatter messageFormatter;
     private final Map<String, String> subcommands = new HashMap<>();
     private CustomInventory customClassInventory;
+    private Set<Player> creatingCharacter;
 
-    public CharacterCommand(JavaPlugin plugin, MessageFormatter messageFormatter, CustomInventory classesInventory) {
+    public CharacterCommand(JavaPlugin plugin, MessageFormatter messageFormatter, CustomInventory classesInventory,
+            Set<Player> creatingCharacter) {
         this.plugin = plugin;
         this.messageFormatter = messageFormatter;
         this.customClassInventory = classesInventory;
+        this.creatingCharacter = creatingCharacter;
         initializeSubcommands();
     }
 
@@ -43,7 +47,9 @@ public class CharacterCommand implements CommandExecutor {
             sender.sendMessage(messageFormatter.formatMessageDefaultSlugs("only_players_can_execute_command", "en_GB"));
             return true;
         }
+
         Player player = (Player) sender;
+        String playerLanguage = player.getLocale();
         String subCommand = args[0].toLowerCase();
         if (subcommands.containsKey(subCommand)) {
             String permission = subcommands.get(subCommand);
@@ -51,13 +57,22 @@ public class CharacterCommand implements CommandExecutor {
                 // Execute logic for the subcommand
                 switch (subCommand) {
                     case "create":
-                        player.openInventory(customClassInventory.getInventory());
-                        // Select a character
-                        // todo add interface
+                        player.sendMessage(
+                                messageFormatter.formatMessageDefaultSlugs("character_creation_start", playerLanguage));
+                        creatingCharacter.add(player);
+                        // remove this :
+                        // player.openInventory(customClassInventory.getInventory());
                         break;
+                    case "cancel":
+                        if (creatingCharacter.contains(player)) {
+                            creatingCharacter.remove(player);
+                            player.sendMessage(
+                                    messageFormatter.formatMessageDefaultSlugs("character_creation_cancelled", playerLanguage));
+                        } else {
+                            player.sendMessage(
+                                    messageFormatter.formatMessageDefaultSlugs("no_character_creation_in_progress", playerLanguage));
+                        }
                     case "select":
-                        // Create a character
-                        // todo add interface
                         break;
                 }
             }

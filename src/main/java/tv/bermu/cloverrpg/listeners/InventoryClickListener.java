@@ -1,10 +1,7 @@
 package tv.bermu.cloverrpg.listeners;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,12 +13,14 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import tv.bermu.cloverrpg.Main;
+import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.utils.CustomInventory;
 
 public class InventoryClickListener implements Listener {
 
     private List<CustomInventory> customInventories = new ArrayList<>();
     private JavaPlugin plugin;
+
 
     /**
      * Constructor

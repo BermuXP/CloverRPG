@@ -101,8 +101,8 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
                                 partyHandler.deleteParty(player.getUniqueId(), player.getLocale().toLowerCase()));
                         break;
                     case "invite":
+                        HashMap<String, Object> slugs = new HashMap<>();
                         if (args.length < 2) {
-                            HashMap<String, Object> slugs = new HashMap<>();
                             slugs.put("command_name", "party");
                             slugs.put("subcommand", "invite");
                             slugs.put("usage", "<player_name>");
@@ -123,7 +123,6 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
 
                         String invitedPlayerName = args[1];
                         Player invitedPlayer = plugin.getServer().getPlayer(invitedPlayerName);
-                        HashMap<String, Object> slugs = new HashMap<>();
 
                         // player not found
                         if (invitedPlayer == null) {

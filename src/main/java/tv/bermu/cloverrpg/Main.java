@@ -1,7 +1,8 @@
 package tv.bermu.cloverrpg;
 
-import java.lang.module.Configuration;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import org.bukkit.configuration.ConfigurationSection;
@@ -19,6 +20,7 @@ import tv.bermu.cloverrpg.db.Database;
 import tv.bermu.cloverrpg.db.handlers.PartyHandler;
 import tv.bermu.cloverrpg.listeners.EntityDeath;
 import tv.bermu.cloverrpg.listeners.InventoryClickListener;
+import tv.bermu.cloverrpg.listeners.PlayerChat;
 import tv.bermu.cloverrpg.listeners.PlayerJoin;
 import tv.bermu.cloverrpg.managers.ConfigManager;
 import tv.bermu.cloverrpg.utils.CustomInventory;
@@ -31,6 +33,8 @@ public class Main extends JavaPlugin {
     private Database database;
     private FileConfiguration defaultConfig;
     private MessageFormatter messageFormatter;
+    private Set<Player> creatingCharacter = new HashSet<>();
+
     public static String uniqueInventoryIdentifier;
 
     @Override
@@ -52,6 +56,7 @@ public class Main extends JavaPlugin {
         pluginManager.registerEvents(inventoryClickListener, this);
         pluginManager.registerEvents(new EntityDeath(this), this);
         pluginManager.registerEvents(new PlayerJoin(), this);
+        pluginManager.registerEvents(new PlayerChat(creatingCharacter, messageFormatter), this);
 
         PartyHandler partyHandler = new PartyHandler(database, messageFormatter);
         FileConfiguration partyConfig = configManager.loadConfig("party");
@@ -63,7 +68,7 @@ public class Main extends JavaPlugin {
         CustomInventory classesInventory = null;
         if (showInventoryClasses) {
             ConfigurationSection classesSection = classesConfig.getConfigurationSection("classes");
-            // TODO add inventory name to config.
+            // TODO add inventory name to config (possibly the languaghe files... which means we need to move the language config checker)
             classesInventory = new CustomInventory(this, "Class Selection", classesConfig.getInt("inventory_max_slots"),
                     classesSection);
             inventoryClickListener.addCustomInventory(classesInventory);
@@ -80,7 +85,7 @@ public class Main extends JavaPlugin {
         getCommand("class").setExecutor(
                 new ClassCommand(this, classesConfig, messageFormatter));
         getCommand("crpg").setExecutor(new CRPGCommand());
-        getCommand("character").setExecutor(new CharacterCommand(this, messageFormatter, classesInventory));
+        getCommand("character").setExecutor(new CharacterCommand(this, messageFormatter, classesInventory, creatingCharacter));
 
         getLogger().info("Enabled.");
     }
