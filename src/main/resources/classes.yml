@@ -1,15 +1,18 @@
 show_as_inventory: true # If true, the classes will be shown as an inventory, if false, it will be shown as text in the chat
 inventory_max_slots: 9 # this is the maximum amount of slots in a row, want to add more rows? increase by incrments of 9
 classes:
+  title_tag: class_selection_title
   warrior:
-    inventory_slot: 0
-    material: IRON_SWORD
-    command: class select warrior # The command to run when item in inventory is clicked
-    lore: 
-      - A strong and brave warrior.
+    inventory_ui:
+      slot: 0
+      material: IRON_SWORD
+    name_tag: warrior_name
+    lore_tag: warrior_lore
+    command: class select warrior
   archer:
-    inventory_slot: 1
-    material: BOW
+    inventory_ui:
+      slot: 1
+      material: BOW
+    name_tag: archer_name
+    lore_tag: archer_lore
     command: class select archer
-    lore:
-      - A skilled archer.

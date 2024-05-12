@@ -13,7 +13,7 @@ public class PlayerJoin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
-        // todo add last character the player was using
+        // TODO add last character the player was using as active
         
     }
 }

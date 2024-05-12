@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 public class CustomInventory {
-    private JavaPlugin plugin;
     private Inventory inventory;
     private Map<Integer, String> slotCommands = new HashMap<>();
 
@@ -25,46 +24,33 @@ public class CustomInventory {
      * @param section       The configuration section
      */
     public CustomInventory(JavaPlugin plugin, String inventoryName, int slots, ConfigurationSection section) {
-        this.plugin = plugin;
-        this.inventory = createFakeInventory(plugin, inventoryName, slots, section);
+        Inventory inventory = plugin.getServer().createInventory(null, slots, inventoryName);
         for (String key : section.getKeys(false)) {
-            ConfigurationSection configSection = section.getConfigurationSection(key);
-            if (configSection != null) {
-                int slot = configSection.getInt("inventory_slot");
-                String command = configSection.getString("command");
-                if (command != null) {
-                    slotCommands.put(slot, command);
+            if (key != "title_tag") {
+                plugin.getLogger().info("Key: " + key);
+                ConfigurationSection configSection = section.getConfigurationSection(key);
+                if (configSection != null) {
+                    int slot = configSection.getInt("inventory_ui.slot");
+                    plugin.getLogger().info("Slot: " + slot);
+                    List<String> lore = configSection.getStringList("lore_tag");
+                    String itemName = configSection.getString("name_tag");
+                    Material material = Material.getMaterial(configSection.getString("inventory_ui.material"));
+                    plugin.getLogger().info("Material: " + material.toString());
+
+                    ItemStack itemStack = writeItem(
+                            itemName,
+                            lore,
+                            material);
+                    inventory.setItem(slot, itemStack);
+
+                    String command = configSection.getString("command");
+                    if (command != null) {
+                        slotCommands.put(slot, command);
+                    }
                 }
             }
         }
-    }
-
-    /**
-     * Create a fake inventory
-     * 
-     * @param plugin        The plugin
-     * @param inventoryName The name of the inventory
-     * @param slots         The number of slots
-     * @param section       The configuration section
-     * @return The fake inventory
-     */
-    public static Inventory createFakeInventory(JavaPlugin plugin, String inventoryName, int slots,
-            ConfigurationSection section) {
-        // Create fake inventory
-        Inventory inventory = plugin.getServer().createInventory(null, slots, inventoryName);
-        for (String itemName : section.getKeys(false)) {
-            ConfigurationSection ItemContentSection = section.getConfigurationSection(itemName);
-            if (ItemContentSection != null) {
-                List<String> lore = ItemContentSection.getStringList("lore");
-                ItemStack itemStack = writeItem(
-                        itemName,
-                        lore,
-                        Material.getMaterial(ItemContentSection.getString("material")));
-                inventory.setItem(ItemContentSection.getInt("inventory_slot"), itemStack);
-            }
-        }
-
-        return inventory;
+        this.inventory = inventory;
     }
 
     /**

@@ -1,15 +1,18 @@
-show_as_inventory: true 
+show_as_inventory: true
 inventory_max_slots: 9 # 9 is the maximum amount of slots in a row, want to add more rows? increase by incrments of 9
 races:
+  title_tag: "race_selection_title"
   human:
-    inventory_slot: 0
-    material: IRON_SWORD
+    inventory_ui:
+      slot: 0
+      material: IRON_SWORD
     command: race select human # The command to run when item in inventory is clicked
-    lore: 
-      - temp text
+    name_tag: human_name
+    lore_tag: human_lore
   elf:
-    inventory_slot: 1
-    material: BOW
-    command: race select elf
-    lore:
-      - temp text
+    inventory_ui:
+      slot: 1
+      material: SHIELD
+    command: race select elf 
+    name_tag: elf_name
+    lore_tag: elf_lore

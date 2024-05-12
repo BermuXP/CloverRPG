@@ -1,1 +1,18 @@
 max_characters: 5 # Maximum number of characters a player can have (0 means no max, I would NOT recommend doing this though, as a user could flood the database of the server).
+show_create_as_inventory: true 
+inventory_max_slots: 27
+character_creation:
+  title_tag: character_creation_title
+  character_name:
+    inventory_ui:
+      slot: 13
+      material: PAPER 
+    name_tag: character_name_text 
+    lore_tag: character_name_description
+  class_selection:
+    inventory_ui:
+      slot: 11 
+      material: SHIELD
+    name_tag: class_selection_text
+    lore_tag: class_selection_description
+

@@ -36,6 +36,7 @@ public class Main extends JavaPlugin {
     private Set<Player> creatingCharacter = new HashSet<>();
 
     public static String uniqueInventoryIdentifier;
+    public static String baseCommandPermission = "cloverrpg.command.";
 
     @Override
     public void onEnable() {
@@ -68,8 +69,10 @@ public class Main extends JavaPlugin {
         CustomInventory classesInventory = null;
         if (showInventoryClasses) {
             ConfigurationSection classesSection = classesConfig.getConfigurationSection("classes");
-            // TODO add inventory name to config (possibly the languaghe files... which means we need to move the language config checker)
-            classesInventory = new CustomInventory(this, "Class Selection", classesConfig.getInt("inventory_max_slots"),
+
+            classesInventory = new CustomInventory(this,
+                    classesSection.getString("title_tag"),
+                    classesConfig.getInt("inventory_max_slots"),
                     classesSection);
             inventoryClickListener.addCustomInventory(classesInventory);
         }
@@ -77,15 +80,19 @@ public class Main extends JavaPlugin {
         Boolean showInventoryRaces = racesConfig.getBoolean("show_as_inventory");
         if (showInventoryRaces) {
             ConfigurationSection racesSection = racesConfig.getConfigurationSection("races");
-            CustomInventory racesInventory = new CustomInventory(this, "Race Selection",
-                    racesConfig.getInt("inventory_max_slots"), racesSection);
+
+            CustomInventory racesInventory = new CustomInventory(this,
+                    "select race",
+                    racesConfig.getInt("inventory_max_slots"),
+                    racesSection);
             inventoryClickListener.addCustomInventory(racesInventory);
         }
 
         getCommand("class").setExecutor(
                 new ClassCommand(this, classesConfig, messageFormatter));
         getCommand("crpg").setExecutor(new CRPGCommand());
-        getCommand("character").setExecutor(new CharacterCommand(this, messageFormatter, classesInventory, creatingCharacter));
+        getCommand("character")
+                .setExecutor(new CharacterCommand(this, messageFormatter, classesInventory, creatingCharacter));
 
         getLogger().info("Enabled.");
     }

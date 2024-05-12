@@ -20,6 +20,7 @@ public class ConfigManager {
     // TODO move configs to a map, so we can access them by name. this might be
     // lighter.
     private final Map<String, FileConfiguration> configs = new HashMap<>();
+    private static ConfigManager instance;
 
     /**
      * Constructor
@@ -28,6 +29,19 @@ public class ConfigManager {
      */
     public ConfigManager(JavaPlugin plugin) {
         this.plugin = plugin;
+    }
+
+    /**
+     * Get the instance of the ConfigManager
+     * 
+     * @param plugin The plugin
+     * @return The instance of the ConfigManager
+     */
+    public ConfigManager getInstance(JavaPlugin plugin) {
+        if (instance == null) {
+            instance = new ConfigManager(plugin);
+        }
+        return instance;
     }
 
     /**

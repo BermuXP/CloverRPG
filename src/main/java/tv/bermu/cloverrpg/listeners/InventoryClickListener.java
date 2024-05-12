@@ -13,14 +13,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import tv.bermu.cloverrpg.Main;
-import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.utils.CustomInventory;
 
 public class InventoryClickListener implements Listener {
 
     private List<CustomInventory> customInventories = new ArrayList<>();
     private JavaPlugin plugin;
-
 
     /**
      * Constructor
@@ -47,7 +45,6 @@ public class InventoryClickListener implements Listener {
             for (CustomInventory customInventory : customInventories) {
                 if (customInventory.getInventory().equals(clickedInventory)) {
                     event.setCancelled(true);
-
                     int slot = event.getSlot();
                     String command = customInventory.getSlotCommands().get(slot);
                     if (command != null) {

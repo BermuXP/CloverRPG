@@ -28,3 +28,4 @@ character_creation_start: "{message_prefix} &aPersonage creatie gestart. Voer al
 character_creation_cancelled: "{message_prefix} &cPersonage creatie geannuleerd." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze het maken van een personage annuleren.
 character_creation_success: "{message_prefix} &aPersonage succesvol aangemaakt." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een personage succesvol aanmaken.
 no_character_creation_in_progress: "{message_prefix} &cEr is geen personage creatie in uitvoering." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen het maken van een personage te annuleren wanneer er geen personage creatie in uitvoering is.
+character_creation_name_selected: "{message_prefix} &aU heeft de naam &e{character_name}&a voor uw personage geselecteerd." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een naam voor hun personage selecteren.

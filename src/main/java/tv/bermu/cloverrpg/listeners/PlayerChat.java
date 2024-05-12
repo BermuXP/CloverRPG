@@ -28,7 +28,8 @@ public class PlayerChat implements Listener {
             // todo check if theirs any weird characters in the name.
             HashMap<String, Object> slugs = new HashMap<>();
             slugs.put("character_name", characterName);
-            player.sendMessage(messageFormatter.formatMessage("character_creation_name_selected", player.getLocale(), slugs);
+            player.sendMessage(
+                    messageFormatter.formatMessage("character_creation_name_selected", player.getLocale(), slugs));
             // Use characterName as the name of the character
             creatingCharacter.remove(player); // Remove the player from the set
             event.setCancelled(true); // Cancel the event so the message isn't sent to chat

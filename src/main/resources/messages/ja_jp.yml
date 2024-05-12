@@ -29,3 +29,4 @@ character_creation_start: "{message_prefix} &aキャラクター作成が開始�
 character_creation_cancelled: "{message_prefix} &cキャラクター作成がキャンセルされました。" # これは、プレイヤーがキャラクター作成をキャンセルしたときに送信されるメッセージです。
 character_creation_success: "{message_prefix} &aキャラクターが正常に作成されました。" # これは、プレイヤーがキャラクターを正常に作成したときに送信されるメッセージです。
 no_character_creation_in_progress: "{message_prefix} &cキャラクター作成が進行中ではありません。" # これは、プレイヤーがキャラクター作成が進行中でない状態でキャラクター作成をキャンセルしようとしたときに送信されるメッセージです。
+character_creation_name_selected: "{message_prefix} &aキャラクター名 &e{character_name}&a を選択しました。" # これは、プレイヤーがキャラクターの名前を選択したときに送信されるメッセージです。
