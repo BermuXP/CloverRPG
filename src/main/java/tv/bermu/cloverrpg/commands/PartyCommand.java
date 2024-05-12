@@ -38,21 +38,20 @@ public class PartyCommand implements CommandExecutor, TabCompleter {
         subcommands.put("disband",
                 new DisbandSubCommand(partyHandler, messageFormatter, Main.baseCommandPermission + "party.disband"));
 
-        InviteSubCommand inviteSubCommand = new InviteSubCommand(partyHandler, messageFormatter,
+        InviteSubCommand inviteSubCommand = new InviteSubCommand(messageFormatter,
                 Main.baseCommandPermission + "party.invite", plugin);
         subcommands.put("invite", inviteSubCommand);
         subcommands.put("inv", inviteSubCommand);
 
         InviteAcceptSubCommand acceptInviteSubCommand = new InviteAcceptSubCommand(messageFormatter,
-        Main.baseCommandPermission + "party.invite.accept");
+                Main.baseCommandPermission + "party.invite.accept");
         subcommands.put("accept", acceptInviteSubCommand);
         subcommands.put("a", acceptInviteSubCommand);
 
         InviteDeclineSubCommand declineInviteSubCommand = new InviteDeclineSubCommand(messageFormatter,
-        Main.baseCommandPermission + "party.invite.decline");
+                Main.baseCommandPermission + "party.invite.decline");
         subcommands.put("decline", declineInviteSubCommand);
         subcommands.put("d", declineInviteSubCommand);
-
 
         MessageSubCommand partyMessage = new MessageSubCommand(partyHandler, messageFormatter,
                 Main.baseCommandPermission + "party.message");

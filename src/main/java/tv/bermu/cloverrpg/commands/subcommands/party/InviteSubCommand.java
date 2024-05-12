@@ -8,20 +8,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.md_5.bungee.api.chat.TextComponent;
 import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.SubCommand;
-import tv.bermu.cloverrpg.db.handlers.PartyHandler;
 import tv.bermu.cloverrpg.managers.PartyInvitesManager;
 import tv.bermu.cloverrpg.managers.PartyManager;
 import tv.bermu.cloverrpg.models.PartyModel;
 
 public class InviteSubCommand implements SubCommand {
 
-    private final PartyHandler partyHandler;
     private final MessageFormatter messageFormatter;
     private final JavaPlugin plugin;
     private final String permission;
 
-    public InviteSubCommand(PartyHandler partyHandler, MessageFormatter messageFormatter, String permission, JavaPlugin plugin) {
-        this.partyHandler = partyHandler;
+    public InviteSubCommand(MessageFormatter messageFormatter, String permission, JavaPlugin plugin) {
         this.messageFormatter = messageFormatter;
         this.permission = permission;
         this.plugin = plugin;

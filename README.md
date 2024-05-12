@@ -38,7 +38,6 @@ After installing the plugin, you can use the following commands in your Minecraf
 
 - `cloverrpg.*`: Access to all CloverRPG permissions.
 - `cloverrpg.commands.*`: Access to all CloverRPG commands.
-- `cloverrpg.commands.classes.*`: Access to the classes command.
 - `cloverrpg.commands.crpg.*`: Access to the crpg command.
 - `cloverrpg.commands.party.*`: Access to all the party commands.
 - `cloverrpg.commands.character.*`: Access to all character commands. 

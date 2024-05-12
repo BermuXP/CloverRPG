@@ -1,10 +1,13 @@
 package tv.bermu.cloverrpg;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandMap;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.LivingEntity;
@@ -15,6 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import tv.bermu.cloverrpg.commands.CRPGCommand;
 import tv.bermu.cloverrpg.commands.CharacterCommand;
 import tv.bermu.cloverrpg.commands.ClassCommand;
+import tv.bermu.cloverrpg.commands.GuildCommand;
 import tv.bermu.cloverrpg.commands.PartyCommand;
 import tv.bermu.cloverrpg.db.Database;
 import tv.bermu.cloverrpg.db.handlers.PartyHandler;
@@ -91,6 +95,7 @@ public class Main extends JavaPlugin {
         getCommand("class").setExecutor(
                 new ClassCommand(this, classesConfig, messageFormatter));
         getCommand("crpg").setExecutor(new CRPGCommand());
+        getCommand("guild").setExecutor(new GuildCommand());
         getCommand("character")
                 .setExecutor(new CharacterCommand(this, messageFormatter, classesInventory, creatingCharacter));
 

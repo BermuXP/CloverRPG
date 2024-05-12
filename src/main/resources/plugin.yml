@@ -11,7 +11,7 @@ commands:
     permission: cloverrpg.commands.crpg
   Class:
     description: class command
-    usage: /classes
+    usage: /class
     permission: cloverrpg.commands.class
   Party:
     description: Party commands
@@ -21,6 +21,10 @@ commands:
     description: Character commands
     usage: /Character
     permission: cloverrpg.commands.character
+  Guild:
+    description: Guild commands
+    usage: /guild
+    permission: cloverrpg.commands.guild
 
 permissions:
   cloverrpg.*:
