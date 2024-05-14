@@ -1,5 +1,6 @@
 package tv.bermu.cloverrpg.commands.subcommands.guild;
 
+
 import java.util.HashMap;
 
 import org.bukkit.entity.Player;
@@ -8,13 +9,13 @@ import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.SubCommand;
 import tv.bermu.cloverrpg.db.handlers.GuildHandler;
 
-public class CreateSubCommand implements SubCommand {
+public class InviteSubCommand implements SubCommand{
 
     private final String permission;
     private final MessageFormatter messageFormatter;
     private final GuildHandler guildHandler;
 
-    public CreateSubCommand(GuildHandler guildHandler, MessageFormatter messageFormatter, String permission) {
+    public InviteSubCommand(GuildHandler guildHandler, MessageFormatter messageFormatter, String permission) {
         this.messageFormatter = messageFormatter;
         this.permission = permission;
         this.guildHandler = guildHandler;
@@ -26,24 +27,25 @@ public class CreateSubCommand implements SubCommand {
         if (args[1] == null) {
             HashMap<String, Object> slugs = new HashMap<>();
             slugs.put("command_name", "guild");
-            slugs.put("subcommand", "create");
+            slugs.put("subcommand", "invite");
             slugs.put("usage", "<guild_name>");
             player.sendMessage(
                     messageFormatter.formatMessage("subcommand_usage", playerLanguage, slugs));
             return;
         }
 
-        // already have a guild
-        // already in a guild
-        // guild name already exists
-        
-
-        player.sendMessage(guildHandler.createGuild(args[1], player,
-                player.getLocale().toLowerCase()));
+        // youre not in a guiild
+        // you dont have the guild permissions to invite
+        // player not found
+        // player already in a guild
+        // guild is full
+        // player is already in a guild
+        // player is not online
     }
 
     @Override
     public boolean hasPermission(Player player) {
         return player.hasPermission(permission);
     }
+
 }
