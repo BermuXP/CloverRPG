@@ -55,11 +55,11 @@ public class PartyHandler {
                 partyManager.addPlayerToParty(playerUUID, party);
                 return messageFormatter.formatMessageDefaultSlugs("party_created_successfully", language);
             } else {
-                return messageFormatter.formatMessageDefaultSlugs("already_in_party", language);
+                return messageFormatter.formatMessageDefaultSlugs("party_already_joined", language);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return messageFormatter.formatMessageDefaultSlugs("error_creating_party", language);
+            return messageFormatter.formatMessageDefaultSlugs("party_creation_error", language);
         }
     }
 
@@ -93,7 +93,7 @@ public class PartyHandler {
             if (partyLead == null) {
                 return messageFormatter.formatMessageDefaultSlugs("not_in_party", language);
             } else if (partyLead.getInt("is_leader") == 1) {
-                return messageFormatter.formatMessageDefaultSlugs("not_the_party_leader", language);
+                return messageFormatter.formatMessageDefaultSlugs("party_not_the_leader", language);
             } else {
                 int id = partyLead.getInt("id");
                 database.deleteData("party_members", new String[] { "party_id" }, new Object[] { id });
@@ -102,7 +102,7 @@ public class PartyHandler {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return messageFormatter.formatMessageDefaultSlugs("error_disbanding_party", language);
+            return messageFormatter.formatMessageDefaultSlugs("party_disband_error", language);
         }
     }
 

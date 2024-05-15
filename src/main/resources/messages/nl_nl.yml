@@ -2,11 +2,11 @@
 # het instellen van een van deze berichten op `false` (zonder backticks) zal voorkomen dat het bericht wordt verzonden.
 player_kills_mob: "{message_prefix} &fJe hebt &a&l{exp_gained}&e EXP &r&fverdiend voor het doden van &a{killed_monster}&r." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een monster doden.
 not_in_party: "{message_prefix} &cJe bent niet in een party!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een partycommando uit te voeren zonder in een party te zitten.
-not_the_party_leader: "{message_prefix} &cJe bent niet de party leider!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een partycommando uit te voeren dat alleen de party leider kan uitvoeren.
+party_not_the_leader: "{message_prefix} &cJe bent niet de party leider!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een partycommando uit te voeren dat alleen de party leider kan uitvoeren.
 party_disbanded_successfully: "{message_prefix} &aDe party is succesvol ontbonden." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de party succesvol is ontbonden.
-error_disbanding_party: "{message_prefix} &cEr is een fout opgetreden bij het ontbinden van de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het ontbinden van de party.
-error_creating_party: "{message_prefix} &cEr is een fout opgetreden bij het maken van de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het maken van de party.
-already_in_party: "{message_prefix} &cJe zit al in een party!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een party te maken terwijl ze al in een party zitten.
+party_disband_error: "{message_prefix} &cEr is een fout opgetreden bij het ontbinden van de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het ontbinden van de party.
+party_creation_error: "{message_prefix} &cEr is een fout opgetreden bij het maken van de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het maken van de party.
+party_already_joined: "{message_prefix} &cJe zit al in een party!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een party te maken terwijl ze al in een party zitten.
 party_created_successfully: "{message_prefix} &aDe party is succesvol aangemaakt." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de party succesvol is aangemaakt.
 party_invite_sent: "{message_prefix} &aDe party uitnodiging is verzonden naar &e{inviting_player}&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer een party uitnodiging wordt verzonden naar een andere speler.
 party_invite_received: "{message_prefix} &aJe hebt een party uitnodiging ontvangen van &e{inviting_player}&a. {click_here_party_accept} &r&aof {click_here_party_decline}&r&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een party uitnodiging ontvangen.
@@ -29,3 +29,4 @@ character_creation_cancelled: "{message_prefix} &cPersonage creatie geannuleerd.
 character_creation_success: "{message_prefix} &aPersonage succesvol aangemaakt." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een personage succesvol aanmaken.
 no_character_creation_in_progress: "{message_prefix} &cEr is geen personage creatie in uitvoering." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen het maken van een personage te annuleren wanneer er geen personage creatie in uitvoering is.
 character_creation_name_selected: "{message_prefix} &aU heeft de naam &e{character_name}&a voor uw personage geselecteerd." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een naam voor hun personage selecteren.
+guild_invite: "{message_prefix} &aJe hebt een gilde uitnodiging ontvangen van &e{inviting_player}&a. {click_here_guild_accept} &r&aof {click_here_guild_decline}&r&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een gilde uitnodiging ontvangen.

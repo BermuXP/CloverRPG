@@ -34,7 +34,9 @@ public class CreateSubCommand implements SubCommand {
         }
 
         // already have a guild
+        
         // already in a guild
+
         // guild name already exists
         
 

@@ -23,13 +23,15 @@ CREATE TABLE IF NOT EXISTS character (
 
 CREATE TABLE IF NOT EXISTS guild (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    level INTEGER DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS guild_members (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     guild_id INTEGER,
     player_uuid TEXT NOT NULL,
-    rank INTEGER DEFAULT 0,
+    rank TEXT DEFAULT "",
+    level INTEGER DEFAULT 0,
     FOREIGN KEY (guild_id) REFERENCES guild(id)
 );

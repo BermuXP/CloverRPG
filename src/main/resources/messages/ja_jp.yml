@@ -2,11 +2,11 @@
 # これらのメッセージのいずれかを `false`（バッククォートなし）に設定すると、メッセージの送信が無効になります。
 player_kills_mob: "{message_prefix} &fあなたは &a&l{exp_gained}&e EXP &r&fを獲得しました、&a{killed_monster}&rを倒したため。" # これは、プレイヤーがモンスターを倒したときに送信されるメッセージです。
 not_in_party: "{message_prefix} &cあなたはパーティーに参加していません！" # これは、プレイヤーがパーティーに参加していない状態でパーティーコマンドを実行しようとしたときに送信されるメッセージです。
-not_the_party_leader: "{message_prefix} &cあなたはパーティーリーダーではありません！" # これは、プレイヤーがパーティーリーダーのみが実行できるパーティーコマンドを実行しようとしたときに送信されるメッセージです。
+party_not_the_leader: "{message_prefix} &cあなたはパーティーリーダーではありません！" # これは、プレイヤーがパーティーリーダーのみが実行できるパーティーコマンドを実行しようとしたときに送信されるメッセージです。
 party_disbanded_successfully: "{message_prefix} &aパーティーは正常に解散されました。" # これは、パーティーが正常に解散されたときにプレイヤーに送信されるメッセージです。
-error_disbanding_party: "{message_prefix} &cパーティーを解散しようとしてエラーが発生しました。" # これは、パーティーを解散しようとしてエラーが発生したときにプレイヤーに送信されるメッセージです。
-error_creating_party: "{message_prefix} &cパーティーを作成しようとしてエラーが発生しました。" # これは、パーティーを作成しようとしてエラーが発生したときにプレイヤーに送信されるメッセージです。
-already_in_party: "{message_prefix} &cあなたはすでにパーティーに参加しています！" # これは、プレイヤーがすでにパーティーに参加している状態でパーティーを作成しようとしたときに送信されるメッセージです。
+party_disband_error: "{message_prefix} &cパーティーを解散しようとしてエラーが発生しました。" # これは、パーティーを解散しようとしてエラーが発生したときにプレイヤーに送信されるメッセージです。
+party_creation_error: "{message_prefix} &cパーティーを作成しようとしてエラーが発生しました。" # これは、パーティーを作成しようとしてエラーが発生したときにプレイヤーに送信されるメッセージです。
+party_already_joined: "{message_prefix} &cあなたはすでにパーティーに参加しています！" # これは、プレイヤーがすでにパーティーに参加している状態でパーティーを作成しようとしたときに送信されるメッセージです。
 party_created_successfully: "{message_prefix} &aパーティーが正常に作成されました。" # これは、パーティーが正常に作成されたときにプレイヤーに送信されるメッセージです。
 party_invite_sent: "{message_prefix} &aパーティー招待状が &e{player}&a に送信されました。" # これは、他のプレイヤーにパーティー招待状が送信されたときにプレイヤーに送信されるメッセージです。
 party_invite_received: "{message_prefix} &a{player}&a からパーティー招待状を受け取りました。 {click_here_party_accept} &r&aまたは {click_here_party_decline}&r&a。" # これは、プレイヤーがパーティー招待状を受け取ったときに送信されるメッセージです。
@@ -30,3 +30,4 @@ character_creation_cancelled: "{message_prefix} &cキャラクター作成がキ
 character_creation_success: "{message_prefix} &aキャラクターが正常に作成されました。" # これは、プレイヤーがキャラクターを正常に作成したときに送信されるメッセージです。
 no_character_creation_in_progress: "{message_prefix} &cキャラクター作成が進行中ではありません。" # これは、プレイヤーがキャラクター作成が進行中でない状態でキャラクター作成をキャンセルしようとしたときに送信されるメッセージです。
 character_creation_name_selected: "{message_prefix} &aキャラクター名 &e{character_name}&a を選択しました。" # これは、プレイヤーがキャラクターの名前を選択したときに送信されるメッセージです。
+guild_invite: "{message_prefix} &a{player}&a からギルド招待状を受け取りました。 {click_here_guild_accept} &r&aまたは {click_here_guild_decline}&r&a。" # これは、プレイヤーがギルド招待状を受け取ったときに送信されるメッセージです。

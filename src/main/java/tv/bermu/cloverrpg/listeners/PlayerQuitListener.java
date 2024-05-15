@@ -6,7 +6,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import tv.bermu.cloverrpg.managers.CharacterManager;
 
-public class PlayerQuit implements Listener {
+public class PlayerQuitListener implements Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {

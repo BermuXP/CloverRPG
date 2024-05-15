@@ -32,7 +32,7 @@ public class CreateSubCommand implements SubCommand {
                     messageFormatter.formatMessage("subcommand_usage", playerLanguage, slugs));
             return;
         }
-
+        
         player.sendMessage(partyHandler.createParty(args[1], player,
                 player.getLocale().toLowerCase()));
     }

@@ -18,3 +18,18 @@ CREATE TABLE IF NOT EXISTS `character` (
     level INT DEFAULT 0,
     exp INT DEFAULT 0,
     class_id INT DEFAULT 0,
+
+CREATE TABLE IF NOT EXISTS guild (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL
+    level INT DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS guild_members (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    guild_id INT,
+    player_uuid VARCHAR(255) NOT NULL,
+    rank VARCHAR(255) DEFAULT "",
+    level INT DEFAULT 0,
+    FOREIGN KEY (guild_id) REFERENCES guild(id)
+);

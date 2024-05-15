@@ -2,11 +2,11 @@
 # setting any of these messages to `false` (without backticks) will disable the message from being sent.
 player_kills_mob: "{message_prefix} &fYou have gained &a&l{exp_gained}&e EXP &r&ffor killing &a{killed_monster}&r." # This is a message that will be sent to the player when they kill a monster.
 not_in_party: "{message_prefix} &cYou are not in a party!" # This is a message that will be sent to the player when they try to execute a party command without being in a party.
-not_the_party_leader: "{message_prefix} &cYou are not the party leader!" # This is a message that will be sent to the player when they try to execute a party command that only the party leader can execute.
+party_not_the_leader: "{message_prefix} &cYou are not the party leader!" # This is a message that will be sent to the player when they try to execute a party command that only the party leader can execute.
 party_disbanded_successfully: "{message_prefix} &aThe party has been disbanded successfully." # This is a message that will be sent to the player when the party is disbanded successfully.
-error_disbanding_party: "{message_prefix} &cAn error occurred while trying to disband the party." # This is a message that will be sent to the player when an error occurs while trying to disband the party.
-error_creating_party: "{message_prefix} &cAn error occurred while trying to create the party." # This is a message that will be sent to the player when an error occurs while trying to create the party.
-already_in_party: "{message_prefix} &cYou are already in a party!" # This is a message that will be sent to the player when they try to create a party while already being in a party.
+party_disband_error: "{message_prefix} &cAn error occurred while trying to disband the party." # This is a message that will be sent to the player when an error occurs while trying to disband the party.
+party_creation_error: "{message_prefix} &cAn error occurred while trying to create the party." # This is a message that will be sent to the player when an error occurs while trying to create the party.
+party_already_joined: "{message_prefix} &cYou are already in a party!" # This is a message that will be sent to the player when they try to create a party while already being in a party.
 party_created_successfully: "{message_prefix} &aThe party has been created successfully." # This is a message that will be sent to the player when the party is created successfully.
 party_invite_sent: "{message_prefix} &aThe party invite has been sent to &e{invited_player}&a." # This is a message that will be sent to the player when a party invite is sent to another player.
 party_invite_received: "{message_prefix} &aYou have received a party invite from &e{inviting_player}&a. {click_here_party_accept} &r&aor {click_here_party_decline}&r&a." # This is a message that will be sent to the player when they receive a party invite.
@@ -30,3 +30,4 @@ character_creation_cancelled: "{message_prefix} &cCharacter creation cancelled."
 character_creation_success: "{message_prefix} &aCharacter created successfully." # This is a message that will be sent to the player when they create a character successfully.
 no_character_creation_in_progress: "{message_prefix} &cThere is no character creation in progress." # This is a message that will be sent to the player when they try to cancel creating a character when there is no character creation in progress.
 character_creation_name_selected: "{message_prefix} &aYou have selected the name &e{character_name}&a for your character." # This is a message that will be sent to the player when they select a name for their character.
+guild_invite_receive: "{message_prefix} &aYou have received a guild invite from &e{inviting_player}&a. {click_here_guild_accept} &r&aor {click_here_guild_decline}&r&a." # This is a message that will be sent to the player when they receive a guild invite.

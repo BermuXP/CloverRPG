@@ -24,8 +24,8 @@ public class InviteSubCommand implements SubCommand{
     @Override
     public void execute(Player player, String[] args) {
         String playerLanguage = player.getLocale().toLowerCase();
+        HashMap<String, Object> slugs = new HashMap<>();
         if (args[1] == null) {
-            HashMap<String, Object> slugs = new HashMap<>();
             slugs.put("command_name", "guild");
             slugs.put("subcommand", "invite");
             slugs.put("usage", "<guild_name>");
@@ -33,14 +33,21 @@ public class InviteSubCommand implements SubCommand{
                     messageFormatter.formatMessage("subcommand_usage", playerLanguage, slugs));
             return;
         }
+   
 
-        // youre not in a guiild
+        // youre not in a guild
+        
+
         // you dont have the guild permissions to invite
         // player not found
         // player already in a guild
         // guild is full
         // player is already in a guild
         // player is not online
+
+
+        // invite success
+        player.sendMessage(messageFormatter.formatMessage("guild_invite", playerLanguage, slugs));
     }
 
     @Override

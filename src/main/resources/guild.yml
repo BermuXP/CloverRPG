@@ -1,0 +1,41 @@
+permissions:
+  - chat
+  - invite
+  - kick
+  - promote
+  - demote
+  - disband
+
+default_guil_settings:
+  roles:
+    member:
+      permissions:
+        - chat
+    officer:
+      permissions:
+        - chat
+        - invite
+        - kick
+    leader:
+      permissions:
+        - chat
+        - invite
+        - kick
+        - promote
+        - demote
+        - disband
+  level: 0
+
+guild_levels:
+  0:
+    max_members: 10
+    exp_required: 0
+  1:
+    max_members: 15
+    exp_required: 1000
+  2:
+    max_members: 20
+    exp_required: 2000
+  3:
+    max_members: 25
+    exp_required: 3000
