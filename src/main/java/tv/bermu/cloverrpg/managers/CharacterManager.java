@@ -28,14 +28,28 @@ public class CharacterManager {
         return instance;
     }
  
+    /**
+     * Add a player character
+     * @param playerId      The player id
+     * @param character     The character
+     */
     public void addPlayerCharacter(UUID playerId, CharacterModel character) {
         playerCharacters.put(playerId, character);
     }
 
+    /**
+     * Remove a player character
+     * @param playerId      The player id
+     */
     public void removePlayerCharacter(UUID playerId) {
         playerCharacters.remove(playerId);
     }
 
+    /**
+     * Get the character of a player
+     * @param playerId      The player id
+     * @return The character of the player
+     */
     public CharacterModel getCharacterOfPlayer(UUID playerId) {
         return playerCharacters.get(playerId);
     }

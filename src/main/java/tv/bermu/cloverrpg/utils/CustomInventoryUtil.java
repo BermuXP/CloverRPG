@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CustomInventory {
+public class CustomInventoryUtil {
     private Inventory inventory;
     private Map<Integer, String> slotCommands = new HashMap<>();
 
@@ -23,7 +23,7 @@ public class CustomInventory {
      * @param slots         The number of slots
      * @param section       The configuration section
      */
-    public CustomInventory(JavaPlugin plugin, String inventoryName, int slots, ConfigurationSection section) {
+    public CustomInventoryUtil(JavaPlugin plugin, String inventoryName, int slots, ConfigurationSection section) {
         Inventory inventory = plugin.getServer().createInventory(null, slots, inventoryName);
         for (String key : section.getKeys(false)) {
             if (key != "title_tag") {

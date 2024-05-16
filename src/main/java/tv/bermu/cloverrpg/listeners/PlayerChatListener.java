@@ -10,12 +10,12 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import tv.bermu.cloverrpg.MessageFormatter;
 
-public class PlayerChat implements Listener {
+public class PlayerChatListener implements Listener {
 
     private final Set<Player> creatingCharacter;
     private MessageFormatter messageFormatter;
 
-    public PlayerChat(Set<Player> creatingCharacter, MessageFormatter messageFormatter) {
+    public PlayerChatListener(Set<Player> creatingCharacter, MessageFormatter messageFormatter) {
         this.creatingCharacter = creatingCharacter;
         this.messageFormatter = messageFormatter;
     }

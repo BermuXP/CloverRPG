@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import tv.bermu.cloverrpg.Main;
 
-public class EntityDeath implements Listener {
+public class EntityDeathListener implements Listener {
 
     private final Main main;
 
@@ -22,7 +22,7 @@ public class EntityDeath implements Listener {
      * Constructor
      * @param plugin    Main class of the plugin
      */
-    public EntityDeath(Main main) {
+    public EntityDeathListener(Main main) {
         this.main = main;
     }
 

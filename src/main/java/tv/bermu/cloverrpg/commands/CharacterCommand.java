@@ -16,7 +16,7 @@ import tv.bermu.cloverrpg.Main;
 import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.SubCommand;
 import tv.bermu.cloverrpg.commands.subcommands.character.CreateSubCommand;
-import tv.bermu.cloverrpg.utils.CustomInventory;
+import tv.bermu.cloverrpg.utils.CustomInventoryUtil;
 import org.bukkit.command.TabCompleter;
 
 public class CharacterCommand implements CommandExecutor, TabCompleter {
@@ -24,7 +24,7 @@ public class CharacterCommand implements CommandExecutor, TabCompleter {
     private final Map<String, SubCommand> subcommands = new HashMap<>();
     private final MessageFormatter messageFormatter;
 
-    public CharacterCommand(JavaPlugin plugin, MessageFormatter messageFormatter, CustomInventory classesInventory,
+    public CharacterCommand(JavaPlugin plugin, MessageFormatter messageFormatter, CustomInventoryUtil classesInventory,
             Set<Player> creatingCharacter) {
         this.messageFormatter = messageFormatter;
 

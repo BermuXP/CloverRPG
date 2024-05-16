@@ -22,12 +22,12 @@ import tv.bermu.cloverrpg.commands.GuildCommand;
 import tv.bermu.cloverrpg.commands.PartyCommand;
 import tv.bermu.cloverrpg.db.Database;
 import tv.bermu.cloverrpg.db.handlers.PartyHandler;
-import tv.bermu.cloverrpg.listeners.EntityDeath;
+import tv.bermu.cloverrpg.listeners.EntityDeathListener;
 import tv.bermu.cloverrpg.listeners.InventoryClickListener;
-import tv.bermu.cloverrpg.listeners.PlayerChat;
-import tv.bermu.cloverrpg.listeners.PlayerJoin;
+import tv.bermu.cloverrpg.listeners.PlayerChatListener;
+import tv.bermu.cloverrpg.listeners.PlayerJoinListener;
 import tv.bermu.cloverrpg.managers.ConfigManager;
-import tv.bermu.cloverrpg.utils.CustomInventory;
+import tv.bermu.cloverrpg.utils.CustomInventoryUtil;
 
 /**
  * Main class of the plugin
@@ -59,9 +59,9 @@ public class Main extends JavaPlugin {
         PluginManager pluginManager = getServer().getPluginManager();
         InventoryClickListener inventoryClickListener = new InventoryClickListener(this);
         pluginManager.registerEvents(inventoryClickListener, this);
-        pluginManager.registerEvents(new EntityDeath(this), this);
-        pluginManager.registerEvents(new PlayerJoin(), this);
-        pluginManager.registerEvents(new PlayerChat(creatingCharacter, messageFormatter), this);
+        pluginManager.registerEvents(new EntityDeathListener(this), this);
+        pluginManager.registerEvents(new PlayerJoinListener(), this);
+        pluginManager.registerEvents(new PlayerChatListener(creatingCharacter, messageFormatter), this);
 
         PartyHandler partyHandler = new PartyHandler(database, messageFormatter);
         FileConfiguration partyConfig = configManager.loadConfig("party");
@@ -70,11 +70,11 @@ public class Main extends JavaPlugin {
         }
 
         Boolean showInventoryClasses = classesConfig.getBoolean("show_as_inventory");
-        CustomInventory classesInventory = null;
+        CustomInventoryUtil classesInventory = null;
         if (showInventoryClasses) {
             ConfigurationSection classesSection = classesConfig.getConfigurationSection("classes");
 
-            classesInventory = new CustomInventory(this,
+            classesInventory = new CustomInventoryUtil(this,
                     classesSection.getString("title_tag"),
                     classesConfig.getInt("inventory_max_slots"),
                     classesSection);
@@ -85,7 +85,7 @@ public class Main extends JavaPlugin {
         if (showInventoryRaces) {
             ConfigurationSection racesSection = racesConfig.getConfigurationSection("races");
 
-            CustomInventory racesInventory = new CustomInventory(this,
+            CustomInventoryUtil racesInventory = new CustomInventoryUtil(this,
                     "select race",
                     racesConfig.getInt("inventory_max_slots"),
                     racesSection);

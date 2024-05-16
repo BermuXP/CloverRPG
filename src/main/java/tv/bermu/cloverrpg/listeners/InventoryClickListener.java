@@ -13,11 +13,11 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import tv.bermu.cloverrpg.Main;
-import tv.bermu.cloverrpg.utils.CustomInventory;
+import tv.bermu.cloverrpg.utils.CustomInventoryUtil;
 
 public class InventoryClickListener implements Listener {
 
-    private List<CustomInventory> customInventories = new ArrayList<>();
+    private List<CustomInventoryUtil> customInventories = new ArrayList<>();
     private JavaPlugin plugin;
 
     /**
@@ -34,7 +34,7 @@ public class InventoryClickListener implements Listener {
      * 
      * @param customInventory The custom inventory
      */
-    public void addCustomInventory(CustomInventory customInventory) {
+    public void addCustomInventory(CustomInventoryUtil customInventory) {
         this.customInventories.add(customInventory);
     }
 
@@ -42,7 +42,7 @@ public class InventoryClickListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory clickedInventory = event.getClickedInventory();
         if (clickedInventory != null) {
-            for (CustomInventory customInventory : customInventories) {
+            for (CustomInventoryUtil customInventory : customInventories) {
                 if (customInventory.getInventory().equals(clickedInventory)) {
                     event.setCancelled(true);
                     int slot = event.getSlot();
@@ -58,7 +58,7 @@ public class InventoryClickListener implements Listener {
 
         InventoryAction action = event.getAction();
         if (action == InventoryAction.MOVE_TO_OTHER_INVENTORY || action == InventoryAction.HOTBAR_MOVE_AND_READD) {
-            for (CustomInventory customInventory : customInventories) {
+            for (CustomInventoryUtil customInventory : customInventories) {
                 if (customInventory.getInventory().equals(event.getInventory())) {
                     event.setCancelled(true);
                     break;
@@ -70,7 +70,7 @@ public class InventoryClickListener implements Listener {
     @EventHandler
     public void onInventoryDrag(InventoryDragEvent event) {
         Inventory clickedInventory = event.getInventory();
-        for (CustomInventory customInventory : customInventories) {
+        for (CustomInventoryUtil customInventory : customInventories) {
             if (customInventory.getInventory().equals(clickedInventory)) {
                 event.setCancelled(true);
                 break;
