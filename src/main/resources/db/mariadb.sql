@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `character` (
     exp INT DEFAULT 0,
     class_id INT DEFAULT 0,
 
-CREATE TABLE IF NOT EXISTS guild (
+CREATE TABLE IF NOT EXISTS guilds (
     id INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL
     level INT DEFAULT 0
@@ -32,4 +32,20 @@ CREATE TABLE IF NOT EXISTS guild_members (
     rank VARCHAR(255) DEFAULT "",
     level INT DEFAULT 0,
     FOREIGN KEY (guild_id) REFERENCES guild(id)
+);
+
+CREATE TABLE IF NOT EXISTS guild_ranks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    guild_id INT,
+    rank_name VARCHAR(255) NOT NULL,
+    FOREIGN KEY (guild_id) REFERENCES guild(id)
+);
+
+CREATE TABLE IF NOT EXISTS guild_rank_permissions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    guild_id INT,
+    rank_id INT,
+    permission VARCHAR(255) NOT NULL,
+    FOREIGN KEY (guild_id) REFERENCES guild(id),
+    FOREIGN KEY (rank_id) REFERENCES guild_ranks(id)
 );

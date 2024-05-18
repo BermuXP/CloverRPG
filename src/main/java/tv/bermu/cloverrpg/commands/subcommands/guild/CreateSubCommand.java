@@ -23,8 +23,8 @@ public class CreateSubCommand implements SubCommand {
     @Override
     public void execute(Player player, String[] args) {
         String playerLanguage = player.getLocale().toLowerCase();
+        HashMap<String, Object> slugs = new HashMap<>();
         if (args[1] == null) {
-            HashMap<String, Object> slugs = new HashMap<>();
             slugs.put("command_name", "guild");
             slugs.put("subcommand", "create");
             slugs.put("usage", "<guild_name>");
@@ -33,15 +33,23 @@ public class CreateSubCommand implements SubCommand {
             return;
         }
 
-        // already have a guild
+        String playerUUID = player.getUniqueId().toString();
         
         // already in a guild
-
+        if (guildHandler.userInGuild(playerUUID)) {
+            player.sendMessage(messageFormatter.formatMessageDefaultSlugs("guild_already_in_a_guild", playerLanguage));
+            return;
+        }
         // guild name already exists
-        
+        String chosenGuildName = args[1];
+        if (guildHandler.guildNameTaken(chosenGuildName)) {
+            slugs.put("guild_name", chosenGuildName);   
+            player.sendMessage(messageFormatter.formatMessage("guild_name_taken", playerLanguage, slugs));
+            return;
+        }
 
-        player.sendMessage(guildHandler.createGuild(args[1], player,
-                player.getLocale().toLowerCase()));
+        player.sendMessage(guildHandler.createGuild(chosenGuildName, playerUUID,
+                playerLanguage));
     }
 
     @Override

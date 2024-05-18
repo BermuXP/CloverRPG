@@ -37,7 +37,6 @@ public class InviteSubCommand implements SubCommand{
 
         // youre not in a guild
         
-
         // you dont have the guild permissions to invite
         // player not found
         // player already in a guild

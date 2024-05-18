@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS character (
     race_id INTEGER DEFAULT 0
 );
 
-CREATE TABLE IF NOT EXISTS guild (
+CREATE TABLE IF NOT EXISTS guilds (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     level INTEGER DEFAULT 0
@@ -34,4 +34,20 @@ CREATE TABLE IF NOT EXISTS guild_members (
     rank TEXT DEFAULT "",
     level INTEGER DEFAULT 0,
     FOREIGN KEY (guild_id) REFERENCES guild(id)
+);
+
+CREATE TABLE IF NOT EXISTS guild_ranks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    guild_id INTEGER,
+    rank_name TEXT NOT NULL,
+    FOREIGN KEY (guild_id) REFERENCES guild(id)
+);
+
+CREATE TABLE IF NOT EXISTS guild_rank_permissions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    guild_id INTEGER,
+    rank_id INTEGER,
+    permission TEXT NOT NULL,
+    FOREIGN KEY (guild_id) REFERENCES guild(id),
+    FOREIGN KEY (rank_id) REFERENCES guild_ranks(id)
 );

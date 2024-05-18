@@ -6,7 +6,7 @@ permissions:
   - demote
   - disband
 
-default_guil_settings:
+default_guild_settings:
   roles:
     member:
       permissions:
@@ -27,15 +27,19 @@ default_guil_settings:
   level: 0
 
 guild_levels:
-  0:
+  0:  # Default starting level
     max_members: 10
     exp_required: 0
+    max_amount_of_ranks: 5
   1:
     max_members: 15
     exp_required: 1000
+    max_amount_of_ranks: 5
   2:
     max_members: 20
     exp_required: 2000
+    max_amount_of_ranks: 5
   3:
     max_members: 25
     exp_required: 3000
+    max_amount_of_ranks: 5

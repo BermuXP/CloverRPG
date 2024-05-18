@@ -1,5 +1,6 @@
 package tv.bermu.cloverrpg.db.handlers;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
@@ -9,7 +10,7 @@ import tv.bermu.cloverrpg.db.Database;
 public class GuildHandler {
     private final Database database;
     private final MessageFormatter messageFormatter;
-    private final String tableName = "guild";
+    private final String tableName = "guilds";
 
     /**
      * Constructor
@@ -22,13 +23,38 @@ public class GuildHandler {
         this.messageFormatter = messageFormatter;
     }
 
+    /**
+     * Check if a user is in a guild
+     * 
+     * @param playerUUID The player UUID
+     * @return True if the user is in a guild, false otherwise
+     */
     public boolean userInGuild(String playerUUID) {
-        return false;
+        try {
+            ResultSet partyExists = database.selectData("SELECT id FROM guild_members WHERE player_uuid = ?",
+                    new Object[] { playerUUID });
+            return partyExists.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
+    /**
+     * Check if a guild name is already taken
+     * 
+     * @param guildName The guild name
+     * @return True if the guild name is taken, false otherwise
+     */
     public boolean guildNameTaken(String guildName) {
-        return false;
-
+        try {
+            ResultSet guildNameTaken = database.selectData("SELECT id FROM guilds WHERE LOWER(name) LIKE LOWER(?)",
+                    new Object[] { guildName });
+            return guildNameTaken.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -39,7 +65,14 @@ public class GuildHandler {
      * @return True if the user has the permission, false otherwise
      */
     public boolean userHasGuildPermission(String playerUUID, String permission) {
-        return false;
+        try {
+            ResultSet guildUser = database.selectData("SELECT id FROM guilds WHERE LOWER(name) LIKE LOWER(?)",
+                    new Object[] { permission });
+            return guildUser.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -52,6 +85,9 @@ public class GuildHandler {
      */
     public String createGuild(String guildName, String playerUUID, String language) {
         try {
+            if (guildNameTaken(guildName)) {
+                return messageFormatter.formatMessageDefaultSlugs("guild_name_taken", language);
+            }
             database.insertData(tableName, new String[] { "name", "player_uuid" },
                     new Object[] { guildName, playerUUID });
 
