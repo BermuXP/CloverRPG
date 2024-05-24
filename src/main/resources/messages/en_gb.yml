@@ -32,4 +32,5 @@ no_character_creation_in_progress: "{message_prefix} &cThere is no character cre
 character_creation_name_selected: "{message_prefix} &aYou have selected the name &e{character_name}&a for your character." # This is a message that will be sent to the player when they select a name for their character.
 guild_invite_receive: "{message_prefix} &aYou have received a guild invite from &e{inviting_player}&a. {click_here_guild_accept} &r&aor {click_here_guild_decline}&r&a." # This is a message that will be sent to the player when they receive a guild invite.
 guild_name_taken: "{message_prefix} &cThe guild name &e{guild_name}&c is already taken." # This is a message that will be sent to the player when they try to create a guild with a name that is already taken.
-guild_already_in_a_guild: "{message_prefix} &cYou are already in a guild!" # This is a message that will be sent to the player when they try to create a guild while already being in a guild.
+player_already_in_a_guild: "{message_prefix} &cYou are already in a guild!" # This is a message that will be sent to the player when they try to create a guild while already being in a guild.
+player_not_in_guild: "{message_prefix} &cYou are not in a guild!" # This is a message that will be sent to the player when they try to execute a guild command without being in a guild.

@@ -31,7 +31,8 @@ public class GuildHandler {
      */
     public boolean userInGuild(String playerUUID) {
         try {
-            ResultSet partyExists = database.selectData("SELECT id FROM guild_members WHERE player_uuid = ?",
+            ResultSet partyExists = database.selectData(
+                    "SELECT id FROM guild_members WHERE player_uuid = ? LIMIT 1",
                     new Object[] { playerUUID });
             return partyExists.next();
         } catch (SQLException e) {
@@ -48,7 +49,8 @@ public class GuildHandler {
      */
     public boolean guildNameTaken(String guildName) {
         try {
-            ResultSet guildNameTaken = database.selectData("SELECT id FROM guilds WHERE LOWER(name) LIKE LOWER(?)",
+            ResultSet guildNameTaken = database.selectData(
+                    "SELECT id FROM guilds WHERE LOWER(name) LIKE LOWER(?) LIMIT 1",
                     new Object[] { guildName });
             return guildNameTaken.next();
         } catch (SQLException e) {

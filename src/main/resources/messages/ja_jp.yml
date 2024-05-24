@@ -32,4 +32,4 @@ no_character_creation_in_progress: "{message_prefix} &cキャラクター作成�
 character_creation_name_selected: "{message_prefix} &aキャラクター名 &e{character_name}&a を選択しました。" # これは、プレイヤーがキャラクターの名前を選択したときに送信されるメッセージです。
 guild_invite: "{message_prefix} &a{player}&a からギルド招待状を受け取りました。 {click_here_guild_accept} &r&aまたは {click_here_guild_decline}&r&a。" # これは、プレイヤーがギルド招待状を受け取ったときに送信されるメッセージです。
 guild_name_taken: "{message_prefix} &cギルド名 &e{guild_name}&c はすでに使用されています。" # これは、プレイヤーがすでに使用されているギルド名でギルドを作成しようとしたときに送信されるメッセージです。
-guild_already_in_a_guild: "{message_prefix} &cあなたはすでにギルドに所属しています！" # これは、プレイヤーがすでにギルドに所属している状態でギルドを作成しようとしたときに送信されるメッセージです。
+player_already_in_a_guild: "{message_prefix} &cあなたはすでにギルドに所属しています！" # これは、プレイヤーがすでにギルドに所属している状態でギルドを作成しようとしたときに送信されるメッセージです。
