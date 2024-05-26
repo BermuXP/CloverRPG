@@ -40,6 +40,7 @@ public class CreateSubCommand implements SubCommand {
             player.sendMessage(messageFormatter.formatMessageDefaultSlugs("player_already_in_a_guild", playerLanguage));
             return;
         }
+        
         // guild name already exists
         String chosenGuildName = args[1];
         if (guildHandler.guildNameTaken(chosenGuildName)) {

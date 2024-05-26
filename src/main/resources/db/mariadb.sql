@@ -49,3 +49,12 @@ CREATE TABLE IF NOT EXISTS guild_rank_permissions (
     FOREIGN KEY (guild_id) REFERENCES guild(id),
     FOREIGN KEY (rank_id) REFERENCES guild_ranks(id)
 );
+
+CREATE TABLE IF NOT EXISTS guild_coordinates (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    guild_id INT,
+    x INT DEFAULT 0,
+    y INT DEFAULT 0,
+    z INT DEFAULT 0,
+    FOREIGN KEY (guild_id) REFERENCES guild(id)
+);

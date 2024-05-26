@@ -21,6 +21,7 @@ import tv.bermu.cloverrpg.commands.ClassCommand;
 import tv.bermu.cloverrpg.commands.GuildCommand;
 import tv.bermu.cloverrpg.commands.PartyCommand;
 import tv.bermu.cloverrpg.db.Database;
+import tv.bermu.cloverrpg.db.handlers.GuildHandler;
 import tv.bermu.cloverrpg.db.handlers.PartyHandler;
 import tv.bermu.cloverrpg.listeners.EntityDeathListener;
 import tv.bermu.cloverrpg.listeners.InventoryClickListener;
@@ -64,6 +65,8 @@ public class Main extends JavaPlugin {
         pluginManager.registerEvents(new PlayerChatListener(creatingCharacter, messageFormatter), this);
 
         PartyHandler partyHandler = new PartyHandler(database, messageFormatter);
+        GuildHandler guildHandler = new GuildHandler(database, messageFormatter);
+        
         FileConfiguration partyConfig = configManager.loadConfig("party");
         if (partyConfig.getBoolean("enable")) {
             getCommand("party").setExecutor(new PartyCommand(this, partyHandler, messageFormatter));
@@ -95,7 +98,7 @@ public class Main extends JavaPlugin {
         getCommand("class").setExecutor(
                 new ClassCommand(this, classesConfig, messageFormatter));
         getCommand("crpg").setExecutor(new CRPGCommand());
-        getCommand("guild").setExecutor(new GuildCommand());
+        getCommand("guild").setExecutor(new GuildCommand(this, guildHandler, messageFormatter));
         getCommand("character")
                 .setExecutor(new CharacterCommand(this, messageFormatter, classesInventory, creatingCharacter));
 
