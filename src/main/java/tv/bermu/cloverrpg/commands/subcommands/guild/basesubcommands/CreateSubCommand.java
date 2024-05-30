@@ -7,7 +7,7 @@ import tv.bermu.cloverrpg.SubCommand;
 import tv.bermu.cloverrpg.db.handlers.GuildHandler;
 
 public class CreateSubCommand implements SubCommand {
-    
+
     private final String permission;
     private final MessageFormatter messageFormatter;
     private final GuildHandler guildHandler;
@@ -17,10 +17,15 @@ public class CreateSubCommand implements SubCommand {
         this.permission = permission;
         this.guildHandler = guildHandler;
     }
+
     @Override
     public void execute(Player player, String[] args) {
         String playerLanguage = player.getLocale().toLowerCase();
-        
+        // youre already in a guild
+        if (guildHandler.userInGuild(player.getUniqueId().toString())) {
+            player.sendMessage(messageFormatter.formatMessageDefaultSlugs("player_already_in_a_guild", playerLanguage));
+            return;
+        } 
     }
 
     @Override

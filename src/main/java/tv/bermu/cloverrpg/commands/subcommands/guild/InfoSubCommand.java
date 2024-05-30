@@ -23,7 +23,11 @@ public class InfoSubCommand implements SubCommand{
     @Override
     public void execute(Player player, String[] args) {
         String playerLanguage = player.getLocale().toLowerCase();
-
+        // player is not in a guild
+        if (!guildHandler.userInGuild(player.getUniqueId().toString())) {
+            player.sendMessage(messageFormatter.formatMessageDefaultSlugs("player_not_in_guild", playerLanguage));
+            return;
+        }
     }
 
     @Override
