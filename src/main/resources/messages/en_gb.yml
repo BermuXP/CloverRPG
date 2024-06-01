@@ -34,3 +34,4 @@ guild_invite_receive: "{message_prefix} &aYou have received a guild invite from 
 guild_name_taken: "{message_prefix} &cThe guild name &e{guild_name}&c is already taken." # This is a message that will be sent to the player when they try to create a guild with a name that is already taken.
 player_already_in_a_guild: "{message_prefix} &cYou are already in a guild!" # This is a message that will be sent to the player when they try to create a guild while already being in a guild.
 player_not_in_guild: "{message_prefix} &cYou are not in a guild!" # This is a message that will be sent to the player when they try to execute a guild command without being in a guild.
+combat_cannot_perform_action: "{message_prefix} &cYou cannot perform this action while in combat." # This is a message that will be sent to the player when they try to perform an action while in combat.

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
@@ -43,6 +44,7 @@ public class Main extends JavaPlugin {
 
     public static String uniqueInventoryIdentifier;
     public static String baseCommandPermission = "cloverrpg.command.";
+    public static Logger logger = Bukkit.getLogger();
 
     @Override
     public void onEnable() {

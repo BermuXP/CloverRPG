@@ -27,6 +27,7 @@ public class CombatListener implements Listener {
             return false;
         }
 
+        // TODO add timer to config
         long combatEndTime = combatTime.get(player) + 60000; // 60 seconds
         if (System.currentTimeMillis() > combatEndTime) {
             // Remove player from combat if 60 seconds have passed

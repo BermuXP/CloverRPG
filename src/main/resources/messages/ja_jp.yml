@@ -33,3 +33,5 @@ character_creation_name_selected: "{message_prefix} &aキャラクター名 &e{c
 guild_invite: "{message_prefix} &a{player}&a からギルド招待状を受け取りました。 {click_here_guild_accept} &r&aまたは {click_here_guild_decline}&r&a。" # これは、プレイヤーがギルド招待状を受け取ったときに送信されるメッセージです。
 guild_name_taken: "{message_prefix} &cギルド名 &e{guild_name}&c はすでに使用されています。" # これは、プレイヤーがすでに使用されているギルド名でギルドを作成しようとしたときに送信されるメッセージです。
 player_already_in_a_guild: "{message_prefix} &cあなたはすでにギルドに所属しています！" # これは、プレイヤーがすでにギルドに所属している状態でギルドを作成しようとしたときに送信されるメッセージです。
+player_not_in_guild: "{message_prefix} &cあなたはギルドに所属していません！" # これは、プレイヤーがギルドに所属していない状態でギルドコマンドを実行しようとしたときに送信されるメッセージです。
+combat_cannot_perform_action: "{message_prefix} &c戦闘中はこのアクションを実行できません。" # これは、プレイヤーが戦闘中にアクションを実行しようとしたときに送信されるメッセージです。

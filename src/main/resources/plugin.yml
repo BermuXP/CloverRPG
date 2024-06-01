@@ -59,3 +59,20 @@ permissions:
       cloverrpg.commands.party.leave: true
       cloverrpg.commands.party.kick: true
       cloverrpg.commands.party.list: true
+  cloverrpg.commands.guild.*:
+    description: Access to the guild commands
+    default: true
+    children:
+      cloverrpg.commands.guild.create: true
+      cloverrpg.commands.guild.base.*: true
+      cloverrpg.commands.guild.invite: true
+      cloverrpg.commands.guild.accept: true
+      cloverrpg.commands.guild.leave: true
+      cloverrpg.commands.guild.kick: true
+      cloverrpg.commands.guild.list: true
+  cloverrpg.commands.guild.base.*:
+    description: Access to the base guild commands
+    default: true
+    children:
+      cloverrpg.commands.guild.base.info: true
+      cloverrpg.commands.guild.base.create: true
