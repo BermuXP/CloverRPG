@@ -16,14 +16,15 @@ import tv.bermu.cloverrpg.commands.subcommands.guild.InfoSubCommand;
 import tv.bermu.cloverrpg.commands.subcommands.guild.InviteSubCommand;
 import tv.bermu.cloverrpg.commands.subcommands.guild.ListSubCommand;
 import tv.bermu.cloverrpg.db.handlers.GuildHandler;
+import tv.bermu.cloverrpg.listeners.CombatListener;
 
 public class GuildCommand implements CommandExecutor {
 
     private final Map<String, SubCommand> subcommands = new HashMap<>();
 
-    public GuildCommand(JavaPlugin javaPlugin, GuildHandler guildHandler, MessageFormatter messageFormatter) {
+    public GuildCommand(JavaPlugin javaPlugin, GuildHandler guildHandler, MessageFormatter messageFormatter, CombatListener combatListener) {
         subcommands.put("create",
-                new CreateSubCommand(guildHandler, messageFormatter, Main.baseCommandPermission + "guild.create"));
+                new CreateSubCommand(guildHandler, messageFormatter, Main.baseCommandPermission + "guild.create", combatListener));
         subcommands.put("info",
                 new InfoSubCommand(guildHandler, messageFormatter, Main.baseCommandPermission + "guild.info"));
         subcommands.put("list",
@@ -34,6 +35,7 @@ public class GuildCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        //TODO send default (help?) command
         return false;
     }
 

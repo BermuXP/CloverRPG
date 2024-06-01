@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.SubCommand;
 import tv.bermu.cloverrpg.db.handlers.GuildHandler;
+import tv.bermu.cloverrpg.listeners.CombatListener;
 import tv.bermu.cloverrpg.commands.subcommands.guild.basesubcommands.CreateSubCommand;
 import tv.bermu.cloverrpg.commands.subcommands.guild.basesubcommands.InfoSubCommand;
 
@@ -17,11 +18,13 @@ public class BaseSubCommand implements SubCommand {
     private final MessageFormatter messageFormatter;
     private final GuildHandler guildHandler;
     private final Map<String, SubCommand> subcommands = new HashMap<>();
+    private final CombatListener combatListener;
 
-    public BaseSubCommand(GuildHandler guildHandler, MessageFormatter messageFormatter, String permission) {
+    public BaseSubCommand(GuildHandler guildHandler, MessageFormatter messageFormatter, String permission, CombatListener combatListener) {
         this.messageFormatter = messageFormatter;
         this.permission = permission;
         this.guildHandler = guildHandler;
+        this.combatListener = combatListener;
 
         subcommands.put("create",
                 new CreateSubCommand(guildHandler, messageFormatter, permission + ".create"));
