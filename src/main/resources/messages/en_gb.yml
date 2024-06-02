@@ -1,37 +1,40 @@
 # This is the file that contains all the messages that are sent to the player when they do something in the game.
 # setting any of these messages to `false` (without backticks) will disable the message from being sent.
-player_kills_mob: "{message_prefix} &fYou have gained &a&l{exp_gained}&e EXP &r&ffor killing &a{killed_monster}&r." # This is a message that will be sent to the player when they kill a monster.
-not_in_party: "{message_prefix} &cYou are not in a party!" # This is a message that will be sent to the player when they try to execute a party command without being in a party.
-party_not_the_leader: "{message_prefix} &cYou are not the party leader!" # This is a message that will be sent to the player when they try to execute a party command that only the party leader can execute.
-party_disbanded_successfully: "{message_prefix} &aThe party has been disbanded successfully." # This is a message that will be sent to the player when the party is disbanded successfully.
-party_disband_error: "{message_prefix} &cAn error occurred while trying to disband the party." # This is a message that will be sent to the player when an error occurs while trying to disband the party.
-party_creation_error: "{message_prefix} &cAn error occurred while trying to create the party." # This is a message that will be sent to the player when an error occurs while trying to create the party.
-party_already_joined: "{message_prefix} &cYou are already in a party!" # This is a message that will be sent to the player when they try to create a party while already being in a party.
-party_created_successfully: "{message_prefix} &aThe party has been created successfully." # This is a message that will be sent to the player when the party is created successfully.
-party_invite_sent: "{message_prefix} &aThe party invite has been sent to &e{invited_player}&a." # This is a message that will be sent to the player when a party invite is sent to another player.
-party_invite_received: "{message_prefix} &aYou have received a party invite from &e{inviting_player}&a. {click_here_party_accept} &r&aor {click_here_party_decline}&r&a." # This is a message that will be sent to the player when they receive a party invite.
+player_kills_mob: "{message_prefix} &fYou have gained &a&l{exp_gained}&e EXP &r&ffor killing &a{killed_monster}&r."
+not_in_party: "{message_prefix} &cYou are not in a party!"
+party_not_the_leader: "{message_prefix} &cYou are not the party leader!"
+party_disbanded_successfully: "{message_prefix} &aThe party has been disbanded successfully."
+party_disband_error: "{message_prefix} &cAn error occurred while trying to disband the party."
+party_creation_error: "{message_prefix} &cAn error occurred while trying to create the party."
+party_already_joined: "{message_prefix} &cYou are already in a party!"
+party_created_successfully: "{message_prefix} &aThe party has been created successfully."
+party_invite_sent: "{message_prefix} &aThe party invite has been sent to &e{invited_player}&a."
+party_invite_received: "{message_prefix} &aYou have received a party invite from &e{inviting_player}&a. {click_here_party_accept} &r&aor {click_here_party_decline}&r&a."
 click_accept_text: "&6&lAccept"
 click_accept_hover: "&aClick here to accept the party invite."
 click_decline_text: "&c&lDecline"
 click_decline_hover: "&cClick here to decline the party invite."
-player_not_found: "{message_prefix} &cThe player &e{player_name}&c was not found." # This is a message that will be sent to the player when the player they are trying to invite to the party is not found.
-player_not_online: "{message_prefix} &cThe player &e{player_name}&c is not online." # This is a message that will be sent to the player when the player they are trying to invite to the party is not online.
-no_permissions_command: "{message_prefix} &cYou do not have permission to execute this command." # This is a message that will be sent to the player when they do not have permission to execute a command.
-unknown_command: "{message_prefix} &cUnknown command. Use &e/{command_name} help &cfor a list of commands." # This is a message that will be sent to the player when they try to execute an unknown command.
-only_players_can_execute_command: "{message_prefix} &cOnly players can execute this command." # This is a message that will be sent to the player when they try to execute a command that only players can execute.
-subcommand_usage: "{message_prefix} &cUsage: &e/{command_name} {subcommand} {usage}" # This is a message that will be sent to the player when they use a subcommand incorrectly.
-party_invite_self: "{message_prefix} &cYou cannot invite yourself to a party." # This is a message that will be sent to the player when they try to invite themselves to a party.
-player_already_in_the_party: "{message_prefix} &cThe player &e{player_name}&c is already in the party." # This is a message that will be sent to the player when they try to invite a player who is already in the party.
-player_already_in_another_the_party: "{message_prefix} &cThe player &e{player_name}&c is already in another party." # This is a message that will be sent to the player when they try to invite a player who is already in another party.
-player_already_invited: "{message_prefix} &cThe player &e{player_name}&c has already been invited to the party." # This is a message that will be sent to the player when they try to invite a player who has already been invited to the party.
-error_creating_character: "{message_prefix} &cAn error occurred while trying to create the character." # This is a message that will be sent to the player when an error occurs while trying to create a character.
-character_creation_start: "{message_prefix} &aCharacter creation started. Please enter your character name:" # This is a message that will be sent to the player when they start creating a character.
-character_creation_cancelled: "{message_prefix} &cCharacter creation cancelled." # This is a message that will be sent to the player when they cancel creating a character.
-character_creation_success: "{message_prefix} &aCharacter created successfully." # This is a message that will be sent to the player when they create a character successfully.
-no_character_creation_in_progress: "{message_prefix} &cThere is no character creation in progress." # This is a message that will be sent to the player when they try to cancel creating a character when there is no character creation in progress.
-character_creation_name_selected: "{message_prefix} &aYou have selected the name &e{character_name}&a for your character." # This is a message that will be sent to the player when they select a name for their character.
-guild_invite_receive: "{message_prefix} &aYou have received a guild invite from &e{inviting_player}&a. {click_here_guild_accept} &r&aor {click_here_guild_decline}&r&a." # This is a message that will be sent to the player when they receive a guild invite.
-guild_name_taken: "{message_prefix} &cThe guild name &e{guild_name}&c is already taken." # This is a message that will be sent to the player when they try to create a guild with a name that is already taken.
-player_already_in_a_guild: "{message_prefix} &cYou are already in a guild!" # This is a message that will be sent to the player when they try to create a guild while already being in a guild.
-player_not_in_guild: "{message_prefix} &cYou are not in a guild!" # This is a message that will be sent to the player when they try to execute a guild command without being in a guild.
-combat_cannot_perform_action: "{message_prefix} &cYou cannot perform this action while in combat." # This is a message that will be sent to the player when they try to perform an action while in combat.
+player_not_found: "{message_prefix} &cThe player &e{player_name}&c was not found."
+player_not_online: "{message_prefix} &cThe player &e{player_name}&c is not online."
+no_permissions_command: "{message_prefix} &cYou do not have permission to execute this command."
+unknown_command: "{message_prefix} &cUnknown command. Use &e/{command_name} help &cfor a list of commands."
+only_players_can_execute_command: "{message_prefix} &cOnly players can execute this command."
+subcommand_usage: "{message_prefix} &cUsage: &e/{command_name} {subcommand} {usage}"
+party_invite_self: "{message_prefix} &cYou cannot invite yourself to a party."
+player_already_in_the_party: "{message_prefix} &cThe player &e{player_name}&c is already in the party."
+player_already_in_another_the_party: "{message_prefix} &cThe player &e{player_name}&c is already in another party."
+player_already_invited: "{message_prefix} &cThe player &e{player_name}&c has already been invited to the party."
+error_creating_character: "{message_prefix} &cAn error occurred while trying to create the character."
+character_creation_start: "{message_prefix} &aCharacter creation started. Please enter your character name:"
+character_creation_cancelled: "{message_prefix} &cCharacter creation cancelled."
+character_creation_success: "{message_prefix} &aCharacter created successfully."
+no_character_creation_in_progress: "{message_prefix} &cThere is no character creation in progress."
+character_creation_name_selected: "{message_prefix} &aYou have selected the name &e{character_name}&a for your character."
+guild_invite_receive: "{message_prefix} &aYou have received a guild invite from &e{inviting_player}&a. {click_here_guild_accept} &r&aor {click_here_guild_decline}&r&a."
+guild_name_taken: "{message_prefix} &cThe guild name &e{guild_name}&c is already taken."
+player_already_in_a_guild: "{message_prefix} &cYou are already in a guild!"
+player_not_in_guild: "{message_prefix} &cYou are not in a guild!"
+combat_cannot_perform_action: "{message_prefix} &cYou cannot perform this action while in combat &6({combat_time} Seconds Left of combat)."
+guild_base_creation_confirmed: "{message_prefix} &aYou have confirmed the creation of the guild base."
+guild_base_creation_cancelled: "{message_prefix} &cYou have cancelled the creation of the guild base."
+character_creation_already_in_progress: "{message_prefix} &cCharacter creation is already in progress."

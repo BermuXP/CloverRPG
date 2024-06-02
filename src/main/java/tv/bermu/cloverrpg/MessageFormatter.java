@@ -15,13 +15,13 @@ import tv.bermu.cloverrpg.managers.ConfigManager;
 public class MessageFormatter {
 
     private ConfigManager configManager;
-    private Map<String, FileConfiguration> languageConfigs = new HashMap<>();
     private FileConfiguration defaultConfig;
 
     /**
      * Constructor
      * 
      * @param configManager The config manager
+     * @param defaultConfig The default config
      */
     public MessageFormatter(ConfigManager configManager, FileConfiguration defaultConfig) {
         this.configManager = configManager;
@@ -37,7 +37,7 @@ public class MessageFormatter {
      * @return The formatted message
      */
     public TextComponent formatClickEventCommand(String configTag, String language, String commandString) {
-        FileConfiguration langConfig = getLanguagFileConfiguration(language); // Load the language file to get the
+        FileConfiguration langConfig = this.configManager.loadConfig("messages/" + language);
         String clickText = langConfig.getString(configTag + "_text");
         clickText = ChatColor.translateAlternateColorCodes('&', clickText);
         TextComponent message = new TextComponent(clickText);
@@ -63,29 +63,6 @@ public class MessageFormatter {
     }
 
     /**
-     * Get the language file configuration
-     * TODO move this to config manager (?)
-     * 
-     * @param language The language to get the configuration for
-     * @return The language file configuration
-     */
-    public FileConfiguration getLanguagFileConfiguration(String language) {
-        FileConfiguration langConfig = languageConfigs.get(language);
-
-        if (langConfig == null) {
-            if (!configManager.configExists("messages/" + language)) {
-                language = "en_gb"; // Fallback to English if the language file doesn't exist
-                langConfig = languageConfigs.get(language);
-                if (langConfig == null) {
-                    langConfig = configManager.loadConfig("messages/" + language);
-                }
-            }
-            languageConfigs.put(language, langConfig);
-        }
-        return langConfig;
-    }
-
-    /**
      * Format a message with slugs
      * 
      * @param configTag The tag of the message in the language file
@@ -94,7 +71,7 @@ public class MessageFormatter {
      * @return The formatted message
      */
     public String formatMessage(String configTag, String language, HashMap<String, Object> slugs) {
-        FileConfiguration langConfig = getLanguagFileConfiguration(language);
+        FileConfiguration langConfig = this.configManager.loadConfig("messages/" + language);
 
         String rawMessage = langConfig.getString(configTag);
         if (slugs != null) {
@@ -117,7 +94,7 @@ public class MessageFormatter {
      * @return The formatted message
      */
     public TextComponent formatMessageTextComponent(String configTag, String language, HashMap<String, Object> slugs) {
-        FileConfiguration langConfig = getLanguagFileConfiguration(language);
+        FileConfiguration langConfig = this.configManager.loadConfig("messages/" + language);
 
         String rawMessage = langConfig.getString(configTag);
         TextComponent message = new TextComponent();

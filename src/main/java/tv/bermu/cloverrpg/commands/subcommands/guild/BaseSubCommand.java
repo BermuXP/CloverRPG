@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.SubCommand;
@@ -21,17 +22,16 @@ public class BaseSubCommand implements SubCommand {
     private final CombatListener combatListener;
 
     public BaseSubCommand(GuildHandler guildHandler, MessageFormatter messageFormatter, String permission,
-            CombatListener combatListener) {
+            CombatListener combatListener, JavaPlugin plugin) {
         this.messageFormatter = messageFormatter;
         this.permission = permission;
         this.guildHandler = guildHandler;
         this.combatListener = combatListener;
         subcommands.put("create",
-                new CreateSubCommand(guildHandler, messageFormatter, permission + ".create", combatListener));
+                new CreateSubCommand(guildHandler, messageFormatter, permission + ".create", combatListener, plugin));
 
         subcommands.put("cancel",
                 new InfoSubCommand(guildHandler, messageFormatter, permission + ".cancel"));
-
     }
 
     @Override

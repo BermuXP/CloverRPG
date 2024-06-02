@@ -23,7 +23,7 @@ public class ListSubCommand implements SubCommand{
     @Override
     public void execute(Player player, String[] args) {
         String playerLanguage = player.getLocale().toLowerCase();
-
+        
     }
 
     @Override

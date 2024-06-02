@@ -1,36 +1,39 @@
 # Dit is het bestand dat alle berichten bevat die naar de speler worden gestuurd wanneer ze iets doen in het spel.
 # het instellen van een van deze berichten op `false` (zonder backticks) zal voorkomen dat het bericht wordt verzonden.
-player_kills_mob: "{message_prefix} &fJe hebt &a&l{exp_gained}&e EXP &r&fverdiend voor het doden van &a{killed_monster}&r." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een monster doden.
-not_in_party: "{message_prefix} &cJe bent niet in een party!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een partycommando uit te voeren zonder in een party te zitten.
-party_not_the_leader: "{message_prefix} &cJe bent niet de party leider!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een partycommando uit te voeren dat alleen de party leider kan uitvoeren.
-party_disbanded_successfully: "{message_prefix} &aDe party is succesvol ontbonden." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de party succesvol is ontbonden.
-party_disband_error: "{message_prefix} &cEr is een fout opgetreden bij het ontbinden van de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het ontbinden van de party.
-party_creation_error: "{message_prefix} &cEr is een fout opgetreden bij het maken van de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het maken van de party.
-party_already_joined: "{message_prefix} &cJe zit al in een party!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een party te maken terwijl ze al in een party zitten.
-party_created_successfully: "{message_prefix} &aDe party is succesvol aangemaakt." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de party succesvol is aangemaakt.
-party_invite_sent: "{message_prefix} &aDe party uitnodiging is verzonden naar &e{inviting_player}&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer een party uitnodiging wordt verzonden naar een andere speler.
-party_invite_received: "{message_prefix} &aJe hebt een party uitnodiging ontvangen van &e{inviting_player}&a. {click_here_party_accept} &r&aof {click_here_party_decline}&r&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een party uitnodiging ontvangen.
+player_kills_mob: "{message_prefix} &fJe hebt &a&l{exp_gained}&e EXP &r&fverdiend voor het doden van &a{killed_monster}&r."
+not_in_party: "{message_prefix} &cJe bent niet in een party!"
+party_not_the_leader: "{message_prefix} &cJe bent niet de party leider!"
+party_disbanded_successfully: "{message_prefix} &aDe party is succesvol ontbonden."
+party_disband_error: "{message_prefix} &cEr is een fout opgetreden bij het ontbinden van de party."
+party_creation_error: "{message_prefix} &cEr is een fout opgetreden bij het maken van de party."
+party_already_joined: "{message_prefix} &cJe zit al in een party!"
+party_created_successfully: "{message_prefix} &aDe party is succesvol aangemaakt."
+party_invite_sent: "{message_prefix} &aDe party uitnodiging is verzonden naar &e{inviting_player}&a."
+party_invite_received: "{message_prefix} &aJe hebt een party uitnodiging ontvangen van &e{inviting_player}&a. {click_here_party_accept} &r&aof {click_here_party_decline}&r&a."
 click_accept_text: "&6&lAccepteren"
 click_accept_hover: "&aKlik hier om de party uitnodiging te accepteren."
 click_decline_text: "&c&lWeigeren"
 click_decline_hover: "&cKlik hier om de party uitnodiging te weigeren."
-player_not_found: "{message_prefix} &cDe speler &e{player_name}&c is niet gevonden." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de speler die ze proberen uit te nodigen voor de party niet is gevonden.
-player_not_online: "{message_prefix} &cDe speler &e{player_name}&c is niet online." # Dit is een bericht dat naar de speler wordt gestuurd wanneer de speler die ze proberen uit te nodigen voor de party niet online is.
-no_permissions_command: "{message_prefix} &cJe hebt geen toestemming om dit commando uit te voeren." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze geen toestemming hebben om een commando uit te voeren.
-unknown_command: "{message_prefix} &cOnbekend commando. Gebruik &e/{command_name} help &cvoor een lijst met commando's." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een onbekend commando uit te voeren.
-only_players_can_execute_command: "{message_prefix} &cAlleen spelers kunnen dit commando uitvoeren." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een commando uit te voeren dat alleen spelers kunnen uitvoeren.
-subcommand_usage: "{message_prefix} &cGebruik: &e/{command_name} {subcommand} {usage}" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een subcommando verkeerd gebruiken.
-party_invite_self: "{message_prefix} &cJe kunt jezelf niet uitnodigen voor een party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen zichzelf uit te nodigen voor een party.
-player_already_in_the_party: "{message_prefix} &cDe speler &e{player_name}&c zit al in de party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een speler uit te nodigen die al in de party zit.
-player_already_in_another_the_party: "{message_prefix} &cDe speler &e{player_name}&c zit al in een andere party." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een speler uit te nodigen die al in een andere party zit.
-error_creating_character: "{message_prefix} &cEr is een fout opgetreden bij het maken van het personage." # Dit is een bericht dat naar de speler wordt gestuurd wanneer er een fout optreedt bij het maken van een personage.
-character_creation_start: "{message_prefix} &aPersonage creatie gestart. Voer alstublieft uw personage naam in:" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze beginnen met het maken van een personage.
-character_creation_cancelled: "{message_prefix} &cPersonage creatie geannuleerd." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze het maken van een personage annuleren.
-character_creation_success: "{message_prefix} &aPersonage succesvol aangemaakt." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een personage succesvol aanmaken.
-no_character_creation_in_progress: "{message_prefix} &cEr is geen personage creatie in uitvoering." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen het maken van een personage te annuleren wanneer er geen personage creatie in uitvoering is.
-character_creation_name_selected: "{message_prefix} &aU heeft de naam &e{character_name}&a voor uw personage geselecteerd." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een naam voor hun personage selecteren.
-guild_invite: "{message_prefix} &aJe hebt een gilde uitnodiging ontvangen van &e{inviting_player}&a. {click_here_guild_accept} &r&aof {click_here_guild_decline}&r&a." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze een gilde uitnodiging ontvangen.
-guild_name_taken: "{message_prefix} &cDe gilde naam &e{guild_name}&c is al in gebruik." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een gilde te maken met een naam die al in gebruik is.
-player_already_in_a_guild: "{message_prefix} &cJe zit al in een gilde!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een gilde te maken terwijl ze al in een gilde zitten.
-player_not_in_guild: "{message_prefix} &cJe zit niet in een gilde!" # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een gildecommando uit te voeren zonder in een gilde te zitten.
-combat_cannot_perform_action: "{message_prefix} &cJe kunt deze actie niet uitvoeren terwijl je in gevecht bent." # Dit is een bericht dat naar de speler wordt gestuurd wanneer ze proberen een actie uit te voeren terwijl ze in gevecht zijn.
+player_not_found: "{message_prefix} &cDe speler &e{player_name}&c is niet gevonden."
+player_not_online: "{message_prefix} &cDe speler &e{player_name}&c is niet online."
+no_permissions_command: "{message_prefix} &cJe hebt geen toestemming om dit commando uit te voeren."
+unknown_command: "{message_prefix} &cOnbekend commando. Gebruik &e/{command_name} help &cvoor een lijst met commando's."
+only_players_can_execute_command: "{message_prefix} &cAlleen spelers kunnen dit commando uitvoeren."
+subcommand_usage: "{message_prefix} &cGebruik: &e/{command_name} {subcommand} {usage}"
+party_invite_self: "{message_prefix} &cJe kunt jezelf niet uitnodigen voor een party."
+player_already_in_the_party: "{message_prefix} &cDe speler &e{player_name}&c zit al in de party."
+player_already_in_another_the_party: "{message_prefix} &cDe speler &e{player_name}&c zit al in een andere party."
+error_creating_character: "{message_prefix} &cEr is een fout opgetreden bij het maken van het personage."
+character_creation_start: "{message_prefix} &aPersonage creatie gestart. Voer alstublieft uw personage naam in:"
+character_creation_cancelled: "{message_prefix} &cPersonage creatie geannuleerd."
+character_creation_success: "{message_prefix} &aPersonage succesvol aangemaakt."
+no_character_creation_in_progress: "{message_prefix} &cEr is geen personage creatie in uitvoering."
+character_creation_name_selected: "{message_prefix} &aU heeft de naam &e{character_name}&a voor uw personage geselecteerd."
+guild_invite: "{message_prefix} &aJe hebt een gilde uitnodiging ontvangen van &e{inviting_player}&a. {click_here_guild_accept} &r&aof {click_here_guild_decline}&r&a."
+guild_name_taken: "{message_prefix} &cDe gilde naam &e{guild_name}&c is al in gebruik."
+player_already_in_a_guild: "{message_prefix} &cJe zit al in een gilde!"
+player_not_in_guild: "{message_prefix} &cJe zit niet in een gilde!"
+combat_cannot_perform_action: "{message_prefix} &cJe kunt deze actie niet uitvoeren terwijl je in gevecht bent &6({combat_time} Seconden over van gevecht)."
+guild_base_creation_confirmed: "{message_prefix} &aJe hebt de creatie van de gilde basis bevestigd."
+guild_base_creation_cancelled: "{message_prefix} &cJe hebt de creatie van de gilde basis geannuleerd."
+character_creation_already_in_progress: "{message_prefix} &cPersonage creatie is al in uitvoering."

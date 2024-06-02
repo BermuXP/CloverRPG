@@ -22,6 +22,14 @@ public class CreateSubCommand implements SubCommand {
     @Override
     public void execute(Player player, String[] args) {
         String playerLanguage = player.getLocale();
+
+        if (creatingCharacter.contains(player)) {
+            player.sendMessage(
+                    messageFormatter.formatMessageDefaultSlugs("character_creation_already_in_progress",
+                            playerLanguage));
+            return;
+
+        }
         player.sendMessage(
                 messageFormatter.formatMessageDefaultSlugs("character_creation_start", playerLanguage));
         creatingCharacter.add(player);

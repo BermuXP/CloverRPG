@@ -6,3 +6,14 @@ database:
   database: "cloverrpg"
   username: "root"
   password: "defaultRootPassword"
+# this is NOT a combatlogger.
+combat_timer: 60 # in seconds
+# language files to load, did you add a custom one? 
+# make sure to add it here!
+# do you not want the translations? remove the file from the list.
+# the default will always be en_gb, even if you remove it.
+language_files:
+  - "en_gb"
+  - "de_de"
+  - "ja_jp" 
+  - "nl_nl"

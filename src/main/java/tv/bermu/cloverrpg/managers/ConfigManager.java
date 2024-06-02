@@ -17,9 +17,6 @@ import java.util.Map;
 public class ConfigManager {
 
     private final JavaPlugin plugin;
-    // TODO move configs to a map, so we can access them by name. this might be
-    // lighter.
-    private final Map<String, FileConfiguration> configs = new HashMap<>();
     private static ConfigManager instance;
 
     /**

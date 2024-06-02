@@ -36,7 +36,7 @@ public class GuildCommand implements CommandExecutor, TabCompleter {
                         combatListener));
         subcommands.put("base",
                 new BaseSubCommand(guildHandler, messageFormatter, Main.baseCommandPermission + "guild.base",
-                        combatListener));
+                        combatListener, javaPlugin));
         subcommands.put("info",
                 new InfoSubCommand(guildHandler, messageFormatter, Main.baseCommandPermission + "guild.info"));
         subcommands.put("list",

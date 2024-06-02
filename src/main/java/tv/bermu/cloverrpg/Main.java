@@ -1,14 +1,13 @@
 package tv.bermu.cloverrpg;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandMap;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.LivingEntity;
@@ -51,12 +50,15 @@ public class Main extends JavaPlugin {
         getLogger().info("Enabling.");
         uniqueInventoryIdentifier = UUID.randomUUID().toString();
         ConfigManager configManager = new ConfigManager(this);
-
         configManager.loadConfig("characters");
         defaultConfig = configManager.loadConfig("config");
         FileConfiguration classesConfig = configManager.loadConfig("classes");
         FileConfiguration racesConfig = configManager.loadConfig("races");
-
+        // Get the list of language files
+        List<String> languageFiles = defaultConfig.getStringList("language_files");
+        for (String languageFile : languageFiles) {
+            configManager.loadConfig("messages/" + languageFile);
+        }
         database = new Database(this, defaultConfig.getConfigurationSection("database"));
         messageFormatter = new MessageFormatter(configManager, defaultConfig);
 
@@ -67,12 +69,12 @@ public class Main extends JavaPlugin {
         pluginManager.registerEvents(new PlayerJoinListener(), this);
         pluginManager.registerEvents(new PlayerChatListener(creatingCharacter, messageFormatter), this);
 
-        CombatListener combatListener = new CombatListener();
+        CombatListener combatListener = new CombatListener(defaultConfig);
         pluginManager.registerEvents(combatListener, this);
 
         PartyHandler partyHandler = new PartyHandler(database, messageFormatter);
         GuildHandler guildHandler = new GuildHandler(database, messageFormatter);
-        
+
         FileConfiguration partyConfig = configManager.loadConfig("party");
         if (partyConfig.getBoolean("enable")) {
             getCommand("party").setExecutor(new PartyCommand(this, partyHandler, messageFormatter));

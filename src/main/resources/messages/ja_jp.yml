@@ -1,37 +1,40 @@
 # これは、ゲーム内で何かを行ったときにプレイヤーに送信されるすべてのメッセージを含むファイルです。
 # これらのメッセージのいずれかを `false`（バッククォートなし）に設定すると、メッセージの送信が無効になります。
-player_kills_mob: "{message_prefix} &fあなたは &a&l{exp_gained}&e EXP &r&fを獲得しました、&a{killed_monster}&rを倒したため。" # これは、プレイヤーがモンスターを倒したときに送信されるメッセージです。
-not_in_party: "{message_prefix} &cあなたはパーティーに参加していません！" # これは、プレイヤーがパーティーに参加していない状態でパーティーコマンドを実行しようとしたときに送信されるメッセージです。
-party_not_the_leader: "{message_prefix} &cあなたはパーティーリーダーではありません！" # これは、プレイヤーがパーティーリーダーのみが実行できるパーティーコマンドを実行しようとしたときに送信されるメッセージです。
-party_disbanded_successfully: "{message_prefix} &aパーティーは正常に解散されました。" # これは、パーティーが正常に解散されたときにプレイヤーに送信されるメッセージです。
-party_disband_error: "{message_prefix} &cパーティーを解散しようとしてエラーが発生しました。" # これは、パーティーを解散しようとしてエラーが発生したときにプレイヤーに送信されるメッセージです。
-party_creation_error: "{message_prefix} &cパーティーを作成しようとしてエラーが発生しました。" # これは、パーティーを作成しようとしてエラーが発生したときにプレイヤーに送信されるメッセージです。
-party_already_joined: "{message_prefix} &cあなたはすでにパーティーに参加しています！" # これは、プレイヤーがすでにパーティーに参加している状態でパーティーを作成しようとしたときに送信されるメッセージです。
-party_created_successfully: "{message_prefix} &aパーティーが正常に作成されました。" # これは、パーティーが正常に作成されたときにプレイヤーに送信されるメッセージです。
-party_invite_sent: "{message_prefix} &aパーティー招待状が &e{player}&a に送信されました。" # これは、他のプレイヤーにパーティー招待状が送信されたときにプレイヤーに送信されるメッセージです。
-party_invite_received: "{message_prefix} &a{player}&a からパーティー招待状を受け取りました。 {click_here_party_accept} &r&aまたは {click_here_party_decline}&r&a。" # これは、プレイヤーがパーティー招待状を受け取ったときに送信されるメッセージです。
+player_kills_mob: "{message_prefix} &fあなたは &a&l{exp_gained}&e EXP &r&fを獲得しました、&a{killed_monster}&rを倒したため。"
+not_in_party: "{message_prefix} &cあなたはパーティーに参加していません！"
+party_not_the_leader: "{message_prefix} &cあなたはパーティーリーダーではありません！"
+party_disbanded_successfully: "{message_prefix} &aパーティーは正常に解散されました。"
+party_disband_error: "{message_prefix} &cパーティーを解散しようとしてエラーが発生しました。"
+party_creation_error: "{message_prefix} &cパーティーを作成しようとしてエラーが発生しました。"
+party_already_joined: "{message_prefix} &cあなたはすでにパーティーに参加しています！"
+party_created_successfully: "{message_prefix} &aパーティーが正常に作成されました。"
+party_invite_sent: "{message_prefix} &aパーティー招待状が &e{player}&a に送信されました。"
+party_invite_received: "{message_prefix} &a{player}&a からパーティー招待状を受け取りました。 {click_here_party_accept} &r&aまたは {click_here_party_decline}&r&a。"
 click_accept_text: "&6&l受け入れる"
 click_accept_hover: "&aパーティー招待状を受け入れるにはここをクリックしてください。"
 click_decline_text: "&c&l辞退する"
 click_decline_hover: "&cパーティー招待状を辞退するにはここをクリックしてください。"
-player_not_found: "{message_prefix} &cプレイヤー &e{player}&c が見つかりませんでした。" # これは、プレイヤーがパーティーに招待しようとしているプレイヤーが見つからなかったときに送信されるメッセージです。
-player_not_online: "{message_prefix} &cプレイヤー &e{player}&c はオフラインです。" # これは、プレイヤーがパーティーに招待しようとしているプレイヤーがオフラインであるときに送信されるメッセージです。
-no_permissions_command: "{message_prefix} &cこのコマンドを実行する権限がありません。" # これは、プレイヤーがコマンドを実行する権限を持っていないときに送信されるメッセージです。
-unknown_command: "{message_prefix} &c不明なコマンドです。コマンドのリストを表示するには &e/{command_name} help &cを使用してください。" # これは、プレイヤーが不明なコマンドを実行しようとしたときに送信されるメッセージです。
-only_players_can_execute_command: "{message_prefix} &cこのコマンドはプレイヤーのみが実行できます。" # これは、プレイヤーがプレイヤーのみが実行できるコマンドを実行しようとしたときに送信されるメッセージです。
-subcommand_usage: "{message_prefix} &c使用法: &e/{command_name} {subcommand} {usage}" # これは、サブコマンドを誤って使用したときに送信されるメッセージです。
-party_invite_self: "{message_prefix} &c自分自身をパーティーに招待することはできません。" # これは、プレイヤーが自分自身をパーティーに招待しようとしたときに送信されるメッセージです。
-player_already_in_the_party: "{message_prefix} &cプレイヤー &e{player}&c はすでにパーティーに参加しています。" # これは、プレイヤーがすでにパーティーに参加しているプレイヤーを招待しようとしたときに送信されるメッセージです。
-player_already_in_another_the_party: "{message_prefix} &cプレイヤー &e{player}&c はすでに他のパーティーに参加しています。" # これは、プレイヤーがすでに他のパーティーに参加しているプレイヤーを招待しようとしたときに送信されるメッセージです。
-player_already_invited: "{message_prefix} &cプレイヤー &e{player}&c はすでにパーティーに招待されています。" # これは、プレイヤーがすでにパーティーに招待されているプレイヤーを招待しようとしたときに送信されるメッセージです。
-error_creating_character: "{message_prefix} &cキャラクターを作成しようとしてエラーが発生しました。" # これは、キャラクターを作成しようとしてエラーが発生したときに送信されるメッセージです。
-character_creation_start: "{message_prefix} &aキャラクター作成が開始されました。キャラクター名を入力してください：" # これは、プレイヤーがキャラクター作成を開始したときに送信されるメッセージです。
-character_creation_cancelled: "{message_prefix} &cキャラクター作成がキャンセルされました。" # これは、プレイヤーがキャラクター作成をキャンセルしたときに送信されるメッセージです。
-character_creation_success: "{message_prefix} &aキャラクターが正常に作成されました。" # これは、プレイヤーがキャラクターを正常に作成したときに送信されるメッセージです。
-no_character_creation_in_progress: "{message_prefix} &cキャラクター作成が進行中ではありません。" # これは、プレイヤーがキャラクター作成が進行中でない状態でキャラクター作成をキャンセルしようとしたときに送信されるメッセージです。
-character_creation_name_selected: "{message_prefix} &aキャラクター名 &e{character_name}&a を選択しました。" # これは、プレイヤーがキャラクターの名前を選択したときに送信されるメッセージです。
-guild_invite: "{message_prefix} &a{player}&a からギルド招待状を受け取りました。 {click_here_guild_accept} &r&aまたは {click_here_guild_decline}&r&a。" # これは、プレイヤーがギルド招待状を受け取ったときに送信されるメッセージです。
-guild_name_taken: "{message_prefix} &cギルド名 &e{guild_name}&c はすでに使用されています。" # これは、プレイヤーがすでに使用されているギルド名でギルドを作成しようとしたときに送信されるメッセージです。
-player_already_in_a_guild: "{message_prefix} &cあなたはすでにギルドに所属しています！" # これは、プレイヤーがすでにギルドに所属している状態でギルドを作成しようとしたときに送信されるメッセージです。
-player_not_in_guild: "{message_prefix} &cあなたはギルドに所属していません！" # これは、プレイヤーがギルドに所属していない状態でギルドコマンドを実行しようとしたときに送信されるメッセージです。
-combat_cannot_perform_action: "{message_prefix} &c戦闘中はこのアクションを実行できません。" # これは、プレイヤーが戦闘中にアクションを実行しようとしたときに送信されるメッセージです。
+player_not_found: "{message_prefix} &cプレイヤー &e{player}&c が見つかりませんでした。"
+player_not_online: "{message_prefix} &cプレイヤー &e{player}&c はオフラインです。"
+no_permissions_command: "{message_prefix} &cこのコマンドを実行する権限がありません。"
+unknown_command: "{message_prefix} &c不明なコマンドです。コマンドのリストを表示するには &e/{command_name} help &cを使用してください。"
+only_players_can_execute_command: "{message_prefix} &cこのコマンドはプレイヤーのみが実行できます。" 
+subcommand_usage: "{message_prefix} &c使用法: &e/{command_name} {subcommand} {usage}"
+party_invite_self: "{message_prefix} &c自分自身をパーティーに招待することはできません。"
+player_already_in_the_party: "{message_prefix} &cプレイヤー &e{player}&c はすでにパーティーに参加しています。"
+player_already_in_another_the_party: "{message_prefix} &cプレイヤー &e{player}&c はすでに他のパーティーに参加しています。"
+player_already_invited: "{message_prefix} &cプレイヤー &e{player}&c はすでにパーティーに招待されています。"
+error_creating_character: "{message_prefix} &cキャラクターを作成しようとしてエラーが発生しました。"
+character_creation_start: "{message_prefix} &aキャラクター作成が開始されました。キャラクター名を入力してください："
+character_creation_cancelled: "{message_prefix} &cキャラクター作成がキャンセルされました。"
+character_creation_success: "{message_prefix} &aキャラクターが正常に作成されました。"
+no_character_creation_in_progress: "{message_prefix} &cキャラクター作成が進行中ではありません。"
+character_creation_name_selected: "{message_prefix} &aキャラクター名 &e{character_name}&a を選択しました。"
+guild_invite: "{message_prefix} &a{player}&a からギルド招待状を受け取りました。 {click_here_guild_accept} &r&aまたは {click_here_guild_decline}&r&a。"
+guild_name_taken: "{message_prefix} &cギルド名 &e{guild_name}&c はすでに使用されています。"
+player_already_in_a_guild: "{message_prefix} &cあなたはすでにギルドに所属しています！"
+player_not_in_guild: "{message_prefix} &cあなたはギルドに所属していません！"
+combat_cannot_perform_action: "{message_prefix} &c戦闘中はこのアクションを実行できません &6（残り {combat_time} 秒の戦闘時間）。"
+guild_base_creation_confirmed: "{message_prefix} &aギルド基地の作成を確認しました。"
+guild_base_creation_cancelled: "{message_prefix} &cギルド基地の作成をキャンセルしました。"
+character_creation_already_in_progress: "{message_prefix} &cキャラクター作成はすでに進行中です。"
