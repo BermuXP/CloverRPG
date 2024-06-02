@@ -1,12 +1,7 @@
 package tv.bermu.cloverrpg.commands.subcommands.character;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import tv.bermu.cloverrpg.MessageFormatter;

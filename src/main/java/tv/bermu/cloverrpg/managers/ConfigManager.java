@@ -1,13 +1,11 @@
 package tv.bermu.cloverrpg.managers;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Config manager class

@@ -8,10 +8,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.SubCommand;
-import tv.bermu.cloverrpg.db.handlers.GuildHandler;
-import tv.bermu.cloverrpg.listeners.CombatListener;
 import tv.bermu.cloverrpg.commands.subcommands.guild.basesubcommands.CreateSubCommand;
 import tv.bermu.cloverrpg.commands.subcommands.guild.basesubcommands.InfoSubCommand;
+import tv.bermu.cloverrpg.db.handlers.GuildHandler;
+import tv.bermu.cloverrpg.listeners.CombatListener;
 
 public class BaseSubCommand implements SubCommand {
 

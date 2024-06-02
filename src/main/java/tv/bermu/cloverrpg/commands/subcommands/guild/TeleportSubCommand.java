@@ -1,8 +1,9 @@
 package tv.bermu.cloverrpg.commands.subcommands.guild;
 
 import org.bukkit.entity.Player;
-import tv.bermu.cloverrpg.SubCommand;
+
 import tv.bermu.cloverrpg.MessageFormatter;
+import tv.bermu.cloverrpg.SubCommand;
 import tv.bermu.cloverrpg.db.handlers.GuildHandler;
 
 public class TeleportSubCommand implements SubCommand {

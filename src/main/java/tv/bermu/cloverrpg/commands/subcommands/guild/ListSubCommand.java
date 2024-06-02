@@ -1,7 +1,5 @@
 package tv.bermu.cloverrpg.commands.subcommands.guild;
 
-import java.util.HashMap;
-
 import org.bukkit.entity.Player;
 
 import tv.bermu.cloverrpg.MessageFormatter;

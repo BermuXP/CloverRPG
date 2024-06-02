@@ -5,7 +5,6 @@ import org.bukkit.entity.Player;
 import tv.bermu.cloverrpg.Main;
 import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.SubCommand;
-import tv.bermu.cloverrpg.commands.subcommands.party.CreateSubCommand;
 
 
 public class SelectSubCommand implements SubCommand {

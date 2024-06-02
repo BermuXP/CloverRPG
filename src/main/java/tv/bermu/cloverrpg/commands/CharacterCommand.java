@@ -9,6 +9,7 @@ import java.util.Set;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,7 +18,6 @@ import tv.bermu.cloverrpg.MessageFormatter;
 import tv.bermu.cloverrpg.SubCommand;
 import tv.bermu.cloverrpg.commands.subcommands.character.CreateSubCommand;
 import tv.bermu.cloverrpg.utils.CustomInventoryUtil;
-import org.bukkit.command.TabCompleter;
 
 public class CharacterCommand implements CommandExecutor, TabCompleter {
 

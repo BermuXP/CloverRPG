@@ -1,15 +1,15 @@
 package tv.bermu.cloverrpg.utils;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class CustomInventoryUtil {
     private Inventory inventory;

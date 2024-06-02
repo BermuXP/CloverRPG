@@ -17,6 +17,7 @@ public class InfoSubCommand implements SubCommand {
         this.permission = permission;
         this.guildHandler = guildHandler;
     }
+    
     @Override
     public void execute(Player player, String[] args) {
         String playerLanguage = player.getLocale().toLowerCase();
