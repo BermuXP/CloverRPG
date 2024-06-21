@@ -17,11 +17,12 @@ public class SelectSubCommand implements SubCommand {
 
     @Override
     public void execute(Player player, String[] args) {
-
+        String playerLanguage = player.getLocale().toLowerCase();
+        
     }
 
     @Override
     public boolean hasPermission(Player player) {
         return player.hasPermission(permission);
     }
-}
+}   

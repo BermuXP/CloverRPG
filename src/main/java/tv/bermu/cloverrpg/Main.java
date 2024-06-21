@@ -64,6 +64,7 @@ public class Main extends JavaPlugin {
 
         PluginManager pluginManager = getServer().getPluginManager();
         InventoryClickListener inventoryClickListener = new InventoryClickListener(this);
+        
         pluginManager.registerEvents(inventoryClickListener, this);
         pluginManager.registerEvents(new EntityDeathListener(this), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);

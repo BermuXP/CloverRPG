@@ -21,7 +21,8 @@ public class TeleportSubCommand implements SubCommand {
     @Override
     public void execute(Player player, String[] args) {
         String playerLanguage = player.getLocale().toLowerCase();
-
+        // check if player in guild
+        // check if tp is set.
     }
 
     @Override

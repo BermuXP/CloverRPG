@@ -20,6 +20,7 @@ import tv.bermu.cloverrpg.commands.subcommands.guild.CreateSubCommand;
 import tv.bermu.cloverrpg.commands.subcommands.guild.InfoSubCommand;
 import tv.bermu.cloverrpg.commands.subcommands.guild.InviteSubCommand;
 import tv.bermu.cloverrpg.commands.subcommands.guild.ListSubCommand;
+import tv.bermu.cloverrpg.commands.subcommands.guild.TeleportSubCommand;
 import tv.bermu.cloverrpg.db.handlers.GuildHandler;
 import tv.bermu.cloverrpg.listeners.CombatListener;
 
@@ -44,6 +45,11 @@ public class GuildCommand implements CommandExecutor, TabCompleter {
         subcommands.put("invite",
                 new InviteSubCommand(javaPlugin, guildHandler, messageFormatter,
                         Main.baseCommandPermission + "guild.invite"));
+        
+        TeleportSubCommand tpSubCommand = new TeleportSubCommand(guildHandler, messageFormatter,
+                Main.baseCommandPermission + "guild.teleport");
+        subcommands.put("teleport",tpSubCommand);
+        subcommands.put("tp",tpSubCommand);
     }
 
     @Override
